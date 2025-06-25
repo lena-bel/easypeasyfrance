@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TaskDetailsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TaskDetailsRepository::class)]
@@ -13,6 +14,8 @@ class TaskDetails
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'taskDetails')]
+    private ?Task $taskId = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $stepOrder = null;
@@ -23,8 +26,20 @@ class TaskDetails
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $appointmentNote = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $appointmentLink = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $informationalMessage = null;
+
     #[ORM\Column(nullable: true)]
-    private ?bool $isRequired = null;
+    private ?array $externalLinks = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $documentCheckList = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTime $createdAt = null;
@@ -32,8 +47,7 @@ class TaskDetails
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'taskDetails')]
-    private ?Task $taskId = null;
+    
 
     public function getId(): ?int
     {
@@ -76,17 +90,6 @@ class TaskDetails
         return $this;
     }
 
-    public function isRequired(): ?bool
-    {
-        return $this->isRequired;
-    }
-
-    public function setIsRequired(?bool $isRequired): static
-    {
-        $this->isRequired = $isRequired;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTime
     {
@@ -120,6 +123,66 @@ class TaskDetails
     public function setTaskId(?Task $taskId): static
     {
         $this->taskId = $taskId;
+
+        return $this;
+    }
+
+    public function getAppointmentNote(): ?string
+    {
+        return $this->appointmentNote;
+    }
+
+    public function setAppointmentNote(?string $appointmentNote): static
+    {
+        $this->appointmentNote = $appointmentNote;
+
+        return $this;
+    }
+
+    public function getAppointmentLink(): ?string
+    {
+        return $this->appointmentLink;
+    }
+
+    public function setAppointmentLink(?string $appointmentLink): static
+    {
+        $this->appointmentLink = $appointmentLink;
+
+        return $this;
+    }
+
+    public function getInformationalMessage(): ?string
+    {
+        return $this->informationalMessage;
+    }
+
+    public function setInformationalMessage(?string $informationalMessage): static
+    {
+        $this->informationalMessage = $informationalMessage;
+
+        return $this;
+    }
+
+    public function getExternalLinks(): ?array
+    {
+        return $this->externalLinks;
+    }
+
+    public function setExternalLinks(?array $externalLinks): static
+    {
+        $this->externalLinks = $externalLinks;
+
+        return $this;
+    }
+
+    public function getDocumentCheckList(): ?array
+    {
+        return $this->documentCheckList;
+    }
+
+    public function setDocumentCheckList(?array $documentCheckList): static
+    {
+        $this->documentCheckList = $documentCheckList;
 
         return $this;
     }
