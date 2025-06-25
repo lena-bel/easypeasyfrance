@@ -12,6 +12,57 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %} 
+        <nav class="header">
+            <a href="#" class="logo">Easy Peasy France</a>
+            <div class="links">
+                <a href="tasks">To-Do</a>
+                <a href="#">Messages</a>
+                <a href="#">Appointments</a>
+                <a href="#">Notifications</a>
+                <a href="#">Settings</a>
+            </div>
+        </nav>
+        {% endblock %} 
         {% block body %}{% endblock %}
+        {% block footer %}
+            <footer>
+                <div class="footer-column">
+                <h4>Easy Peasy France</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">How it works</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                </ul>
+                </div>
+                <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+                </div>
+                <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+                </div>
+                <div class="footer-column">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+                </div>
+                <div class="footer-bottom">
+                &copy; 2025 Easy Peasy France. All rights reserved.
+                </div>
+            </footer>
+        {% endblock %}
     </body>
 </html>
