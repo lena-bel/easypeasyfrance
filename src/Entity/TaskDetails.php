@@ -21,9 +21,6 @@ class TaskDetails
     private ?int $stepOrder = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $title = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -62,18 +59,6 @@ class TaskDetails
     public function setStepOrder(?int $stepOrder): static
     {
         $this->stepOrder = $stepOrder;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): static
-    {
-        $this->title = $title;
 
         return $this;
     }
