@@ -1,32 +1,33 @@
 {% extends "base.html.twig" %}
 {% block body %}
     
-        {# <p>My Personlized To-Do List</p> #}
-        <form action="/search" method="GET" class="section-one">
-            <input type="search" name="searchbar" placeholder="Search..." />
-            <button type="submit">Search</button>
-        </form>
+        <main>
+            <form action="{{ path('task_index') }}" method="GET" class="section-one">
+                <input type="search" name="searchbar" placeholder="Search..." />
+                <button type="submit">Search</button>
+            </form>
     
-    {% if tasks is empty %}
-        <p>No tasks found.</p>
+            {% if tasks is empty %}
+            <p>No tasks found.</p>
         
-    {% else %}
-        <section class="main-section">
-            <div class="todo-list">
-            {% for task in tasks %}
-                <div class="task-card">
-                    <h3>{{task.title}}</h3>
-                    <div class="task-meta">Profil : Étudiant · Statut : En cours · Échéance : 15 juin 2025</div>
-                    <p class="task-desc">
-                    {{task.description}}
-                    </p>
-                    <div class="task-actions">
-                    <button onclick="location.href='task-detail.html?task=adresse'">Voir détails</button>
-                    <button>Terminer</button>
+            {% else %}
+            <section class="main-section">
+                <div class="todo-list">
+                {% for task in tasks %}
+                    <div class="task-card">
+                        <h3>{{task.title}}</h3>
+                        <div class="task-meta">Profil : Étudiant · Statut : En cours · Échéance : 15 juin 2025</div>
+                        <p class="task-desc">
+                        {{task.description}}
+                        </p>
+                        <div class="task-actions">
+                        <a href="{{ path('task_show', { id: task.id }) }}" class="btn">Voir détails</a>
+                        <a href="#" class="btn">Terminer</a>
+                        </div>
                     </div>
+                {% endfor %}
                 </div>
-            {% endfor %}
-    </div>
-        </section>
-    {% endif %}
+            </section>
+        {% endif %}
+        </main>
 {% endblock %}

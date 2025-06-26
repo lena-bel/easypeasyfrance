@@ -17,8 +17,6 @@ class TaskDetails
     #[ORM\ManyToOne(inversedBy: 'taskDetails')]
     private ?Task $taskId = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $stepOrder = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -44,23 +42,14 @@ class TaskDetails
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $steps = null;
+
     
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getStepOrder(): ?int
-    {
-        return $this->stepOrder;
-    }
-
-    public function setStepOrder(?int $stepOrder): static
-    {
-        $this->stepOrder = $stepOrder;
-
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -168,6 +157,18 @@ class TaskDetails
     public function setDocumentCheckList(?array $documentCheckList): static
     {
         $this->documentCheckList = $documentCheckList;
+
+        return $this;
+    }
+
+    public function getSteps(): ?array
+    {
+        return $this->steps;
+    }
+
+    public function setSteps(?array $steps): static
+    {
+        $this->steps = $steps;
 
         return $this;
     }

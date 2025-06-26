@@ -1,0 +1,106 @@
+:root {
+  --background-color: #FAF9F6;
+  --header-color:  #924d2b;
+  --nav-background: 	#2E2E2E;
+  --nav-text: 	#FAF9F6;
+  --nav-hover: 	#C66B3D;
+  --paragraph-text-color: #4e4e4e;
+  --button-primary-background: #C66B3D;
+  --button-primary-text: #FAF9F6;
+  --button-primary-hover:#924d2b;
+  --button-secondary-background:#A8A69F;
+  --button-secondary-text:#2E2E2E;
+  --links: #C66B3D ;
+  --links-hover: #f09068;
+  --card-background: #f2f1ed;
+  --border-line:  #c66b3d;
+  --footer-background: #2E2E2E;
+  --footer-text: #FAF9F6;
+}
+
+.section-one > input {
+  background-color: #fceeea; /* didn't change the color to match the aesthetic*/
+  width: 50%;
+}
+.section-one > button {
+  background-color: #fceeea; /* didn't change the color to match the aesthetic*/
+  color: rgba(0, 0, 0, 0.7);/* didn't change the color to match the aesthetic*/
+  width: 12%;
+}
+.section-one {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.task-card {
+  background-color: var(--card-background);
+  border-left: 6px solid var(--border-line);
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgb(198 107 61 / 0.25);
+}
+
+.task-card h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.task-meta {
+  font-size: 0.9rem;
+  color: #807160;
+  font-style: italic;
+}
+
+.task-desc {
+  font-size: 0.95rem;
+  color: #5e5d59;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.task-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: var(--button-primary-background);
+  text-decoration: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: var(--button-primary-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.task-actions .btn:hover {
+  background-color: var(--button-primary-hover);
+}
+
+
+/* Start of taskdetails styles*/
+h1, h2,h3,h4,h5,h6{
+  color:  var(--header-color);
+}
+/* end of taskdetails styyles */
+
+

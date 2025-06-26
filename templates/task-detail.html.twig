@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<main>
+		<a href="{{ path('task_index') }}" class="btn">Go back</a>
+		<h1>{{ title }}</h1>
+		<div class="task-card">
+			<p>{{details.description}}</p>
+		</div>
+		<section class="steps">
+			<h2>Step-by-step Instructions</h2>
+			<div>
+				{% for step in details.steps %}
+					<p>
+						<input type="checkbox" id="step-{{ loop.index }}" name="step-{{ loop.index }}">
+                        <label for="step-{{ loop.index }}">{{ step }}</label>
+					</p>
+				{% endfor %}
+			</div>
+		</section>
+		<section id="documents">
+			<h2>Documents Required</h2>
+			{% for document in details.documentCheckList %}
+				<div class="documents">
+					{% if document.title is defined %}
+						<p>{{ document.title }}</p>
+						{% if document.description is defined %}
+							<small>{{ document.description }}</small>
+						{% endif %}
+					{% else %}
+						<p>{{ document }}</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</section>
+
+        <section class="appointment">
+            <h2>Appointment Information</h2>
+            <p>{{details.appointmentNote}}</p>
+            {% if details.appointmentLink is defined %}
+                <a href="{{details.appointmentLink}}" target="_blank" class="aLink"> {{details.appointmentLink}} </a>
+            {% endif %}
+            
+            {% if details.externalLinks %}
+                <p><i>Other Links that might help you:</i></p>
+                {% for externalLink in details.externalLinks %}
+                    {% if externalLink.url is defined %}
+                    <a href="{{externalLink.url}}" target="_blank">{{externalLink.url}}</a> <br>
+                    {% endif %}
+                {% endfor %}
+                
+            {% endif %}
+            
+            
+        </section>
+	</main>
+
+{% endblock %}
