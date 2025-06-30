@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="container" role="main">
+		<aside class="sidebar" aria-label="Sidebar with filters and actions">
+			<h2>Filter Posts</h2>
+
+			<div class="filter-group">
+				<label for="latest-posts-select">
+					<strong>Latest Posts</strong>
+				</label>
+				<select id="latest-posts-select" name="latest-posts">
+					<option value="all" selected>All Time</option>
+					<option value="24h">Last 24 hours</option>
+					<option value="7d">Last 7 days</option>
+					<option value="30d">Last 30 days</option>
+				</select>
+			</div>
+
+			<div class="filter-group">
+				<strong>By User Profile</strong>
+				<div>
+					<input type="checkbox" id="profile-all" name="profile" value="all" checked/>
+					<label for="profile-all">All Profiles</label>
+				</div>
+				<div>
+					<input type="checkbox" id="profile-student" name="profile" value="student"/>
+					<label for="profile-student">Student</label>
+				</div>
+				<div>
+					<input type="checkbox" id="profile-family" name="profile" value="family"/>
+					<label for="profile-family">Private & Family Life</label>
+				</div>
+				<div>
+					<input type="checkbox" id="profile-talent" name="profile" value="talent"/>
+					<label for="profile-talent">Talent Passport</label>
+				</div>
+				<div>
+					<input type="checkbox" id="profile-refugee" name="profile" value="refugee"/>
+					<label for="profile-refugee">Refugees</label>
+				</div>
+				<div>
+					<input type="checkbox" id="profile-worker" name="profile" value="worker"/>
+					<label for="profile-worker">Workers</label>
+				</div>
+			</div>
+
+			<div class="filter-group">
+				<label for="sort-posts-select">
+					<strong>Sort Posts By</strong>
+				</label>
+				<select id="sort-posts-select" name="sort-posts">
+					<option value="recent" selected>Most Recent</option>
+					<option value="commented">Most Commented</option>
+					<option value="liked">Most Liked</option>
+				</select>
+			</div>
+
+			<div class="buttons">
+				<a href="#" class="button filter" role="button">Filter</a>
+				<a href="#" class="button reset" role="button">Reset</a>
+			</div>
+		</aside>
+		<main class="content" aria-label="Community Help posts">
+			<div class="header">
+				<p class="intro-text">
+					Welcome to the community help page! Here you can ask questions, share tips, and support fellow newcomers navigating life in France.
+				</p>
+				<a href="#" class="btn-new-post" role="button">Create New Post</a>
+			</div>
+			<form class="search-bar" role="search" aria-label="Search community posts">
+				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts"/>
+			</form>
+
+			<div class="categories-filter" role="list" aria-label="Filter posts by categories">
+				<button type="button" class="active">All</button>
+				<button type="button">Housing</button>
+				<button type="button">Health</button>
+				<button type="button">Legal</button>
+				<button type="button">Education</button>
+				<button type="button">Employment</button>
+				<button type="button">Other</button>
+			</div>
+			<ul class="posts-list">
+				{% for post in posts %}
+					<li>
+						<h3 class="post-title">
+							<a href="#">
+								{{post.title}}</a>
+						</h3>
+						<p class="post-excerpt">{{post.content}}</p>
+						<div class="post-meta">By Anna (Student) — 2 hours ago —
+							{{post.commentsNumber}}
+							comments</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</main>
+	</div>
+{% endblock %}
