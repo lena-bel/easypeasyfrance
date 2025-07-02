@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
-	<div class="container" role="main">
+	<main id="container" role="main">
 		<aside class="sidebar" aria-label="Sidebar with filters and actions">
 			<h2>Filter Posts</h2>
 
@@ -56,16 +56,16 @@
 			</div>
 
 			<div class="buttons">
-				<a href="#" class="button filter" role="button">Filter</a>
-				<a href="#" class="button reset" role="button">Reset</a>
+				<a href="#" class="post-button filter" role="button">Filter</a>
+				<a href="#" class="post-button reset" role="button">Reset</a>
 			</div>
 		</aside>
-		<main class="content" aria-label="Community Help posts">
+		<div class="content" aria-label="Community Help posts">
 			<div class="header">
-				<p class="intro-text">
+				<p class="card">
 					Welcome to the community help page! Here you can ask questions, share tips, and support fellow newcomers navigating life in France.
 				</p>
-				<a href="#" class="btn-new-post" role="button">Create New Post</a>
+				<a href="#" class="post-button new-post" role="button">Create New Post</a>
 			</div>
 			<form class="search-bar" role="search" aria-label="Search community posts">
 				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts"/>
@@ -94,6 +94,6 @@
 					</li>
 				{% endfor %}
 			</ul>
-		</main>
-	</div>
+		</div>
+	</main>
 {% endblock %}

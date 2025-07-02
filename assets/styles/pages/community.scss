@@ -1,0 +1,140 @@
+@use "../variables";
+#container {
+  margin: 1.5rem auto;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 2rem;
+  aside.sidebar {
+    flex: 0 0 280px;
+    background-color: variables.$card-background;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    border: 1.5px solid variables.$border-line;
+    height: fit-content;
+  }
+  .filter-group {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .filter-group label,
+  .filter-group strong {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .filter-group select {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    border: 1.5px solid variables.$border-line;
+    border-radius: 5px;
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+
+  .filter-group input[type="checkbox"] {
+    margin-right: 0.4rem;
+    cursor: pointer;
+  }
+
+  .post-button {
+    padding: 0.5rem 1rem;
+    background-color: variables.$button-primary-background;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 20px;
+
+    text-decoration: none;
+    color: white;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* main content */
+  .posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .posts-list li {
+    border: 1.5px solid variables.$border-line;
+    border-radius: 8px;
+    margin-bottom: 1.3rem;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.2s ease;
+  }
+  .posts-list li:hover {
+    box-shadow: 0 3px 8px rgb(0 0 0 / 0.2);
+  }
+  .post-title {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.2rem;
+  }
+  .post-meta {
+    font-size: 0.85rem;
+    color: variables.$button-secondary-text;
+    margin-bottom: 0.8rem;
+  }
+  .post-excerpt {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  div.content {
+    flex: 1;
+  }
+
+  a {
+    color: variables.$links;
+    text-decoration: none;
+  }
+  a:hover {
+    color: variables.$links-hover;
+    text-decoration: underline;
+  }
+  .search-bar {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+  .search-bar input[type="search"] {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid variables.$border-line;
+    border-radius: 4px;
+    outline-offset: 2px;
+    transition: border-color 0.3s ease;
+  }
+
+  /* Categories Filter */
+  .categories-filter {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .categories-filter button {
+    background-color: variables.$button-secondary-background;
+    color: variables.$button-secondary-text;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .categories-filter button:hover,
+  .categories-filter button.active {
+    background-color: variables.$button-primary-background;
+    color: variables.$button-primary-text;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+}

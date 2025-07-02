@@ -1,0 +1,64 @@
+@use '../variables';
+
+#task{
+  .section-one > input {
+  background-color: #fceeea;
+  width: 50%;
+}
+
+.section-one {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.section-one > button {
+  background-color: #fceeea; 
+  color: rgba(0, 0, 0, 0.7);
+  width: 12%;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+.task-meta {
+  font-size: 0.9rem;
+  color: #807160;
+  font-style: italic;
+}
+
+.task-desc {
+  font-size: 0.95rem;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.task-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: var(--button-primary-background);
+  text-decoration: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.task-actions .btn:hover {
+  background-color: variables.$button-primary-background;
+  color: white;
+}
+}

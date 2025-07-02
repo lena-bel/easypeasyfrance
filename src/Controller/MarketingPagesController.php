@@ -8,7 +8,7 @@ class MarketingPagesController extends AbstractController
 {
     #[Route('/', name:'home')]
     public function homeDisplay(){
-        return $this->render('home.html.twig');
+        return $this->render('marketingPages/home.html.twig');
     }
 
 }
