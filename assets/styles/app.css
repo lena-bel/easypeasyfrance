@@ -21,7 +21,7 @@ main, footer, nav {
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 nav {
@@ -41,7 +41,7 @@ nav a:hover {
 }
 
 .links {
-  gap: 12rem;
+  gap: 2rem;
 }
 
 nav > div {
@@ -96,29 +96,34 @@ footer ul li a:hover {
 }
 
 /* end of footer styles */
-#task .section-one > input {
+#task .section-one > input, #task .section-one > .progress {
   background-color: #fceeea;
+  border-radius: 5px;
+  padding: 0.2rem 2rem;
   width: 50%;
 }
 #task .section-one {
   display: flex;
   justify-content: space-between;
+  gap: 5rem;
   padding: 1rem 0;
 }
-#task .section-one > button {
+#task .section-one > .progress {
   background-color: #fceeea;
   color: rgba(0, 0, 0, 0.7);
-  width: 12%;
+  width: 50%;
 }
 #task .todo-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-#task .task-meta {
-  font-size: 0.9rem;
+#task .task-data {
+  font-size: 0.8rem;
   color: #807160;
   font-style: italic;
+  display: flex;
+  gap: 0.3rem;
 }
 #task .task-desc {
   font-size: 0.95rem;
@@ -198,6 +203,9 @@ footer ul li a:hover {
 }
 #task-details .back-btn:hover {
   background-color: #924d2b;
+}
+#task-details .details {
+  padding: 0 1.5rem;
 }
 
 #container {
@@ -417,6 +425,75 @@ footer ul li a:hover {
   padding: 1.5rem;
   border-radius: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #f2f1ed;
+  padding: 2rem;
+  border: 1.5px solid #c66b3d;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: #924d2b;
+}
+
+form input[type=text],
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #c66b3d;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000000;
+}
+
+form textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+input[type=file] {
+  border: 1.5px solid #c66b3d;
+  background-color: #fff;
+  padding: 0.45rem 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form-checkbox {
+  display: flex;
+}
+.form-checkbox .anonymous {
+  margin-bottom: 0.02rem;
+}
+
+.form-checkbox input[type=checkbox] {
+  margin-right: 0.5rem;
+}
+
+.submit-btn {
+  margin-top: 2rem;
+  background-color: #C66B3D;
+  color: #FAF9F6;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #924d2b;
 }
 
 /*# sourceMappingURL=app.css.map */

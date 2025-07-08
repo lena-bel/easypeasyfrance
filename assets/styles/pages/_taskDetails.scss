@@ -1,44 +1,47 @@
-@use '../variables';
+@use "../variables";
 
-#task-details{
-    h1{
+#task-details {
+  h1 {
     padding-top: 1rem;
-}
+  }
 
-#steps{
-    h2{
-        padding-top: 1rem;
+  #steps {
+    h2 {
+      padding-top: 1rem;
     }
-    div>p{
-        padding-top: 0.7rem;
+    div > p {
+      padding-top: 0.7rem;
     }
-}
-#documents{
-    h2{
-        padding-top: 1rem;
+  }
+  #documents {
+    h2 {
+      padding-top: 1rem;
     }
-    div>p{
-        padding-top: 0.7rem;
+    div > p {
+      padding-top: 0.7rem;
     }
-}
+  }
 
-#appointment{
-    h2{
-        padding-top: 1rem;
+  #appointment {
+    h2 {
+      padding-top: 1rem;
     }
-    p{
-        padding-top: 0.7rem;
+    p {
+      padding-top: 0.7rem;
     }
-}
+  }
 
-.back-btn{
+  .back-btn {
     color: white;
     background-color: variables.$button-primary-background;
     padding: 0.5rem;
     border-radius: 9%;
     text-decoration: none;
-}
-.back-btn:hover{
+  }
+  .back-btn:hover {
     background-color: variables.$button-primary-hover;
-}
+  }
+  .details{
+    padding: 0 1.5rem;
+  }
 }

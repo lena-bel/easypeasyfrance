@@ -4,61 +4,63 @@
 		<aside class="sidebar" aria-label="Sidebar with filters and actions">
 			<h2>Filter Posts</h2>
 
-			<div class="filter-group">
-				<label for="latest-posts-select">
-					<strong>Latest Posts</strong>
-				</label>
-				<select id="latest-posts-select" name="latest-posts">
-					<option value="all" selected>All Time</option>
-					<option value="24h">Last 24 hours</option>
-					<option value="7d">Last 7 days</option>
-					<option value="30d">Last 30 days</option>
-				</select>
-			</div>
+			<form action="">
+				<div class="filter-group">
+					<label for="latest-posts-select">
+						<strong>Latest Posts</strong>
+					</label>
+					<select id="latest-posts-select" name="latest-posts">
+						<option value="all" selected>All Time</option>
+						<option value="24h">Last 24 hours</option>
+						<option value="7d">Last 7 days</option>
+						<option value="30d">Last 30 days</option>
+					</select>
+				</div>
 
-			<div class="filter-group">
-				<strong>By User Profile</strong>
-				<div>
-					<input type="checkbox" id="profile-all" name="profile" value="all" checked/>
-					<label for="profile-all">All Profiles</label>
+				<div class="filter-group">
+					<strong>By User Profile</strong>
+					<div>
+						<input type="checkbox" id="profile-all" name="profile" value="all" checked/>
+						<label for="profile-all">All Profiles</label>
+					</div>
+					<div>
+						<input type="checkbox" id="profile-student" name="profile" value="student"/>
+						<label for="profile-student">Student</label>
+					</div>
+					<div>
+						<input type="checkbox" id="profile-family" name="profile" value="family"/>
+						<label for="profile-family">Private & Family Life</label>
+					</div>
+					<div>
+						<input type="checkbox" id="profile-talent" name="profile" value="talent"/>
+						<label for="profile-talent">Talent Passport</label>
+					</div>
+					<div>
+						<input type="checkbox" id="profile-refugee" name="profile" value="refugee"/>
+						<label for="profile-refugee">Refugees</label>
+					</div>
+					<div>
+						<input type="checkbox" id="profile-worker" name="profile" value="worker"/>
+						<label for="profile-worker">Workers</label>
+					</div>
 				</div>
-				<div>
-					<input type="checkbox" id="profile-student" name="profile" value="student"/>
-					<label for="profile-student">Student</label>
-				</div>
-				<div>
-					<input type="checkbox" id="profile-family" name="profile" value="family"/>
-					<label for="profile-family">Private & Family Life</label>
-				</div>
-				<div>
-					<input type="checkbox" id="profile-talent" name="profile" value="talent"/>
-					<label for="profile-talent">Talent Passport</label>
-				</div>
-				<div>
-					<input type="checkbox" id="profile-refugee" name="profile" value="refugee"/>
-					<label for="profile-refugee">Refugees</label>
-				</div>
-				<div>
-					<input type="checkbox" id="profile-worker" name="profile" value="worker"/>
-					<label for="profile-worker">Workers</label>
-				</div>
-			</div>
 
-			<div class="filter-group">
-				<label for="sort-posts-select">
-					<strong>Sort Posts By</strong>
-				</label>
-				<select id="sort-posts-select" name="sort-posts">
-					<option value="recent" selected>Most Recent</option>
-					<option value="commented">Most Commented</option>
-					<option value="liked">Most Liked</option>
-				</select>
-			</div>
+				<div class="filter-group">
+					<label for="sort-posts-select">
+						<strong>Sort Posts By</strong>
+					</label>
+					<select id="sort-posts-select" name="sort-posts">
+						<option value="recent" selected>Most Recent</option>
+						<option value="commented">Most Commented</option>
+						<option value="liked">Most Liked</option>
+					</select>
+				</div>
 
-			<div class="buttons">
-				<a href="#" class="post-button filter" role="button">Filter</a>
-				<a href="#" class="post-button reset" role="button">Reset</a>
-			</div>
+				<div class="buttons">
+					<a href="#" class="post-button filter" role="button">Filter</a>
+					<a href="#" class="post-button reset" role="button">Reset</a>
+				</div>
+			</form>
 		</aside>
 		<div class="content" aria-label="Community Help posts">
 			<div class="header">

@@ -8,7 +8,7 @@
 		</div>
 		<section id="steps">
 			<h2>Step-by-step Instructions</h2>
-			<div>
+			<div class="details">
 				{% for step in details.steps %}
 					<p>
 						<input type="checkbox" id="step-{{ loop.index }}" name="step-{{ loop.index }}">
@@ -20,7 +20,7 @@
 		<section id="documents">
 			<h2>Documents Required</h2>
 			{% for document in details.documentCheckList %}
-				<div class="documents">
+				<div class="documents details">
 					{% if document.title is defined %}
 						<p>{{ document.title }}</p>
 						{% if document.description is defined %}
@@ -35,7 +35,8 @@
 
         <section id="appointment">
             <h2>Appointment Information</h2>
-            <p>{{details.appointmentNote}}</p>
+            <div class="details">
+				<p>{{details.appointmentNote}}</p>
             {% if details.appointmentLink is defined %}
                 <a href="{{details.appointmentLink}}" target="_blank"> {{details.appointmentLink}} </a>
             {% endif %}
@@ -49,6 +50,7 @@
                 {% endfor %}
                 
             {% endif %}
+			</div>
             
             
         </section>

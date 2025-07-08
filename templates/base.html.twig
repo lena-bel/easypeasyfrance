@@ -10,8 +10,7 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        {% block stylesheets %}{% endblock %}
+		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 
 		{% block javascripts %}
 			{% block importmap %}
@@ -22,11 +21,15 @@
 	<body>
 		{% block header %}
 			<nav class="header">
-				<a href="#" class="logo">Easy Peasy France</a>
+				<div>
+					<a href="{{ path('home') }}" class="logo">Easy Peasy France</a>
+
+				</div>
 				<div class="links">
 					<a href="{{ path('task_index') }}">To-Do</a>
 					<a href="#">Messages</a>
 					<a href="{{ path('posts_index') }}">Community Help</a>
+					<a href="#">Appointments</a>
 					<a href="#">Notifications</a>
 					<a href="#">Settings</a>
 				</div>

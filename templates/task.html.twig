@@ -3,8 +3,13 @@
 
 	<main id="task">
 		<form action="{{ path('task_index') }}" method="GET" class="section-one">
-			<input type="search" name="searchbar" placeholder="Search..."/>
-			<button type="submit">Search</button>
+			<input
+			type="search" name="searchbar" placeholder="Search..."/>
+			<select name="status" class = "progress">
+				<option value="all">All</option>
+				<option value="in-progress">In progress</option>
+				<option value="completed">Finished</option>
+			</select>
 		</form>
 
 		{% if tasks is empty %}
@@ -16,7 +21,11 @@
 					{% for task in tasks %}
 						<div class="card">
 							<h3>{{task.title}}</h3>
-							<div class="task-meta">Profil : Étudiant · Statut : En cours · Échéance : 15 juin 2025</div>
+							<div class="task-data">
+								<p class="data">Profil : Étudiant .</p>
+								<p class="data">Status : {{task.status}} .</p>
+								<p class="data">Échéance : 15 juin 2025</p>
+							</div>
 							<p class="task-desc">
 								{{task.description}}
 							</p>

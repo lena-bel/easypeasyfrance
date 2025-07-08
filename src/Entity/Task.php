@@ -49,6 +49,9 @@ class Task
     #[ORM\ManyToMany(targetEntity: VisaTypeProfile::class, inversedBy: 'tasks')]
     private Collection $visaType;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $status = null;
+
     public function __construct()
     {
         $this->taskDetails = new ArrayCollection();
@@ -194,6 +197,18 @@ class Task
     public function removeVisaType(VisaTypeProfile $visaType): static
     {
         $this->visaType->removeElement($visaType);
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }
