@@ -255,6 +255,9 @@ footer ul li a:hover {
   text-decoration: none;
   color: white;
 }
+#container .post-button:hover {
+  background-color: #924d2b;
+}
 #container .buttons {
   display: flex;
   justify-content: space-between;
@@ -291,11 +294,11 @@ footer ul li a:hover {
 #container div.content {
   flex: 1;
 }
-#container a {
+#container .post-title-link {
   color: #C66B3D;
   text-decoration: none;
 }
-#container a:hover {
+#container .post-title-link:hover {
   color: #f09068;
   text-decoration: underline;
 }
@@ -427,27 +430,15 @@ footer ul li a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.form-container {
-  max-width: 700px;
-  margin: 0 auto;
-  background-color: #f2f1ed;
-  padding: 2rem;
-  border: 1.5px solid #c66b3d;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-form label {
+#new-post form .label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
   font-weight: bold;
   color: #924d2b;
 }
-
-form input[type=text],
-form select,
-form textarea {
+#new-post form input[type=text],
+#new-post form textarea {
   width: 100%;
   padding: 0.6rem 0.8rem;
   border: 1.5px solid #c66b3d;
@@ -456,43 +447,34 @@ form textarea {
   background-color: #fff;
   color: #000000;
 }
-
-form textarea {
+#new-post form textarea {
   height: 180px;
   resize: vertical;
 }
-
-input[type=file] {
+#new-post input[type=file] {
   border: 1.5px solid #c66b3d;
   background-color: #fff;
   padding: 0.45rem 0.4rem;
   border-radius: 6px;
-  cursor: pointer;
   width: 100%;
 }
-
-.form-checkbox {
-  display: flex;
+#new-post .form-checkbox {
+  margin-top: 1rem;
 }
-.form-checkbox .anonymous {
-  margin-bottom: 0.02rem;
+#new-post .form-checkbox .anonymous-label {
+  color: #924d2b;
+  font-weight: bold;
 }
-
-.form-checkbox input[type=checkbox] {
-  margin-right: 0.5rem;
-}
-
-.submit-btn {
+#new-post .submit-btn {
   margin-top: 2rem;
   background-color: #C66B3D;
   color: #FAF9F6;
   border: none;
-  padding: 0.8rem 1.4rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
-
-.submit-btn:hover {
+#new-post .submit-btn:hover {
   background-color: #924d2b;
 }
 

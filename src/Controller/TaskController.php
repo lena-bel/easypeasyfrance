@@ -3,6 +3,7 @@ namespace App\Controller;
 // work on the filter thingy it is not working
 
 use App\Repository\TaskRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'task_index')]
     #[IsGranted('ROLE_USER')]
-    public function tasksDisplay(Request $request, TaskRepository $taskRepository): Response
+    public function tasksDisplay(Request $request, TaskRepository $taskRepository, PaginatorInterface $pagination): Response
     {
         $searchTerm = $request->query->get('searchbar');
         // $status = $request->query->get('status');
@@ -31,12 +32,18 @@ class TaskController extends AbstractController
         //         ->andWhere('t.status = :status')
         //         ->setParameter('status', $status);
         // } 
-        else {
+        else { //remove all that is pagination please
             $tasks = $taskRepository->findAll();
+            // $query = $taskRepository->findAll();
+            // $pagination = $pagination-> paginate(
+            //     $query,
+            //     $request->query->getInt('page',1), 8
+            // );
         }
 
         return $this->render('task.html.twig', [
             'tasks' => $tasks,
+            // 'tasks'=>$pagination
         ]);
     }
 }

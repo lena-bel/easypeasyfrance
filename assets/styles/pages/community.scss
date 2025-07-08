@@ -48,6 +48,9 @@
     text-decoration: none;
     color: white;
   }
+  .post-button:hover{
+    background-color: variables.$button-primary-hover;
+  }
 
   .buttons {
     display: flex;
@@ -89,11 +92,11 @@
     flex: 1;
   }
 
-  a {
+  .post-title-link {
     color: variables.$links;
     text-decoration: none;
   }
-  a:hover {
+  .post-title-link:hover {
     color: variables.$links-hover;
     text-decoration: underline;
   }
