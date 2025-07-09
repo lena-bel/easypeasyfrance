@@ -12,7 +12,7 @@ class TaskDetailsController extends AbstractController
 {
     
     #[Route('/tasks/{id}', name: 'task_show')]
-    #[IsGranted('ROLE_USER')]
+    // #[IsGranted('ROLE_USER')]
     public function show(TaskDetails $taskDetails): Response
 {
     // Because you mapped the relation, Doctrine will fetch the Task lazily

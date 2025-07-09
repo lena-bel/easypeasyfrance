@@ -1,0 +1,75 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<section class="hero">
+		<h1>ABOUT EASY PEASY FRANCE</h1>
+		<p>We simplify your journey — from arrival to integration — with clarity, care, and community.</p>
+	</section>
+
+	<main id="about">
+		<section>
+			<h2 class="section-title">About Us</h2>
+			<p>Easy Peasy France was born from a passion for helping those who seek a new life in France. Our mission is to empower immigrants and expatriates by simplifying their transition through tailored support and resources.</p>
+			<p>What began as a small initiative has grown into a platform trusted by international students, workers, asylum seekers, and families across France. We bring clarity to complex systems — so you can focus on building your life, not paperwork.</p>
+		</section>
+
+		<section>
+			<h2 class="section-title">Our Mission</h2>
+			<p>Our mission is to make the French administrative experience accessible, understandable, and manageable for every newcomer. Whether you're here to study, reunite with family, or start fresh, we help you do it step by step.</p>
+			<p>We provide tools to simplify bureaucracy — personalized roadmaps, document uploads, appointment guidance, and community knowledge — all in one supportive, multilingual platform.</p>
+		</section>
+
+		<section>
+			<h2 class="section-title">Our Values</h2>
+			<ul class="values-list">
+				<li>
+					<strong>Empathy:</strong>
+					We've been through the system — we know the struggle, and we care.</li>
+				<li>
+					<strong>Clarity:</strong>
+					We turn confusing information into simple, actionable steps.</li>
+				<li>
+					<strong>Equality:</strong>
+					Everyone deserves fair and easy access to their rights in France.</li>
+				<li>
+					<strong>Community:</strong>
+					We grow together by helping each other.</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2 class="section-title">Meet Our Team</h2>
+			<p>Easy Peasy France was born from a shared struggle. As international students, immigrants, and former refugees ourselves, we faced the confusing French paperwork maze — and we knew others would too. So we teamed up, shared what we learned, and built something better — for everyone.</p>
+
+			<div class="team-grid">
+				{% for member in members %}
+					<div class="team-card">
+						<img src="{{ asset('assets/images/teamMembers/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}">
+						<h3>{{ member.lastName }}
+							{{ member.firstName }}</h3>
+						<p>{{ member.jobTitle }}</p>
+						<p>{{ member.bio}}</p>
+						{# <p>
+							<strong>Location:</strong>
+							{{ member.location }}</p>
+						<p>
+							<strong>Phone:</strong>
+							{{ member.phoneNumber }}</p> #}
+
+						<div class="socials">
+							{% if member.linkedInUrl %}
+								<a href="{{ member.linkedInUrl }}" class="linked-in" target="_blank">LinkedIn</a>
+							{% endif %}
+							{% if member.twitterUrl %}
+								<a href="{{ member.twitterUrl }}" class="twitter" target="_blank">Twitter</a>
+							{% endif %}
+							{% if member.gmailUrl %}
+								<a href="mailto:{{ member.gmailUrl }}" class="email">Email</a>
+							{% endif %}
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</section>
+		</main>
+	{% endblock %}

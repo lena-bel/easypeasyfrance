@@ -31,6 +31,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $telephoneNumber = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $registryDate = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $UpdatedDate = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isActive = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isAdmin = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?VisaType $profileId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,5 +126,103 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(?string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getTelephoneNumber(): ?string
+    {
+        return $this->telephoneNumber;
+    }
+
+    public function setTelephoneNumber(?string $telephoneNumber): static
+    {
+        $this->telephoneNumber = $telephoneNumber;
+
+        return $this;
+    }
+
+    
+
+    public function getRegistryDate(): ?\DateTime
+    {
+        return $this->registryDate;
+    }
+
+    public function setRegistryDate(?\DateTime $registryDate): static
+    {
+        $this->registryDate = $registryDate;
+
+        return $this;
+    }
+
+    public function getUpdatedDate(): ?\DateTime
+    {
+        return $this->UpdatedDate;
+    }
+
+    public function setUpdatedDate(?\DateTime $UpdatedDate): static
+    {
+        $this->UpdatedDate = $UpdatedDate;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(?bool $isActive): static
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function isAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(?bool $isAdmin): static
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    public function getProfileId(): ?VisaType
+    {
+        return $this->profileId;
+    }
+
+    public function setProfileId(?VisaType $profileId): static
+    {
+        $this->profileId = $profileId;
+
+        return $this;
     }
 }

@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'task_index')]
-    #[IsGranted('ROLE_USER')]
+    // #[IsGranted('ROLE_USER')]
     public function tasksDisplay(Request $request, TaskRepository $taskRepository, PaginatorInterface $pagination): Response
     {
         $searchTerm = $request->query->get('searchbar');
@@ -37,7 +37,7 @@ class TaskController extends AbstractController
             // $query = $taskRepository->findAll();
             // $pagination = $pagination-> paginate(
             //     $query,
-            //     $request->query->getInt('page',1), 8
+            //     $request->query->getInt('page',1), 3
             // );
         }
 

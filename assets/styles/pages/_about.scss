@@ -1,0 +1,84 @@
+@use "../variables";
+#about {
+  section {
+    padding: 2rem 10%;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    // color: #362f27;
+  }
+
+  p {
+    font-size: 1.1rem;
+    //weird yeah just weird but Assoumani said it's better that way i don't think so tho
+    //    text-align:center;
+    //    max-width: 800px;
+    //     margin: 0 auto;
+    // color: #3b342b;
+    margin-bottom: 1.5rem;
+  }
+
+  .values-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .values-list li {
+    background: #f2f1ed;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #c66b3d;
+    border-radius: 0.8rem;
+    color: #2e2e2e;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .team-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .team-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .team-card p {
+    font-size: 0.8rem;
+  }
+  .socials {
+    display: flex;
+    //     a{
+    //     //   display: inline-block;
+    // background-image: url('../images/markettingImages/social-sprite.png');
+    //       height: 50px;
+    //       width: 50px;
+    //       background-position-y: -84px;
+    //       border-radius: 50%;
+    //     }
+    //     .linked-in{
+    //         background-position-x: calc(7*84px);
+    //     }
+    //     .twitter{
+    //         background-position-x: calc(3*84px);
+    //     }
+    //     .email{
+    //         background-position-x: calc(8*84px);
+    //     }
+  }
+}
