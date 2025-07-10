@@ -30,9 +30,16 @@ class VisaTypeProfile
     #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'visaType')]
     private Collection $tasks;
 
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'profile')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,6 +105,36 @@ class VisaTypeProfile
     {
         if ($this->tasks->removeElement($task)) {
             $task->removeVisaType($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getProfile() === $this) {
+                $user->setProfile(null);
+            }
         }
 
         return $this;

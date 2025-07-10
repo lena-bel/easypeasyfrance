@@ -54,14 +54,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?bool $isAdmin = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?VisaType $profileId = null;
+    // #[ORM\ManyToOne(inversedBy: 'users')]
+    // private ?VisaType $profileId = null;
 
     /**
      * @var Collection<int, Testimonials>
      */
     #[ORM\OneToMany(targetEntity: Testimonials::class, mappedBy: 'user')]
     private Collection $testimonials;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?VisaTypeProfile $profile = null;
 
     public function __construct()
     {
@@ -227,17 +230,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfileId(): ?VisaType
-    {
-        return $this->profileId;
-    }
+    // public function getProfileId(): ?VisaType
+    // {
+    //     return $this->profileId;
+    // }
 
-    public function setProfileId(?VisaType $profileId): static
-    {
-        $this->profileId = $profileId;
+    // public function setProfileId(?VisaType $profileId): static
+    // {
+    //     $this->profileId = $profileId;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Testimonials>
@@ -265,6 +268,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $testimonial->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfile(): ?VisaTypeProfile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?VisaTypeProfile $profile): static
+    {
+        $this->profile = $profile;
 
         return $this;
     }
