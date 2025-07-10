@@ -16,6 +16,16 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
+    public function findByVisaTypeProfileId(int $profileId): array
+    {
+        return $this->createQueryBuilder('task') //starts to build the query from task table giving it the allias task can be anything you want t or task table anything really but it's better to use words that are meaningfull
+            ->innerJoin('task.visaType', 'visa')   // starts to do the inner join to the visatypeprofile table and since it is doctrine and knowsall the relations i did i won't need to do the three inner joins
+            ->andWhere('visa.id = :profileId') // here it is specifying that it should display the tasks where the visa id equals to the profile id in the user table
+            ->setParameter('profileId', $profileId) //and finally here it is specifying that the the profileId is the $profileid passed into the parametter in the controller
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Task[] Returns an array of Task objects
     //     */
