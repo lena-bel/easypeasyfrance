@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -54,6 +56,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?VisaType $profileId = null;
+
+    /**
+     * @var Collection<int, Testimonials>
+     */
+    #[ORM\OneToMany(targetEntity: Testimonials::class, mappedBy: 'user')]
+    private Collection $testimonials;
+
+    public function __construct()
+    {
+        $this->testimonials = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -222,6 +235,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setProfileId(?VisaType $profileId): static
     {
         $this->profileId = $profileId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Testimonials>
+     */
+    public function getTestimonials(): Collection
+    {
+        return $this->testimonials;
+    }
+
+    public function addTestimonial(Testimonials $testimonial): static
+    {
+        if (!$this->testimonials->contains($testimonial)) {
+            $this->testimonials->add($testimonial);
+            $testimonial->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTestimonial(Testimonials $testimonial): static
+    {
+        if ($this->testimonials->removeElement($testimonial)) {
+            // set the owning side to null (unless already changed)
+            if ($testimonial->getUser() === $this) {
+                $testimonial->setUser(null);
+            }
+        }
 
         return $this;
     }

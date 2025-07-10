@@ -43,33 +43,35 @@
 
 			<div class="team-grid">
 				{% for member in members %}
-					<div class="team-card">
-						<img src="{{ asset('assets/images/teamMembers/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}">
+					<div
+						class="team-card">
+						{# <img src="{{ asset('assets/images/teamMembers/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}"> #}
 						<h3>{{ member.lastName }}
 							{{ member.firstName }}</h3>
 						<p>{{ member.jobTitle }}</p>
 						<p>{{ member.bio}}</p>
-						{# <p>
-							<strong>Location:</strong>
-							{{ member.location }}</p>
-						<p>
-							<strong>Phone:</strong>
-							{{ member.phoneNumber }}</p> #}
 
 						<div class="socials">
 							{% if member.linkedInUrl %}
-								<a href="{{ member.linkedInUrl }}" class="linked-in" target="_blank">LinkedIn</a>
+								<a href="{{ member.linkedInUrl }}" class="linked-in" target="_blank" rel="noopener" aria-label="LinkedIn">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
 							{% endif %}
 							{% if member.twitterUrl %}
-								<a href="{{ member.twitterUrl }}" class="twitter" target="_blank">Twitter</a>
+								<a href="{{ member.twitterUrl }}" class="twitter" target="_blank" rel="noopener" aria-label="Twitter">
+									<i class="fab fa-twitter"></i>
+								</a>
 							{% endif %}
 							{% if member.gmailUrl %}
-								<a href="mailto:{{ member.gmailUrl }}" class="email">Email</a>
+								<a href="mailto:{{ member.gmailUrl }}" class="email" aria-label="Email">
+									<i class="fas fa-envelope"></i>
+								</a>
 							{% endif %}
 						</div>
+
 					</div>
-					{% endfor %}
-				</div>
-			</section>
-		</main>
-	{% endblock %}
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+{% endblock %}

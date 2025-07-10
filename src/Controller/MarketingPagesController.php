@@ -20,5 +20,9 @@ class MarketingPagesController extends AbstractController
             'members'=>$members
         ]);
     }
+    #[Route(path:'/testimonials', name:'testimonials')]
+    public function testimonialDisplay(){
+        return $this->render('marketingPages/testimonials.html.twig');
+    }
 
 }

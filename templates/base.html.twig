@@ -11,6 +11,8 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 
 		{% block javascripts %}
 			{% block importmap %}
@@ -34,6 +36,7 @@
 						<a href="#">Appointments</a>
 						<a href="#">Notifications</a>
 						<a href="#">Settings</a>
+						<a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
 					</div>
 				{% else %}
 					<div>
@@ -43,9 +46,10 @@
 					<div class="links">
 						<a href="{{ path('about') }}">About</a>
 						<a href="#">How it works</a>
-						<a href="#">Testimonials</a>
+						<a href="{{ path('testimonials') }}">Testimonials</a>
 						<a href="#">FAQ</a>
 						<a href="#">Contact us</a>
+						<a href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
 					</div>
 				{% endif %}
 			</body>
