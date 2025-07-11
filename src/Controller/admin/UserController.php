@@ -25,4 +25,9 @@ class UserController extends AbstractController
             'users' => $users
         ]);
     }
+    #[Route(path: '/users/{id}/edit', name: 'user_edit')]
+    public function editUser()
+    {
+        return $this->render('admin/user-edit.html.twig');
+    }
 }
