@@ -8,6 +8,6 @@ import './bootstrap.js';
 import './styles/app.css';
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+// console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
 

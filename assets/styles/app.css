@@ -631,11 +631,11 @@ footer ul li a:hover {
   padding: 0.2rem 2rem;
   width: 50%;
 }
-#users .search button {
+#users .search .button-clear {
   background-color: #C66B3D;
+  text-decoration: none;
   color: #FAF9F6;
-  padding: 0.5rem;
-  width: 7rem;
+  padding: 0.5rem 3rem 0.5rem 3rem;
   border-radius: 10px;
   border: none;
 }

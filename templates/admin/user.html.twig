@@ -2,8 +2,9 @@
 {% block body %}
 	<main id="users">
 		<h1>Users</h1>
-		<form class="search">
-			<input type="text" placeholder="Search users..." class="search-bar"/>
+		<form class="search" method="get" action="{{ path('users') }}">
+			<input name="search" type="text" placeholder="Search users..." class="search-bar"/>
+			<a href="{{ path('users') }}" class="button-clear">Show All</a>
 		</form>
 		<div class="table-container">
 			<table>

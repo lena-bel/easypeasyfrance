@@ -17,11 +17,11 @@
       padding: 0.2rem 2rem;
       width: 50%;
     }
-    button {
+    .button-clear{
       background-color: variables.$button-primary-background;
+      text-decoration: none;
       color: variables.$button-primary-text;
-      padding: 0.5rem;
-      width: 7rem;
+      padding: 0.5rem 3rem 0.5rem 3rem;
       border-radius: 10px;
       border: none;
     }
