@@ -667,7 +667,7 @@ footer ul li a:hover {
   font-weight: 600;
   color: #16a34a;
 }
-#users .table-container .inactive {
+#users .table-container .inactive, #users .table-container .deactivate {
   font-weight: 600;
   color: red;
 }
@@ -680,9 +680,6 @@ footer ul li a:hover {
 }
 #users .table-container td:last-child a:nth-child(2) {
   color: #924d2b;
-}
-#users .table-container td:last-child a:nth-child(3) {
-  color: #613219;
 }
 #users .table-container td:last-child a:hover {
   text-decoration: underline;
