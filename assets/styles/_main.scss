@@ -1,21 +1,28 @@
-@use 'variables';
-*{
-    margin: 0;
-    padding: 0;
+@use "variables";
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-   background-color: variables.$background-color;
+body {
+  background-color: variables.$background-color;
 }
-h1,h2,h3,h4,h5,h6{
-    color: variables.$header-color;
-    font-family: variables.$font-heading;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: variables.$header-color;
+  font-family: variables.$font-heading;
 }
 
-p{
-    font-family: variables.$font-body;
+p {
+  font-family: variables.$font-body;
 }
-main, footer, nav{
-    padding: 1rem 2rem;
+main,
+footer,
+nav {
+  padding: 1rem 2rem;
 }
 
 .logo {
@@ -28,11 +35,11 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-nav a{
-    color: variables.$nav-text;
-    text-decoration: none;
-  }
-nav a:hover{
+nav a {
+  color: variables.$nav-text;
+  text-decoration: none;
+}
+nav a:hover {
   color: variables.$nav-hover;
 }
 .links {
@@ -44,6 +51,39 @@ nav > div {
   align-items: stretch;
 }
 /* end of header styles */
+/*nav styles for admin*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12rem;
+  height: 100%;
+  // padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+}
+.sidebar h2 {
+  margin-bottom: 2.5rem;
+  font-size: 20px;
+  color: white;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 2rem;
+  a{
+    color: white;
+  }
+}
+.sidebar ul li a.active {
+  color: #ff6d0c;
+}
+/*end of nav styles for admin*/
 
 /* footer styles */
 footer {
@@ -60,14 +100,13 @@ footer .footer-column {
   margin: 1rem 0;
 }
 
-
 footer ul {
   list-style: none;
   padding: 0;
 }
 
-footer h4{
-    margin-bottom: 0.5rem;
+footer h4 {
+  margin-bottom: 0.5rem;
 }
 
 footer ul li {

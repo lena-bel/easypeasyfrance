@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<main id="users">
+		<h1>Users</h1>
+		<form class="search">
+			<input type="text" placeholder="Search users..." class="search-bar"/>
+		</form>
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Profile</th>
+						<th>Status</th>
+						<th>Registered</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>
+								{{user.firstName}}
+								{{user.lastName}}
+							</td>
+							<td>
+								{{user.email}}
+							</td>
+							<td>{{user.profile.name}}</td>
+							{% if user.isActive == 1 %}
+							<td class="active">Active</td>
+							{% else %}
+								<td class="inactive">Inactive</td>
+							{% endif %}
+							
+							
+							<td> {{user.registryDate|date('d M Y')}} </td>
+							{#can't add date without converting it to string #}
+							<td>
+								<a>View</a>
+								<a>Edit</a>
+								<a>Deactivate</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</main>
+{% endblock %}

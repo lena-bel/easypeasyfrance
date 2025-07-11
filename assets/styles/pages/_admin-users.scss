@@ -1,0 +1,79 @@
+@use "../variables";
+#users {
+  margin-left: 16rem;
+  margin-right: 2rem;
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .search {
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    input {
+      background-color: #fceeea;
+      border-radius: 5px;
+      padding: 0.2rem 2rem;
+      width: 50%;
+    }
+    button {
+      background-color: variables.$button-primary-background;
+      color: variables.$button-primary-text;
+      padding: 0.5rem;
+      width: 7rem;
+      border-radius: 10px;
+      border: none;
+    }
+  }
+  .table-container {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    table {
+      width: 100%;
+      text-align: left;
+    }
+    thead th {
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid #eee5dc;
+    }
+    tbody tr {
+      border-bottom: 1px solid #eee5dc;
+    }
+    tbody tr:hover {
+      background-color: #fceeea;
+    }
+    td {
+      padding: 0.75rem 1rem;
+    }
+    .active {
+      font-weight: 600;
+      color: #16a34a;
+    }
+    .inactive {
+      font-weight: 600;
+      color: red;
+    }
+    td:last-child a {
+      margin-right: 0.5rem;
+      text-decoration: none;
+    }
+    td:last-child a:nth-child(1) {
+      color: #c66b3d;
+    }
+
+    td:last-child a:nth-child(2) {
+      color: #924d2b;
+    }
+
+    td:last-child a:nth-child(3) {
+      color: #613219;
+    }
+    td:last-child a:hover {
+      text-decoration: underline;
+    }
+  }
+}

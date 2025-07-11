@@ -7,7 +7,12 @@ body {
   background-color: #FAF9F6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #924d2b;
   font-family: "Playfair Display", serif;
 }
@@ -16,7 +21,9 @@ p {
   font-family: "Inter Tight", sans-serif;
 }
 
-main, footer, nav {
+main,
+footer,
+nav {
   padding: 1rem 2rem;
 }
 
@@ -50,6 +57,42 @@ nav > div {
 }
 
 /* end of header styles */
+/*nav styles for admin*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar h2 {
+  margin-bottom: 2.5rem;
+  font-size: 20px;
+  color: white;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 2rem;
+}
+.sidebar ul li a {
+  color: white;
+}
+
+.sidebar ul li a.active {
+  color: #ff6d0c;
+}
+
+/*end of nav styles for admin*/
 /* footer styles */
 footer {
   background-color: #2E2E2E;
@@ -566,6 +609,83 @@ footer ul li a:hover {
 }
 #about .socials a:hover {
   color: #c66b3d; /* your brand accent color */
+}
+
+#users {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#users h1 {
+  margin-bottom: 1rem;
+}
+#users .search {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+#users .search input {
+  background-color: #fceeea;
+  border-radius: 5px;
+  padding: 0.2rem 2rem;
+  width: 50%;
+}
+#users .search button {
+  background-color: #C66B3D;
+  color: #FAF9F6;
+  padding: 0.5rem;
+  width: 7rem;
+  border-radius: 10px;
+  border: none;
+}
+#users .table-container {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+#users .table-container table {
+  width: 100%;
+  text-align: left;
+}
+#users .table-container thead th {
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid #eee5dc;
+}
+#users .table-container tbody tr {
+  border-bottom: 1px solid #eee5dc;
+}
+#users .table-container tbody tr:hover {
+  background-color: #fceeea;
+}
+#users .table-container td {
+  padding: 0.75rem 1rem;
+}
+#users .table-container .active {
+  font-weight: 600;
+  color: #16a34a;
+}
+#users .table-container .inactive {
+  font-weight: 600;
+  color: red;
+}
+#users .table-container td:last-child a {
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+#users .table-container td:last-child a:nth-child(1) {
+  color: #c66b3d;
+}
+#users .table-container td:last-child a:nth-child(2) {
+  color: #924d2b;
+}
+#users .table-container td:last-child a:nth-child(3) {
+  color: #613219;
+}
+#users .table-container td:last-child a:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=app.css.map */
