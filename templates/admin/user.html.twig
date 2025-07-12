@@ -12,6 +12,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
+						<th>Telephone</th>
 						<th>Profile</th>
 						<th>Status</th>
 						<th>Registered</th>
@@ -20,30 +21,38 @@
 				</thead>
 				<tbody>
 					{% for user in users %}
-						<tr>
-							<td>
-								{{user.firstName}}
-								{{user.lastName}}
-							</td>
-							<td>
-								{{user.email}}
-							</td>
-							<td>{{user.profile.name}}</td>
-							{% if user.isActive == 1 %}
-							<td class="active">Active</td>
-							{% else %}
-								<td class="inactive">Inactive</td>
-							{% endif %}
-							
-							
-							<td> {{user.registryDate|date('d M Y')}} </td>
-							{#can't add date without converting it to string #}
-							<td>
-								<a>View</a>
-								<a href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
-								<a class="deactivate">Deactivate</a>
-							</td>
-						</tr>
+						{% if not user.isAdmin %}
+							<tr>
+								<td>
+									{{user.firstName}}
+									{{user.lastName}}
+								</td>
+								<td>
+									{{user.email}}
+								</td>
+								<td>
+									{{user.telephoneNumber}}
+								</td>
+								<td>{{user.profile.name}}</td>
+								{% if user.isActive == 1 %}
+									<td class="active">Active</td>
+								{% else %}
+									<td class="inactive">Inactive</td>
+								{% endif %}
+
+
+								<td>
+									{{user.registryDate|date('d M Y')}}
+								</td>
+								{#can't add date without converting it to string #}
+								<td>
+									<a>View</a>
+									<a href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
+									<a class="deactivate">Deactivate</a>
+								</td>
+							</tr>
+						{% endif %}
+
 					{% endfor %}
 				</tbody>
 			</table>

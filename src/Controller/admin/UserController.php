@@ -2,10 +2,13 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\User;
+use App\Form\UserTypeForm;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route(path: '/admin')]
 class UserController extends AbstractController
@@ -13,7 +16,7 @@ class UserController extends AbstractController
     #[Route(path: '/users', name: 'users')]
     public function displayUsers(UserRepository $userRepository, Request $request)
     {
-        $search = $request->query->get('search'); // Get ?search=something from the URL
+        $search = $request->query->get('search');
 
         if ($search) {
             $users = $userRepository->findUsersBySearch($search);
@@ -26,8 +29,21 @@ class UserController extends AbstractController
         ]);
     }
     #[Route(path: '/users/{id}/edit', name: 'user_edit')]
-    public function editUser()
+    public function editUser(Request $request, User $user, EntityManagerInterface $em)
     {
-        return $this->render('admin/user-edit.html.twig');
+        $form = $this->createForm(UserTypeForm::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            $this->addFlash('success', 'User updated successfully.');
+
+            return $this->redirectToRoute('users');
+        }
+
+        return $this->render('admin/user-edit.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
     }
 }
