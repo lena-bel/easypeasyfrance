@@ -674,9 +674,6 @@ footer ul li a:hover {
 #users .table-container td:last-child a:nth-child(1) {
   color: #c66b3d;
 }
-#users .table-container td:last-child a:nth-child(2) {
-  color: #924d2b;
-}
 #users .table-container td:last-child a:hover {
   text-decoration: underline;
 }
@@ -742,7 +739,7 @@ footer ul li a:hover {
   background-color: #fff;
   color: #000000;
 }
-#user-edit .submit-btn {
+#user-edit .btn-save {
   margin-top: 2rem;
   background-color: #C66B3D;
   color: #FAF9F6;
@@ -751,7 +748,7 @@ footer ul li a:hover {
   border-radius: 6px;
   font-size: 0.95rem;
 }
-#user-edit .submit-btn:hover {
+#user-edit .btn-save:hover {
   background-color: #924d2b;
 }
 

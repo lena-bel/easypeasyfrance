@@ -14,7 +14,6 @@
   }
 
   form input[type="text"],
-    // form select,
     form textarea {
     width: 100%;
     padding: 0.6rem 0.8rem;
@@ -64,7 +63,7 @@
     background-color: #fff;
     color: variables.$paragraph-color;
   }
-  .submit-btn {
+  .btn-save {
     margin-top: 2rem;
     background-color: variables.$button-primary-background;
     color: variables.$button-primary-text;
@@ -73,7 +72,7 @@
     border-radius: 6px;
     font-size: 0.95rem;
   }
-  .submit-btn:hover {
+  .btn-save:hover {
     background-color: variables.$button-primary-hover;
   }
 

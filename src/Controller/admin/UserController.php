@@ -7,6 +7,7 @@ use App\Form\UserTypeForm;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -45,5 +46,15 @@ class UserController extends AbstractController
             'form' => $form->createView(),
             'user' => $user,
         ]);
+    }
+
+    #[Route('/admin/users/{id}/toggle-status', name: 'user_toggle_status')]
+    public function toggleStatus(User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setIsActive(!$user->isActive());
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('users');
     }
 }

@@ -44,11 +44,16 @@
 								<td>
 									{{user.registryDate|date('d M Y')}}
 								</td>
-								{#can't add date without converting it to string #}
 								<td>
-									<a>View</a>
+									{# <a>View</a>#} {#deleted this as all details are visible on the table might change it and add it if i remove the other details so i will add theis to display all the user info you get anyways #}
 									<a href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
-									<a class="deactivate">Deactivate</a>
+									{% if user.isActive %}
+										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="deactivate">Deactivate</a>
+										{% else %}
+											<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="active">Activate</a>
+									{% endif %}
+									
+									
 								</td>
 							</tr>
 						{% endif %}
