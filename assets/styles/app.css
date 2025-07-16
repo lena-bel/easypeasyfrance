@@ -681,22 +681,22 @@ footer ul li a:hover {
   margin-bottom: 1rem;
 }
 
-#user-edit {
+#form {
   margin-left: 16rem;
   margin-right: 2rem;
 }
-#user-edit h1 {
+#form h1 {
   margin-top: 1rem;
 }
-#user-edit form label {
+#form form label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 0.4rem;
   font-weight: bold;
   color: #924d2b;
 }
-#user-edit form input[type=text],
-#user-edit form textarea {
+#form form input[type=text],
+#form form textarea {
   width: 100%;
   padding: 0.6rem 0.8rem;
   border: 1.5px solid #c66b3d;
@@ -705,35 +705,35 @@ footer ul li a:hover {
   background-color: #fff;
   color: #000000;
 }
-#user-edit form textarea {
+#form form textarea {
   height: 180px;
   resize: vertical;
 }
-#user-edit input[type=file] {
+#form input[type=file] {
   border: 1.5px solid #c66b3d;
   background-color: #fff;
   padding: 0.45rem 0.4rem;
   border-radius: 6px;
   width: 100%;
 }
-#user-edit .roles-flex {
+#form .checkboxes {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
-#user-edit .roles-flex label {
+#form .checkboxes label {
+  color: black;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  cursor: pointer;
 }
-#user-edit .roles-flex label input[type=checkbox],
-#user-edit .roles-flex label input[type=radio] {
+#form .checkboxes label input[type=checkbox],
+#form .checkboxes label input[type=radio] {
   margin: 0;
   width: 18px;
   height: 18px;
 }
-#user-edit select.form-control {
+#form select.form-control {
   width: 100%;
   padding: 0.6rem 0.8rem;
   border: 1.5px solid #c66b3d;
@@ -742,7 +742,7 @@ footer ul li a:hover {
   background-color: #fff;
   color: #000000;
 }
-#user-edit .btn-save {
+#form .btn-save {
   margin-top: 2rem;
   background-color: #C66B3D;
   color: #FAF9F6;
@@ -751,8 +751,18 @@ footer ul li a:hover {
   border-radius: 6px;
   font-size: 0.95rem;
 }
-#user-edit .btn-save:hover {
+#form .btn-save:hover {
   background-color: #924d2b;
+}
+#form form input[type=date],
+#form form input[type=datetime-local] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #c66b3d;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000000;
 }
 
 #task-content {

@@ -1,8 +1,8 @@
 @use "../variables";
-#user-edit {
+#form {
   margin-left: 16rem;
   margin-right: 2rem;
-  h1{
+  h1 {
     margin-top: 1rem;
   }
   form label {
@@ -14,7 +14,7 @@
   }
 
   form input[type="text"],
-    form textarea {
+  form textarea {
     width: 100%;
     padding: 0.6rem 0.8rem;
     border: 1.5px solid variables.$border-line;
@@ -35,16 +35,16 @@
     border-radius: 6px;
     width: 100%;
   }
-   .roles-flex {
+  .checkboxes {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;  // wrap if too many roles
+    flex-wrap: nowrap;
 
     label {
+      color: black;
       display: flex;
       align-items: center;
       gap: 0.25rem;
-      cursor: pointer;
 
       input[type="checkbox"],
       input[type="radio"] {
@@ -76,4 +76,14 @@
     background-color: variables.$button-primary-hover;
   }
 
+  form input[type="date"],
+  form input[type="datetime-local"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid variables.$border-line;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: variables.$paragraph-color;
+  }
 }
