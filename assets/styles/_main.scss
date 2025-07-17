@@ -65,13 +65,13 @@ nav > div {
   justify-content: flex-start;
 }
 .sidebar h2 {
-  margin-bottom: 2.5rem;
+  margin: 1rem 0 3.5rem;
   font-size: 20px;
   color: white;
 }
 .sidebar ul {
   list-style: none;
-  padding: 0;
+
 }
 .sidebar ul li {
   margin-bottom: 2rem;
@@ -79,7 +79,7 @@ nav > div {
     color: white;
   }
 }
-.sidebar ul li a.active {
+.sidebar ul li a:hover{
   color: #ff6d0c;
 }
 /*end of nav styles for admin*/
