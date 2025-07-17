@@ -4,17 +4,22 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegisterForm;
+use Symfony\Component\Mime\Email;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+// use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\DependencyInjection\Loader\Configurator\mailer;
+use Symfony\Component\DependencyInjection\Loader\Configurator\mailer;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class RegisterController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function index(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
+    public function index(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em,MailerInterface $mailer ): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterForm::class, $user);
@@ -23,6 +28,12 @@ final class RegisterController extends AbstractController
             $user->setPassword($hasher->hashPassword($user,$user->getPassword()));
             $em->persist($user);//this basically sends the new created user to the database 
             $em->flush();//this basically sends the new created user to the database 
+            $email = new Email();
+            $email
+            ->to($user->getEmail())
+            ->subject('testemail')
+            ->html('<p>we are testing the emails</p>');
+            $mailer->send($email);
             return $this->redirectToRoute('app_login');
             // dd($user);
         }
