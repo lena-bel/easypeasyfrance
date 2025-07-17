@@ -1,4 +1,7 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/visitor-header.html.twig" %}
+{% endblock %}
 {% block body %}
 <section class="hero">
 			<h1>WELCOME TO EASY PEASY FRANCE!</h1>
@@ -76,4 +79,8 @@
 			</div>
 		</section>
 	</main>
+{% endblock %}
+
+{% block footer %}
+    {% include "partials/footer.html.twig" %}
 {% endblock %}

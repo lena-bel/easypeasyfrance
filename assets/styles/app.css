@@ -327,7 +327,7 @@ footer ul li a:hover {
   /* main content */
   /* Categories Filter */
 }
-#container aside.sidebar {
+#container .navbar {
   flex: 0 0 280px;
   background-color: #f2f1ed;
   padding: 1rem 1.2rem;
@@ -355,7 +355,6 @@ footer ul li a:hover {
 }
 #container .filter-group input[type=checkbox] {
   margin-right: 0.4rem;
-  cursor: pointer;
 }
 #container .post-button {
   padding: 0.5rem 1rem;
@@ -438,7 +437,6 @@ footer ul li a:hover {
   border: none;
   padding: 0.4rem 1rem;
   border-radius: 20px;
-  cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

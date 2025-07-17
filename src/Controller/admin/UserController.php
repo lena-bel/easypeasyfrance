@@ -49,12 +49,12 @@ class UserController extends AbstractController
     }
 
     #[Route('/admin/users/{id}/toggle-status', name: 'user_toggle_status')]
-    public function toggleStatus(User $user, EntityManagerInterface $entityManager): Response
+    public function toggleStatus(User $user, EntityManagerInterface $em): Response
     {
         $user->setIsActive(!$user->isActive());
 
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $em->persist($user);
+        $em->flush();
         return $this->redirectToRoute('users');
     }
 }
