@@ -1,4 +1,7 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/user-header.html.twig" %}
+{% endblock %}
 {% block body %}
 	<main id="task-details">
 		<a href="{{ path('task_index') }}" class="back-btn">Go back</a>

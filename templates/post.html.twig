@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/user-header.html.twig" %}
+{% endblock %}
 {% block body %}
-	<main id="container" role="main">
-		<aside class="sidebar" aria-label="Sidebar with filters and actions">
+	<main id="container" >
+		<aside class="navbar" aria-label="Sidebar with filters and actions">
 			<h2>Filter Posts</h2>
 
 			<form action="">
@@ -98,4 +101,8 @@
 			</ul>
 		</div>
 	</main>
+{% endblock %}
+
+{% block footer %}
+    {% include "partials/footer.html.twig" %}
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/visitor-header.html.twig" %}
+{% endblock %}
 {% block body %}
     <main id="testimonials">
         <h1>Testimonials</h1>
     </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "partials/footer.html.twig" %}
 {% endblock %}

@@ -4,7 +4,7 @@
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
-  aside.sidebar {
+  .navbar {
     flex: 0 0 280px;
     background-color: variables.$card-background;
     padding: 1rem 1.2rem;
@@ -35,7 +35,6 @@
 
   .filter-group input[type="checkbox"] {
     margin-right: 0.4rem;
-    cursor: pointer;
   }
 
   .post-button {
@@ -127,7 +126,6 @@
     border: none;
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease;
   }

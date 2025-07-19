@@ -1,10 +1,13 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/admin-header.html.twig" %}
+{% endblock %}
 {% block body %}
 	<main id="task-content">
 		<h1>Tasks & Content</h1>
 		<form class="search" method="get" action="">
 			<input name="search" type="text" placeholder="Search tasks..." class="search-bar"/>
-			<a href="" class="button-clear">+ New Task</a>
+			<a href="{{ path('admin_task_new') }}" class="button-clear">+ New Task</a>
 		</form>
 		<div class="table-container">
 			<table>
@@ -34,8 +37,8 @@
 							<td>{{ task.updatedAt|date('d M Y') }}</td>
 
 							<td>
-								<a href="">Edit</a>
-								<a href="" class="inactive">Delete</a>
+								<a href="{{path('admin_task_edit', {'id': task.id})}}">Edit</a>
+								<a   class="inactive">Delete</a>
 							</td>
 						</tr>
 					{% endfor %}

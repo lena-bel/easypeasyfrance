@@ -1,4 +1,7 @@
 {% extends "base.html.twig" %}
+{% block header %}
+    {% include "partials/user-header.html.twig" %}
+{% endblock %}
 {% block body %}
 	<main id="new-post">
 		<div class="form-container">
@@ -37,4 +40,7 @@
 		</div>
 	</main>
 
+{% endblock %}
+{% block footer %}
+    {% include "partials/footer.html.twig" %}
 {% endblock %}
