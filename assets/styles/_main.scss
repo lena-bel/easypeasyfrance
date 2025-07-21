@@ -50,6 +50,10 @@ nav > div {
   display: flex;
   align-items: stretch;
 }
+.hamburger-menu {
+  display: none;
+  color: white;
+}
 /* end of header styles */
 /*nav styles for admin*/
 .sidebar {
@@ -71,7 +75,6 @@ nav > div {
 }
 .sidebar ul {
   list-style: none;
-
 }
 .sidebar ul li {
   margin-bottom: 2rem;
@@ -79,7 +82,7 @@ nav > div {
     color: white;
   }
 }
-.sidebar ul li a:hover{
+.sidebar ul li a:hover {
   color: #ff6d0c;
 }
 /*end of nav styles for admin*/
@@ -92,42 +95,43 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   font-size: 0.875rem;
+  .footer-column {
+    flex: 1 1 200px;
+    margin: 1rem 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 0.5rem;
+      a {
+        color: variables.$footer-text;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+    border-top: 1px solid #4e4e4e;
+    padding-top: 1rem;
+  }
+  .arrow{
+    display: none;
+  }
 }
 
-footer .footer-column {
-  flex: 1 1 200px;
-  margin: 1rem 0;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-footer h4 {
-  margin-bottom: 0.5rem;
-}
-
-footer ul li {
-  margin-bottom: 0.5rem;
-}
-
-footer ul li a {
-  color: variables.$footer-text;
-  text-decoration: none;
-}
-
-footer ul li a:hover {
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  text-align: center;
-  width: 100%;
-  margin-top: 2rem;
-  border-top: 1px solid #4e4e4e;
-  padding-top: 1rem;
-}
 /* end of footer styles */
 // other body styles
 .back-btn {

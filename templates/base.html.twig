@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
@@ -12,39 +13,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
+	
+	</head>
+	<body>
+		{% block header %}
+			
+		{% endblock %}
+		{% block body %}{% endblock %}
+		{% block footer %}
+		{% endblock %}
 
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
-		{% endblock %}
-	</head>
-	<body>
-		{% block header %}
-			{# {% if is_granted('ROLE_ADMIN') %}
-					{% include "partials/admin-header.html.twig" %}
-			{% else %}
-
-
-				<nav class="header">
-
-					{% if app.user %}
-						{% include "partials/user-header.html.twig" %}
-					{% else %}
-						{% include "partials/visitor-header.html.twig" %}
-					{% endif %}
-				</nav>
-			{% endif %} #}
-		{% endblock %}
-		{% block body %}{% endblock %}
-		{% block footer %}
-			
-			{# {% if not is_granted('ROLE_ADMIN') %}
-			
-			{% endif %} #}
-				
-			
 		{% endblock %}
 	</body>
 </html>
