@@ -1,0 +1,101 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+	{% if app.user %}
+		{% include "partials/user-header.html.twig" %}
+	{% else %}
+
+		{% include "partials/visitor-header.html.twig" %}
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<main id="faq">
+		<section class="intro">
+			<h1>Frequently Asked Questions</h1>
+			<p>Need help? Here are answers to common questions about Easy Peasy France.</p>
+		</section>
+
+		<section class="faq-list">
+
+			<div class="faq-item">
+				<p class="question">What is Easy Peasy France?</p>
+				<div class="answer">
+					<p>It’s a free step-by-step platform that helps international newcomers manage administrative tasks in France.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Do I need to pay for this service?</p>
+				<div class="answer">
+					<p>No — Easy Peasy France is completely free. We are a non-profit supporting equality and inclusion.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Is it for refugees, students, or families?</p>
+				<div class="answer">
+					<p>All of them. You just choose your profile, and we show you a personalized roadmap.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">What if I can't understand French?</p>
+				<div class="answer">
+					<p>We explain everything in simple English and link to official French sites with guidance.</p>
+				</div>
+			</div>
+			<div class="faq-item">
+				<p class="question">How do I create my personalized roadmap?</p>
+				<div class="answer">
+					<p>After selecting your profile type, we guide you through the necessary administrative steps tailored to your situation.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Can I track my progress on the platform?</p>
+				<div class="answer">
+					<p>Yes, you can see which steps you have completed and which are still pending on your dashboard.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">What should I do if I get stuck on a step?</p>
+				<div class="answer">
+					<p>You can consult our community help section or contact support for guidance on any difficulties you face.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Is my personal data safe on Easy Peasy France?</p>
+				<div class="answer">
+					<p>Absolutely. We follow strict data privacy regulations and only use your data to provide you with the services.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Can I update my profile information later?</p>
+				<div class="answer">
+					<p>Yes, you can update your profile details at any time from your account settings.</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<p class="question">Do I need to register to use Easy Peasy France?</p>
+				<div class="answer">
+					<p>Registration is free and recommended so you can save your progress and get personalized assistance.</p>
+				</div>
+			</div>
+
+
+		</section>
+		<div class="faq-contact-cta">
+			<p>Still have questions? We're here to help!</p>
+			<a href="" class="btn">Contact Us</a>
+		</div>
+	</main>
+{% endblock %}
+
+{% block footer %}
+	{% include "partials/footer.html.twig" %}
+{% endblock %}

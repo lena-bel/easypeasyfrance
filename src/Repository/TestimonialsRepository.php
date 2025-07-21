@@ -15,6 +15,15 @@ class TestimonialsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Testimonials::class);
     }
+    public function findAllTestimonials()
+    {
+        return $this->createQueryBuilder('testimonial')
+            ->select('testimonial.content', 'user.firstName', 'visa.name')
+            ->innerJoin('testimonial.user', 'user')
+            ->innerJoin('user.profile', 'visa')
+            ->getQuery()
+            ->getResult();
+    }
 
     //    /**
     //     * @return Testimonials[] Returns an array of Testimonials objects

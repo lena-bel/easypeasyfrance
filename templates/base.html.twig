@@ -22,29 +22,9 @@
 	</head>
 	<body>
 		{% block header %}
-			{# {% if is_granted('ROLE_ADMIN') %}
-					{% include "partials/admin-header.html.twig" %}
-			{% else %}
-
-
-				<nav class="header">
-
-					{% if app.user %}
-						{% include "partials/user-header.html.twig" %}
-					{% else %}
-						{% include "partials/visitor-header.html.twig" %}
-					{% endif %}
-				</nav>
-			{% endif %} #}
 		{% endblock %}
 		{% block body %}{% endblock %}
-		{% block footer %}
-			
-			{# {% if not is_granted('ROLE_ADMIN') %}
-			
-			{% endif %} #}
-				
-			
+		{% block footer %}	
 		{% endblock %}
 	</body>
 </html>
