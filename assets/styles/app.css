@@ -771,6 +771,7 @@ footer .arrow {
   margin-right: 2rem;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 576px) {
   body {
     padding: 0;
@@ -882,6 +883,166 @@ footer .arrow {
     position: relative;
     left: 1rem;
   }
+=======
+#testimonials h1 {
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+#testimonials .btn {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 20px;
+  text-decoration: none;
+  color: #FAF9F6;
+  margin-right: 1rem;
+}
+#testimonials .btn:hover {
+  background-color: #924d2b;
+}
+#testimonials .new-testimonial {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+#testimonials .testimonial-card {
+  background: #f2f1ed;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 6px solid #c66b3d;
+  border-radius: 0.8rem;
+  color: #2e2e2e;
+}
+#testimonials .testimonial-card .testimonial-quote {
+  padding-bottom: 1rem;
+}
+#testimonials .testimonial-card .testimonial-name {
+  font-weight: bolder;
+  padding-bottom: 1rem;
+}
+#testimonials .testimonial-card .testimonial-name span {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+#testimonial-form {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f2f1ed; /* soft off-white background */
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#testimonial-form h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#testimonial-form form {
+  display: flex;
+  flex-direction: column;
+}
+#testimonial-form form .form-group {
+  margin-bottom: 1.5rem;
+}
+#testimonial-form form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #c66b3d;
+  border-radius: 0.6rem;
+  resize: vertical;
+  color: #2e2e2e;
+  font-family: inherit;
+  margin-top: 1rem;
+  margin-right: 3rem;
+}
+#testimonial-form form .btn {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 40px;
+  width: fit-content;
+  text-decoration: none;
+  color: #FAF9F6;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-self: center;
+}
+#testimonial-form form .btn:hover {
+  background-color: #924d2b;
+}
+#testimonial-form a.btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4b4b4a;
+  text-decoration: none;
+  font-weight: 600;
+}
+#testimonial-form .btn-secondary:hover {
+  color: #924d2b;
+}
+#testimonial-form label {
+  color: #c66b3d;
+}
+#testimonial-form .form {
+  margin-right: 2rem;
+}
+
+.intro {
+  padding-bottom: 2rem;
+}
+.intro h1 {
+  padding-bottom: 1rem;
+}
+.intro p {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.faq-item {
+  background: #f2f1ed;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 6px solid #c66b3d;
+  border-radius: 0.8rem;
+  color: #2e2e2e;
+}
+.faq-item .question {
+  color: #924d2b;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.faq-item .answer > p {
+  font-style: italic;
+}
+
+.faq-contact-cta {
+  text-align: center;
+  margin: 3rem 0;
+}
+.faq-contact-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #2e2e2e;
+}
+.faq-contact-cta .btn {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 20px;
+  text-decoration: none;
+  color: #FAF9F6;
+  margin-right: 1rem;
+}
+.faq-contact-cta .btn:hover {
+  background-color: #924d2b;
+>>>>>>> feature/markettingPages
 }
 
 /*# sourceMappingURL=app.css.map */

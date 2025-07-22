@@ -1,0 +1,50 @@
+@use '../variables';
+.intro{
+    padding-bottom: 2rem;
+    h1{
+        padding-bottom: 1rem;
+    }
+    p{
+        font-weight: bold;
+        font-style: italic;
+    }
+}
+.faq-item{
+    background: #f2f1ed;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #c66b3d;
+    border-radius: 0.8rem;
+    color: #2e2e2e;
+    .question{
+        color: variables.$header-color;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+    .answer>p{
+        font-style: italic;
+    }
+}
+
+.faq-contact-cta {
+  text-align: center;
+  margin: 3rem 0;
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #2e2e2e;
+  }
+  .btn {
+    padding: 0.5rem 1rem;
+    background-color: variables.$button-primary-background;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 20px;
+    text-decoration: none;
+    color: variables.$button-primary-text;
+    margin-right: 1rem;
+  }
+  .btn:hover {
+    background-color: variables.$button-primary-hover;
+  }
+}
