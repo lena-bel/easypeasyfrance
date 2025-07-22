@@ -818,7 +818,7 @@ footer .arrow {
   .header .hamburger-menu {
     display: block;
     position: relative;
-    right: 3.5rem;
+    right: 2rem;
     top: 0rem;
   }
   .hero {
@@ -868,6 +868,12 @@ footer .arrow {
   }
   #about p {
     font-size: 0.8rem;
+  }
+  #testimonials {
+    padding: 0 1rem;
+  }
+  #testimonials h1 {
+    font-size: 2rem;
   }
   footer {
     display: flex;
