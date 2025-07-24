@@ -673,6 +673,9 @@ footer .arrow {
 #about .socials a:hover {
   color: #c66b3d; /* your brand accent color */
 }
+#about .team-image {
+  border-radius: 50%;
+}
 
 #users {
   margin-left: 16rem;
