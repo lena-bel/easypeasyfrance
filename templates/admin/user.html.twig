@@ -1,10 +1,17 @@
 {% extends "base.html.twig" %}
 {% block header %}
-    {% include "partials/admin-header.html.twig" %}
+	{% include "partials/admin-header.html.twig" %}
 {% endblock %}
 {% block body %}
 	<main id="users">
 		<h1>Users</h1>
+		{# Display flash messages #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
 		<form class="search" method="get" action="{{ path('users') }}">
 			<input name="search" type="text" placeholder="Search users..." class="search-bar"/>
 			<a href="{{ path('users') }}" class="button-clear">Show All</a>
@@ -48,15 +55,17 @@
 									{{user.registryDate|date('d M Y')}}
 								</td>
 								<td>
-									{# <a>View</a>#} {#deleted this as all details are visible on the table might change it and add it if i remove the other details so i will add theis to display all the user info you get anyways #}
-									<a href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
+									{# <a>View</a>#}
+									{#deleted this as all details are visible on the table might change it and add it if i remove the other details so i will add theis to display all the user info you get anyways #}<a href="{{ path('user_edit', {'id': user.id}) }}"> Edit</a>
 									{% if user.isActive %}
 										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="deactivate">Deactivate</a>
-										{% else %}
-											<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="active">Activate</a>
+									{% else %}
+										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="active">Activate</a>
 									{% endif %}
-									
-									
+									<p>Debug: Token ID = delete{{ user.id }}</p>
+									<a href="{{ path('delete-user', {'id': user.id}) }}" styles="color: red">Delete</a>
+
+
 								</td>
 							</tr>
 						{% endif %}

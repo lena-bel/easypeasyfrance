@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use DateTime;
 use App\Entity\User;
 use App\Form\UserTypeForm;
 use App\Repository\UserRepository;
@@ -36,6 +37,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setUpdatedDate(new DateTime());
             $em->flush();
             $this->addFlash('success', 'User updated successfully.');
 
@@ -57,4 +59,22 @@ class UserController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('users');
     }
+
+    #[Route(path:'/user/delete/{id}', name:'delete-user')]
+    public function deleteUser(
+        Request $request,
+        User $user,
+        UserRepository $userRepository
+    ){
+        error_log("Expected Token ID: delete".$user->getId());
+        if($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))){
+            $userRepository->remove($user,true);
+            $this->addFlash('success', 'user deleted successfully');
+        
+        } else{
+        $this->addFlash('error', 'Invalid CSRF token.');
+    }
+    return $this->redirectToRoute('users');
+
+}
 }

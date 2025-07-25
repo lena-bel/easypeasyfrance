@@ -7,7 +7,7 @@ use App\Entity\Task;
 use App\Form\TaskForm;
 use PhpParser\Node\Name;
 use App\Repository\TaskRepository;
-
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +41,7 @@ class TaskContentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUpdatedAt(new DateTime());
             $em->flush();
 
             $this->addFlash('success', 'Task updated successfully!');
@@ -62,6 +63,8 @@ class TaskContentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($task);
+            $task->setCreatedAt(new DateTime());
+            $task->setUpdatedAt(new DateTime());
             $em->flush();
 
             $this->addFlash('success', 'New task created successfully!');
