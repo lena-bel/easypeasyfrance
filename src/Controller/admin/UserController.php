@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     #[Route(path: '/users', name: 'users')]
-    public function displayUsers(UserRepository $userRepository, Request $request)
+    public function displayUsers(UserRepository $userRepository, Request $request): Response
     {
         $search = $request->query->get('search');
 
@@ -31,7 +31,7 @@ class UserController extends AbstractController
         ]);
     }
     #[Route(path: '/users/{id}/edit', name: 'user_edit')]
-    public function editUser(Request $request, User $user, EntityManagerInterface $em)
+    public function editUser(Request $request, User $user, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(UserTypeForm::class, $user);
         $form->handleRequest($request);
@@ -59,22 +59,4 @@ class UserController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('users');
     }
-
-    #[Route(path:'/user/delete/{id}', name:'delete-user')]
-    public function deleteUser(
-        Request $request,
-        User $user,
-        UserRepository $userRepository
-    ){
-        error_log("Expected Token ID: delete".$user->getId());
-        if($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))){
-            $userRepository->remove($user,true);
-            $this->addFlash('success', 'user deleted successfully');
-        
-        } else{
-        $this->addFlash('error', 'Invalid CSRF token.');
-    }
-    return $this->redirectToRoute('users');
-
-}
 }

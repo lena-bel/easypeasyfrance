@@ -15,12 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MarketingPagesController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function homeDisplay()
+    public function homeDisplay(): Response
     {
         return $this->render('marketingPages/home.html.twig');
     }
     #[Route(path: '/about', name: "about")]
-    public function aboutDisplat(TeamMembersRepository $teamMembersRepository)
+    public function aboutDisplat(TeamMembersRepository $teamMembersRepository): Response
     {
         $members = $teamMembersRepository->findAllTeamMembers();
         //  dd($members);
@@ -30,7 +30,7 @@ class MarketingPagesController extends AbstractController
         ]);
     }
     #[Route(path: '/testimonials', name: 'testimonials')]
-    public function testimonialDisplay(TestimonialsRepository $testimonialRepository)
+    public function testimonialDisplay(TestimonialsRepository $testimonialRepository): Response
     {
         $testimonials = $testimonialRepository->findAllTestimonials();
         // dd($testimonials);
@@ -40,7 +40,7 @@ class MarketingPagesController extends AbstractController
     }
 
     #[Route(path: '/faq', name: 'faq')]
-    public function faqDisplay()
+    public function faqDisplay(): Response
     {
         return $this->render('marketingPages/faq.html.twig');
     }

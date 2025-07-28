@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+{% block body %}
+	<main id="admin-task-detail">
+		<h1>Task:
+			{{ task.title }}</h1>
+
+		{% for detail in details %}
+			<div class="task-detail">
+				<h2>Description</h2>
+				<p>{{ detail.description }}</p>
+
+				<h2>Appointment Note</h2>
+				<p>{{ detail.appointmentNote }}</p>
+
+				<h2>Appointment Link</h2>
+				<ul>
+					{% for link in detail.externalLinks %}
+						<li>
+							<a href="{{ link }}" target="_blank">{{ link }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+
+				<h2>Informational Message</h2>
+				<p>{{ detail.informationalMessage }}</p>
+
+				<h2>External Links</h2>
+				<ul>
+					{% for link in detail.externalLinks %}
+						<li>
+							<a href="{{ link }}" target="_blank">{{ link }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+
+				<h2>Document Checklist</h2>
+				<ul>
+					{% for doc in detail.documentCheckList %}
+						<li>{{ doc }}</li>
+					{% endfor %}
+				</ul>
+
+				<h2>Steps</h2>
+				<ul>
+					{% for step in detail.steps %}
+						<li>{{ step }}</li>
+					{% endfor %}
+				</ul>
+
+				<a href="{{ path('edit_task_detail', {id: detail.id}) }}">Edit</a>
+			</div>
+		{% endfor %}
+
+		<a href="{{ path('task-content') }}">Back to Tasks</a>
+	</main>
+{% endblock %}

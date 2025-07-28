@@ -33,17 +33,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function findAllUsers(){
+    public function findAllUsers()
+    {
         return $this->createQueryBuilder('user')
         ->innerJoin('user.profile', 'visa')
         ->getQuery()
         ->getResult();
     }
 
-    public function findUsersBySearch(string $searchName){
+    public function findUsersBySearch(string $searchName)
+    {
         return $this->createQueryBuilder('user')
         ->where('user.firstName like :term OR user.lastName LIKE :term')
-        ->setParameter('term', '%'. $searchName. '%')
+        ->setParameter('term', '%' . $searchName . '%')
         ->getQuery()
         ->getResult();
     }

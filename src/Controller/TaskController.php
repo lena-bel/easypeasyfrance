@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 // work on the filter thingy it is not working
 
 use App\Repository\TaskRepository;
@@ -24,7 +25,7 @@ class TaskController extends AbstractController
         TaskRepository $taskRepository,
         PaginatorInterface $pagination
     ): Response {
-        /** @var \App\Entity\User $user */ //this is basically to tell the developper tool that the user is an instance of the user entity 
+        /** @var \App\Entity\User $user */ //this is basically to tell the developper tool that the user is an instance of the user entity
         $user = $this->getUser();
         $profile = $user->getProfile();
         if (!$profile) {
@@ -49,7 +50,7 @@ class TaskController extends AbstractController
         //     $tasks = $taskRepository->createQueryBuilder('t')
         //         ->andWhere('t.status = :status')
         //         ->setParameter('status', $status);
-        // } 
+        // }
         else { //remove all that is pagination please
             // $tasks = $taskRepository->findAll();
             $tasks = $taskRepository->findByVisaTypeProfileId($profileId);

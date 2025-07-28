@@ -45,7 +45,7 @@ class TaskDetails
     #[ORM\Column(nullable: true)]
     private ?array $steps = null;
 
-    
+
 
     public function getId(): ?int
     {
