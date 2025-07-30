@@ -1,0 +1,17 @@
+@use '../variables';
+#admin-task-detail{
+   margin-left: 16rem;
+  margin-right: 2rem; 
+  .block{
+    background-color: variables.$card-background;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border-left: 6px solid variables.$button-primary-background;
+    border-radius: 0.8rem;
+    
+  }
+  h1{
+    margin: 1rem 0;
+  }
+ 
+}

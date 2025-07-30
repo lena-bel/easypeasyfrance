@@ -1,0 +1,181 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$user of method App\\Entity\\Testimonials\:\:setUser\(\) expects App\\Entity\\User\|null, Symfony\\Component\\Security\\Core\\User\\UserInterface\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/MarketingPagesController.php
+
+		-
+			message: '#^Method Doctrine\\Persistence\\ObjectManager\:\:remove\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Controller/admin/TaskContentController.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: src/Controller/admin/TaskContentController.php
+
+		-
+			message: '#^Property App\\Entity\\Post\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/Post.php
+
+		-
+			message: '#^Property App\\Entity\\Profile\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/Profile.php
+
+		-
+			message: '#^Property App\\Entity\\Task\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/Task.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:getDocumentCheckList\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:getExternalLinks\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:getSteps\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:setDocumentCheckList\(\) has parameter \$documentCheckList with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:setExternalLinks\(\) has parameter \$externalLinks with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Method App\\Entity\\TaskDetails\:\:setSteps\(\) has parameter \$steps with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Property App\\Entity\\TaskDetails\:\:\$documentCheckList type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Property App\\Entity\\TaskDetails\:\:\$externalLinks type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Property App\\Entity\\TaskDetails\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Property App\\Entity\\TaskDetails\:\:\$steps type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/TaskDetails.php
+
+		-
+			message: '#^Property App\\Entity\\TeamMembers\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/TeamMembers.php
+
+		-
+			message: '#^Property App\\Entity\\Testimonials\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/Testimonials.php
+
+		-
+			message: '#^Property App\\Entity\\Transportation\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/Transportation.php
+
+		-
+			message: '#^Property App\\Entity\\User\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Property App\\Entity\\VisaTypeProfile\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+			identifier: property.unusedType
+			count: 1
+			path: src/Entity/VisaTypeProfile.php
+
+		-
+			message: '#^Method App\\Repository\\TaskRepository\:\:findAllTasks\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TaskRepository\:\:findByVisaTypeProfileId\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TeamMembersRepository\:\:findAllTeamMembers\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/TeamMembersRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TestimonialsRepository\:\:findAllTestimonials\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Repository/TestimonialsRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:findAllUsers\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:findUsersBySearch\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Class App\\Entity\\VisaType not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Repository/VisaTypeRepository.php
+
+		-
+			message: '#^PHPDoc tag @extends has invalid type App\\Entity\\VisaType\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Repository/VisaTypeRepository.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\Dotenv\\\\Dotenv'' and ''bootEnv'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/bootstrap.php

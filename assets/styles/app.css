@@ -1046,4 +1046,215 @@ footer .arrow {
   background-color: #924d2b;
 }
 
+#admin-task-detail {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#admin-task-detail .block {
+  background-color: #f2f1ed;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-left: 6px solid #C66B3D;
+  border-radius: 0.8rem;
+}
+#admin-task-detail h1 {
+  margin: 1rem 0;
+}
+
+#admin-dashboard {
+  margin-left: 16rem;
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+  gap: 1.5rem;
+}
+#admin-dashboard ul {
+  margin-top: 0.5rem;
+}
+#admin-dashboard ul li {
+  list-style: none;
+  margin: 0.8rem 0;
+}
+#admin-dashboard .cards {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+#admin-dashboard .summary-cards {
+  display: flex;
+  justify-content: space-between;
+  grid-column: span 3;
+}
+#admin-dashboard .summary-cards .summary-item {
+  text-align: center;
+}
+#admin-dashboard .summary-cards .summary-item h2 {
+  font-size: 1.125rem;
+  padding-bottom: 0.5rem;
+}
+#admin-dashboard .summary-cards .summary-item p {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+#admin-dashboard .summary-cards .summary-item:nth-child(1) p {
+  color: #C66B3D;
+}
+#admin-dashboard .summary-cards .summary-item:nth-child(2) p {
+  color: #924d2b;
+}
+#admin-dashboard .summary-cards .summary-item:nth-child(3) p {
+  color: #613219;
+}
+#admin-dashboard .summary-cards .summary-item:nth-child(4) p {
+  color: #35180a;
+}
+#admin-dashboard .quick-actions {
+  grid-column: span 3;
+}
+#admin-dashboard .quick-actions h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#admin-dashboard .quick-actions .quick-actions-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+#admin-dashboard .button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+#admin-dashboard .primary {
+  background-color: #C66B3D;
+  color: #FAF9F6;
+}
+#admin-dashboard .primary:hover {
+  background-color: #924d2b;
+}
+#admin-dashboard .secondary {
+  background-color: #A8A69F;
+  color: #2E2E2E;
+}
+#admin-dashboard .secondary:hover {
+  background-color: #7b7243;
+  color: white;
+}
+
+#admin-testimonials {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#admin-testimonials h1 {
+  padding-bottom: 0.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#admin-testimonials .btn {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 20px;
+  text-decoration: none;
+  color: #FAF9F6;
+  margin-right: 1rem;
+}
+#admin-testimonials .btn:hover {
+  background-color: #924d2b;
+}
+#admin-testimonials .new-testimonial {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+#admin-testimonials .testimonial-card {
+  background: #f2f1ed;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  color: #2e2e2e;
+}
+#admin-testimonials .testimonial-card .testimonial-quote {
+  padding-bottom: 1rem;
+}
+#admin-testimonials .testimonial-card .testimonial-name {
+  font-weight: bolder;
+  padding-bottom: 1rem;
+  color: #924d2b;
+}
+#admin-testimonials .testimonial-card .testimonial-name span {
+  font-style: italic;
+  font-weight: lighter;
+  color: black;
+}
+
+#testimonial-form {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f2f1ed;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#testimonial-form h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#testimonial-form form {
+  display: flex;
+  flex-direction: column;
+}
+#testimonial-form form .form-group {
+  margin-bottom: 1.5rem;
+}
+#testimonial-form form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #c66b3d;
+  border-radius: 0.6rem;
+  resize: vertical;
+  color: #2e2e2e;
+  font-family: inherit;
+  margin-top: 1rem;
+  margin-right: 3rem;
+}
+#testimonial-form form .btn {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 40px;
+  width: fit-content;
+  text-decoration: none;
+  color: #FAF9F6;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-self: center;
+}
+#testimonial-form form .btn:hover {
+  background-color: #924d2b;
+}
+#testimonial-form a.btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4b4b4a;
+  text-decoration: none;
+  font-weight: 600;
+}
+#testimonial-form .btn-secondary:hover {
+  color: #924d2b;
+}
+#testimonial-form label {
+  color: #c66b3d;
+}
+#testimonial-form .form {
+  margin-right: 2rem;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,124 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<main id="admin-dashboard" class="main-wrapper">
+		<div class="cards summary-cards">
+			<div class="summary-item">
+				<h2>Total Users</h2>
+				<p>{{totalUsers}}</p>
+			</div>
+			<div class="summary-item">
+				<h2>Total Active Users</h2>
+				<p>{{totalActiveUsers}}</p>
+			</div>
+			<div class="summary-item">
+				<h2>Upcoming Appointments</h2>
+				<p>21</p>
+			</div>
+			<div class="summary-item">
+				<h2>Unread Messages</h2>
+				<p>5</p>
+			</div>
+		</div>
+
+		<div class="cards profile">
+			<h2>Users by Profile</h2>
+			<ul class="text-sm space-y-1">
+				<li>👩‍🎓 Students: 82</li>
+				<li>👨‍👩‍👧 Families: 41</li>
+				<li>👷 Workers: 18</li>
+				<li>🕊 Refugees: 13</li>
+			</ul>
+		</div>
+
+		<div class="cards appointments">
+			<h2>Upcoming Appointments</h2>
+			<ul>
+				<li>
+					<strong>Jane Doe</strong>
+					— June 10, 14:00</li>
+				<li>
+					<strong>Ahmed R.</strong>
+					— June 11, 10:00</li>
+				<li>
+					<strong>Chloe B.</strong>
+					— June 12, 09:30</li>
+				<li>
+					<strong>Maria S.</strong>
+					— June 12, 16:15</li>
+			</ul>
+		</div>
+
+		<div class="cards messages">
+			<h2>Recent Messages</h2>
+			<ul class="text-sm space-y-3">
+				<li>
+					<strong>Jane Doe:</strong>
+					I need help with my OFII appointment.
+					<span>2 hours ago</span>
+				</li>
+				<li>
+					<strong>Ali K.:</strong>
+					Can I upload documents from my phone?
+					<span>5 hours ago</span>
+				</li>
+				<li>
+					<strong>Rebecca N.:</strong>
+					I'm stuck on the visa task.
+					<span>1 day ago</span>
+				</li>
+			</ul>
+		</div>
+		<div class="cards flagged-posts">
+			<h2>Flagged Posts</h2>
+			<ul>
+				<li>"This doesn't work" –
+					<em>Reported by Jane D.</em>
+				</li>
+				<li>"Inappropriate comment" –
+					<em>Reported by Ahmed R.</em>
+				</li>
+			</ul>
+		</div>
+		<div class="cards community-posts">
+			<h2>New Community Posts</h2>
+			<ul>
+				<li>
+					<strong>Ali K.:</strong>
+					How do I upload my OFII proof?
+					<span>1 hour ago</span>
+				</li>
+				<li>
+					<strong>Sofia M.:</strong>
+					I missed my prefecture appointment!
+					<span>3 hours ago</span>
+				</li>
+				<li>
+					<strong>Rebecca N.:</strong>
+					Any help for single parents arriving with kids?
+					<span>1 day ago</span>
+				</li>
+			</ul>
+		</div>
+		<div class="cards notifications">
+			<h2>System Notifications</h2>
+			<ul>
+				<li>✅ Platform updated to v1.2.3</li>
+				<li>⚠️ 3 users reported login issues</li>
+				<li>📦 New roadmap content published</li>
+			</ul>
+		</div>
+		<div class="cards quick-actions">
+			<h2>Quick Actions</h2>
+			<div class="quick-actions-buttons">
+				<button class="button primary">Add New Task</button>
+				<button class="button secondary">Schedule Appointment</button>
+				<button class="button primary">View All Users</button>
+				<button class="button secondary">Send Notification</button>
+			</div>
+		</div>
+	</main>
+{% endblock %}

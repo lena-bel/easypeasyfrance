@@ -5,15 +5,13 @@ namespace App\Controller\admin;
 use DateTime;
 use App\Entity\Task;
 use App\Form\TaskForm;
-use PhpParser\Node\Name;
 use App\Entity\TaskDetails;
-use App\Form\TaskDetailsForm;
+use App\Form\TaskDetailEditForm;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route(path: '/admin')]
@@ -97,12 +95,13 @@ class TaskContentController extends AbstractController
 
 
     #[Route('/task/{id}/details', name: 'task_details')]
-    public function showTaskDetails(Task $task): Response
+    public function showTaskDetails(TaskDetails $taskDetails): Response
     {
-        dd($task);
+        $title = $taskDetails->getTaskId()->getTitle();
+        // dd($taskDetails);
         return $this->render('admin/task-details.html.twig', [
-            'task' => $task,
-            'details' => $task->getTaskDetails(),
+            'details' => $taskDetails,
+            'title'   => $title,
         ]);
     }
     #[Route('/task-detail/{id}/edit', name: 'edit_task_detail')]
@@ -111,8 +110,9 @@ class TaskContentController extends AbstractController
         Request $request,
         EntityManagerInterface $em
     ): Response {
-        $form = $this->createForm(TaskDetailsForm::class, $detail);
+        $form = $this->createForm(TaskDetailEditForm::class, $detail);
         $form->handleRequest($request);
+       dd($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $detail->setUpdatedAt(new \DateTime());
@@ -126,4 +126,5 @@ class TaskContentController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
 }
