@@ -1,0 +1,27 @@
+{# templates/testimonial/new.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block header %}
+{% include "partials/user-header.html.twig" %}
+
+{% endblock %}
+{% block body %}
+<main id="testimonial-form">
+    <h1>Leave a Testimonial</h1>
+
+   <div class="form">
+     {{ form_start(testimonialForm) }}
+
+        {{ form_row(testimonialForm.content) }}
+
+        <button class="btn" type="submit">Submit Testimonial</button>
+
+    {{ form_end(testimonialForm) }}
+   </div>
+
+    <a href="{{ path('testimonials') }}" class="btn-secondary" >Back to Testimonials</a>
+</main>
+{% endblock %}
+{% block footer %}
+	{% include "partials/footer.html.twig" %}
+{% endblock %}

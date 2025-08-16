@@ -18,7 +18,7 @@ class TeamMembersRepository extends ServiceEntityRepository
     public function findAllTeamMembers(): array
     {
         return $this->createQueryBuilder('t')
-            ->orderBy('t.lastName', 'ASC')    
+            ->orderBy('t.lastName', 'ASC')
             ->getQuery()
             ->getResult();
     }

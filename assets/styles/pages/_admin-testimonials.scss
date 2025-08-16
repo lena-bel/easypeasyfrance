@@ -1,0 +1,120 @@
+@use "../variables";
+#admin-testimonials {
+       margin-left: 16rem;
+  margin-right: 2rem; 
+  h1 {
+    padding-bottom: 0.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .btn {
+    padding: 0.5rem 1rem;
+    background-color: variables.$button-primary-background;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 20px;
+    text-decoration: none;
+    color: variables.$button-primary-text;
+    margin-right: 1rem;
+  }
+  .btn:hover {
+    background-color: variables.$button-primary-hover;
+  }
+  .new-testimonial {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+  .testimonial-card {
+    background: #f2f1ed;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.8rem;
+    color: #2e2e2e;
+    .testimonial-quote {
+      padding-bottom: 1rem;
+    }
+    .testimonial-name {
+      font-weight: bolder;
+      padding-bottom: 1rem;
+      color: variables.$header-color;
+      span {
+        font-style: italic;
+        font-weight: lighter;
+        color: black;
+      }
+    }
+  }
+}
+#testimonial-form {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f2f1ed; 
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 2px solid variables.$border-line;
+      border-radius: 0.6rem;
+      resize: vertical;
+      color: #2e2e2e;
+      font-family: inherit;
+      margin-top: 1rem;
+      margin-right: 3rem;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background-color: variables.$button-primary-background;
+      font-weight: 600;
+      border-radius: 6px;
+      height: 40px;
+      width: fit-content;
+      text-decoration: none;
+      color: variables.$button-primary-text;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      align-self: center;
+    }
+    .btn:hover {
+      background-color: variables.$button-primary-hover;
+    }
+  }
+
+  a.btn-secondary {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #4b4b4a;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-secondary:hover {
+    color: variables.$header-color;
+  }
+  label {
+    color: #c66b3d;
+  }
+  .form {
+    margin-right: 2rem;
+  }
+}

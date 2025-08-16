@@ -1,20 +1,20 @@
 {% extends "base.html.twig" %}
 {% block header %}
-    {% include "partials/visitor-header.html.twig" %}
+	{% include "partials/visitor-header.html.twig" %}
 {% endblock %}
 {% block body %}
-<section class="hero">
-			<h1>WELCOME TO EASY PEASY FRANCE!</h1>
-			<p>Navigating life in France has never been easier. Our platform simplifies your administrative tasks, making your transition smoother.</p>
-			<div class="buttons">
-				<a class="btn">Get Started</a>
-				<a href="{{path('about')}}" class="sec-btn" style="background-color:#A8A69F;">Learn More</a>
-			</div>
-		</section>
+	<section class="hero">
+		<h1>WELCOME TO EASY PEASY FRANCE!</h1>
+		<p>Navigating life in France has never been easier. Our platform simplifies your administrative tasks, making your transition smoother.</p>
+		<div class="buttons">
+			<a class="btn">Get Started</a>
+			<a href="{{path('about')}}" class="sec-btn" style="background-color:#A8A69F;">Learn More</a>
+		</div>
+	</section>
 	<main id="home">
-		
 
-		<section>
+
+		<section id='features'>
 			<h2 class="section-title">Explore Our Essential Features For You</h2>
 			<div class="features">
 				<div class="feature-card">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</section>
-		<section>
+		<section id='how-it-works'>
 			<h2 class="section-title">Discover How Easy Peasy France Works</h2>
 			<p style="text-align:center;">Navigating your new life in France can be overwhelming. Easy Peasy France simplifies the process with a straightforward approach.</p>
 			<div class="steps">
@@ -57,7 +57,7 @@
 				<a href="#" class="sec-btn" style="background-color:#A8A69F;">Learn More</a>
 			</div>
 		</section>
-		<section>
+		<section id='profiles'>
 			<h2 class="section-title">Discover The Diverse User Profiles We Support</h2>
 			<div class="profiles">
 				<div class="profile">
@@ -82,5 +82,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include "partials/footer.html.twig" %}
+	{% include "partials/footer.html.twig" %}
 {% endblock %}

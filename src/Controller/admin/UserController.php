@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use DateTime;
 use App\Entity\User;
 use App\Form\UserTypeForm;
 use App\Repository\UserRepository;
@@ -15,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     #[Route(path: '/users', name: 'users')]
-    public function displayUsers(UserRepository $userRepository, Request $request)
+    public function displayUsers(UserRepository $userRepository, Request $request): Response
     {
         $search = $request->query->get('search');
 
@@ -30,12 +31,13 @@ class UserController extends AbstractController
         ]);
     }
     #[Route(path: '/users/{id}/edit', name: 'user_edit')]
-    public function editUser(Request $request, User $user, EntityManagerInterface $em)
+    public function editUser(Request $request, User $user, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(UserTypeForm::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setUpdatedDate(new DateTime());
             $em->flush();
             $this->addFlash('success', 'User updated successfully.');
 

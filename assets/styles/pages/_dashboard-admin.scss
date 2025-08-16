@@ -1,0 +1,93 @@
+@use "../variables";
+#admin-dashboard {
+  margin-left: 16rem;
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+  gap: 1.5rem;
+  ul {
+    margin-top: 0.5rem;
+  }
+  ul li {
+    list-style: none;
+    margin: 0.8rem 0;
+  }
+  .cards {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .summary-cards {
+    display: flex;
+    justify-content: space-between;
+
+    grid-column: span 3;
+
+    .summary-item {
+      text-align: center;
+
+      h2 {
+        font-size: 1.125rem;
+        padding-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.875rem;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .summary-item:nth-child(1) p {
+      color: variables.$button-primary-background;
+    }
+
+    .summary-item:nth-child(2) p {
+      color: variables.$header-color;
+    }
+
+    .summary-item:nth-child(3) p {
+      color: #613219;
+    }
+
+    .summary-item:nth-child(4) p {
+      color: #35180a;
+    }
+  }
+
+  .quick-actions{
+    grid-column: span 3;
+    h2{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .quick-actions-buttons{
+        display: flex;
+    justify-content: space-between;
+    }
+  }
+
+  .button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+  }
+  .primary {
+    background-color: variables.$button-primary-background;
+    color: variables.$button-primary-text;
+  }
+  .primary:hover {
+    background-color: variables.$button-primary-hover;
+  }
+
+  .secondary {
+    background-color: variables.$button-secondary-background;
+    color: variables.$button-secondary-text;
+  }
+  .secondary:hover {
+    background-color: variables.$button-secondary-hover;
+    color: white;
+  }
+}

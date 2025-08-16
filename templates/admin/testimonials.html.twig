@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+{% block body %}
+<main id="admin-testimonials">
+    <h1>Testimonials</h1>
+		{% for testimonial in testimonials %}
+			<div class="testimonial-card">
+				<p class="testimonial-quote">"{{ testimonial.content }}"</p>
+				<p class="testimonial-name">—
+					{{ testimonial.firstName }}
+					~
+					<span>{{testimonial.name}}</span>
+				</p>
+			</div>
+		{% else %}
+			<p>No testimonials yet. Be the first to share your experience!</p>
+		{% endfor %}
+
+	</main>
+{% endblock %}

@@ -30,10 +30,10 @@ class TaskDetails
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $informationalMessage = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'json', nullable: true)]
     private ?array $externalLinks = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'json', nullable: true)]
     private ?array $documentCheckList = null;
 
     #[ORM\Column(nullable: true)]
@@ -42,10 +42,10 @@ class TaskDetails
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'json', nullable: true)]
     private ?array $steps = null;
 
-    
+
 
     public function getId(): ?int
     {

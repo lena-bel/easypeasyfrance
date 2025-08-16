@@ -33,20 +33,42 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function findAllUsers(){
+    public function findAllUsers()
+    {
         return $this->createQueryBuilder('user')
-        ->innerJoin('user.profile', 'visa')
-        ->getQuery()
-        ->getResult();
+            ->innerJoin('user.profile', 'visa')
+            ->getQuery()
+            ->getResult();
     }
 
-    public function findUsersBySearch(string $searchName){
+    public function findUsersBySearch(string $searchName)
+    {
         return $this->createQueryBuilder('user')
-        ->where('user.firstName like :term OR user.lastName LIKE :term')
-        ->setParameter('term', '%'. $searchName. '%')
-        ->getQuery()
-        ->getResult();
+            ->where('user.firstName like :term OR user.lastName LIKE :term')
+            ->setParameter('term', '%' . $searchName . '%')
+            ->getQuery()
+            ->getResult();
     }
+
+    public function getTotalNumberOfUsers(): int
+    {
+        return  $this->createQueryBuilder('user')
+            ->select('COUNT(user.id)')
+            ->where('user.roles LIKE :role')
+            ->setParameter('role', '%ROLE_USER%')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    public function getTotalNumberOfActiveUsers(): int
+    {
+        return  $this->createQueryBuilder('user')
+            ->select('COUNT(user.id)')
+            ->where('user.roles LIKE :role AND user.isActive= 1')
+            ->setParameter('role', '%ROLE_USER%')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+   
     //    /**
     //     * @return User[] Returns an array of User objects
     //     */

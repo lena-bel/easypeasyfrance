@@ -21,12 +21,7 @@ class TaskForm extends AbstractType
             ->add('appointmentNote')
             ->add('appointmentLink')
             ->add('informationalMessage')
-            ->add('updatedAt', DateTimeType::class, [
-                'widget' => 'single_text',
-                'html5' => true,
-                'label' => 'Last Updated At',
-                'required' => false,
-            ])
+
             ->add('status')
             ->add('visaType', EntityType::class, [
                 'class' => VisaTypeProfile::class,
@@ -34,7 +29,7 @@ class TaskForm extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Applicable Visa Types',
-                'attr'=>['class'=> 'checkboxes']
+                'attr' => ['class' => 'checkboxes']
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Save Changes',

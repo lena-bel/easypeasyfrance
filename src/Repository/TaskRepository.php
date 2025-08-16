@@ -25,10 +25,11 @@ class TaskRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    public function findAllTasks(){
+    public function findAllTasks()
+    {
         return $this-> createQueryBuilder('task')
         ->leftJoin('task.visaType', 'visa')
-        ->addSelect('visa') 
+        ->addSelect('visa')
         ->getQuery()
         ->getResult();
     }

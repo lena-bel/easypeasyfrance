@@ -22,7 +22,7 @@ class Profile
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    
+
 
     public function getId(): ?int
     {
@@ -64,6 +64,4 @@ class Profile
 
         return $this;
     }
-
-    
 }

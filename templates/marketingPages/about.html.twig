@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block header %}
-    {% include "partials/visitor-header.html.twig" %}
+	{% include "partials/visitor-header.html.twig" %}
 {% endblock %}
 
 {% block body %}
@@ -46,9 +46,8 @@
 
 			<div class="team-grid">
 				{% for member in members %}
-					<div
-						class="team-card">
-						{# <img src="{{ asset('assets/images/teamMembers/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}"> #}
+					<div class="team-card">
+						<img src="{{ asset('images/markettingImages/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}" class="team-image">
 						<h3>{{ member.lastName }}
 							{{ member.firstName }}</h3>
 						<p>{{ member.jobTitle }}</p>
@@ -79,5 +78,5 @@
 	</main>
 {% endblock %}
 {% block footer %}
-    {% include "partials/footer.html.twig" %}
+	{% include "partials/footer.html.twig" %}
 {% endblock %}

@@ -1,16 +1,37 @@
 <nav class="header">
-<div>
-	<a href="{{ path('home') }}" class="logo">Easy Peasy France</a>
+	<div>
+		<a href="{{ path('home') }}" class="logo">Easy Peasy France</a>
 
-</div>
-<div class="links">
-	<a href="{{ path('about') }}">About</a>
-	<a href="#">How it works</a>
-	<a href="{{ path('testimonials') }}">Testimonials</a>
-	<a href="#">FAQ</a>
-	<a href="#">Contact us</a>
-	<a href="{{ path('app_login') }}">
-		<i class="fas fa-sign-in-alt"></i>
-		Login</a>
-</div>
+	</div>
+	<div class="links">
+		<a href="{{ path('home') }}">Home</a>
+		<a href="{{ path('about') }}">About</a>
+		<a href="{{ path('testimonials') }}">Testimonials</a>
+		<a href="{{path('faq')}}">FAQ</a>
+
+		<a href="#">Contact us</a>
+		<a href="{{ path('app_login') }}">
+			<i class="fas fa-sign-in-alt"></i>
+			Login</a>
+	</div>
+	<p class="hamburger-menu">
+		<i class="fas fa-bars"></i>
+	</p>
+	{% block javascripts %}
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const hamburgerMenu = document.querySelector('.header .hamburger-menu');
+				const navLinks = document.querySelector('.header .links');
+
+				hamburgerMenu.addEventListener('click', () => {
+				console.log("display the menu");
+					if (navLinks.classList.contains('mobile-menu')) {
+						navLinks.classList.remove('mobile-menu');
+					} else {
+						navLinks.classList.add('mobile-menu');
+					}
+				});
+			});
+		</script>
+	{% endblock %}
 </nav>
