@@ -55,9 +55,15 @@ class TaskContentController extends AbstractController
     public function newTask(Request $request, EntityManagerInterface $em): Response
     {
         $task = new Task();
+        $taskDetails= new TaskDetails();
 
         $form = $this->createForm(TaskForm::class, $task);
         $form->handleRequest($request);
+
+
+        $detailsForm = $this->createForm(TaskDetailEditForm::class, $taskDetails);
+        $detailsForm->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($task);
@@ -68,9 +74,16 @@ class TaskContentController extends AbstractController
             $this->addFlash('success', 'New task created successfully!');
             return $this->redirectToRoute('task-content');
         }
+         if($detailsForm->isSubmitted() && $detailsForm->isValid()){
+            $em->persist($taskDetails);
+            $taskDetails->setCreatedAt(new DateTime());
+            $taskDetails->setUpdatedAt(new DateTime());
+            $em->flush();
+         }
 
         return $this->render('admin/new-task.html.twig', [
             'form' => $form->createView(),
+            'detailsForm'=>$detailsForm->createView()
         ]);
     }
     #[Route('/task/{id}/delete', name: 'delete-task', methods: ['POST'])]
@@ -112,7 +125,7 @@ class TaskContentController extends AbstractController
     ): Response {
         $form = $this->createForm(TaskDetailEditForm::class, $detail);
         $form->handleRequest($request);
-       dd($form);
+    //    dd($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $detail->setUpdatedAt(new \DateTime());

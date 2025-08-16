@@ -24,6 +24,7 @@ class TaskDetailEditForm extends AbstractType
             'entry_type' => TextType::class,
             'allow_add' => true,
             'allow_delete' => true,
+            'required' => false,
             'by_reference' => false,
             'label' => 'External Links',
         ])
@@ -31,6 +32,7 @@ class TaskDetailEditForm extends AbstractType
             'entry_type' => TextType::class,
             'allow_add' => true,
             'allow_delete' => true,
+            'required' => false,
             'by_reference' => false,
             'label' => 'Checklist Items',
         ])
@@ -38,8 +40,9 @@ class TaskDetailEditForm extends AbstractType
             'entry_type' => TextType::class,
             'allow_add' => true,
             'allow_delete' => true,
-            'by_reference' => false,
-            'label' => 'Steps',
+            'required' => false,
+            // 'by_reference' => false,
+            // 'label' => 'Steps',
         ])
     ;
     }

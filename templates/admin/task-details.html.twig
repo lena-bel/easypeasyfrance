@@ -58,9 +58,9 @@
 				{% for document in details.documentCheckList %}
 					<div class="documents details">
 						{% if document.title is defined %}
-							<p>{{ document.title }}</p>
+							<p>{{ document.title }}
 							{% if document.description is defined %}
-								<small>{{ document.description }}</small>
+								<small class="doc-descr">( {{ document.description }} )</small> </p>
 							{% endif %}
 						{% else %}
 							<p>{{ document }}</p>
@@ -71,12 +71,14 @@
 
 			<div class="block">
 				<h2>Steps</h2>
-				{% for step in details.steps %}
+				<div class="steps">
+					{% for step in details.steps %}
 					<p>
 
 						{{ step }}
 					</p>
 				{% endfor %}
+				</div>
 			</div>
 
 			<a href="{{ path('edit_task_detail', {id: details.id}) }}">Edit</a>

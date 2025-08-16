@@ -1054,8 +1054,19 @@ footer .arrow {
   background-color: #f2f1ed;
   padding: 1rem 1.5rem;
   margin: 1rem 0;
-  border-left: 6px solid #C66B3D;
   border-radius: 0.8rem;
+}
+#admin-task-detail .block h2 {
+  margin-bottom: 1rem;
+}
+#admin-task-detail .block .doc-descr {
+  color: #924d2b;
+}
+#admin-task-detail .block .documents, #admin-task-detail .block .steps {
+  margin-left: 1.5rem;
+}
+#admin-task-detail .block .documents p, #admin-task-detail .block .steps p {
+  margin-bottom: 0.5rem;
 }
 #admin-task-detail h1 {
   margin: 1rem 0;
