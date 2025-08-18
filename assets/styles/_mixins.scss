@@ -1,5 +1,48 @@
 @use "variables";
 
+/*buttons*/
+.pri-btn {
+    padding: 0.5rem 1rem;
+    background-color: variables.$button-primary-background;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 40px;
+
+    text-decoration: none;
+    color: variables.$button-primary-text;
+    margin-right: 1rem;
+  }
+  .pri-btn:hover {
+    background-color: variables.$button-primary-hover;
+  }
+
+  .sec-btn {
+    padding: 0.5rem 1rem;
+    background-color: variables.$button-secondary-background;
+    font-weight: 600;
+    border-radius: 6px;
+    height: 40px;
+
+    text-decoration: none;
+    color: variables.$button-secondary-text;
+  }
+  .sec-btn:hover {
+    background-color: variables.$button-primary-background;
+    color: white;
+  }
+
+  .back-btn {
+  color: white;
+  color: variables.$button-primary-background;
+  // padding: 0.5rem 3rem;
+  // border-radius: 10px;
+  text-decoration: none;
+}
+.back-btn:hover {
+  color: variables.$button-primary-hover;
+}
+  /*end of buttons*/
+
 .card {
   background-color: variables.$card-background;
   border-left: 6px solid variables.$border-line;

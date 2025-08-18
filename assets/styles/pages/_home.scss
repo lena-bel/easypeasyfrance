@@ -1,39 +1,10 @@
 @use "../variables";
 
 .hero {
-    //work more on it
     background-color: #eee5dc;
     padding: 6rem 10%;
     text-align: center;
     margin-top: 0;
-    .btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-primary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
-
-    text-decoration: none;
-    color: variables.$button-primary-text;
-    margin-right: 1rem;
-  }
-  .btn:hover {
-    background-color: variables.$button-primary-hover;
-  }
-
-  .sec-btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-secondary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
-
-    text-decoration: none;
-    color: variables.$button-secondary-text;
-  }
-  .sec-btn:hover {
-    background-color: variables.$button-secondary-hover;
-  }
   h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -49,37 +20,6 @@
 
 
 #home {
-
-  .btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-primary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
-
-    text-decoration: none;
-    color: variables.$button-primary-text;
-    margin-right: 1rem;
-  }
-  .btn:hover {
-    background-color: variables.$button-primary-hover;
-  }
-
-  .sec-btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-secondary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
-
-    text-decoration: none;
-    color: variables.$button-secondary-text;
-  }
-  .sec-btn:hover {
-    background-color: variables.$button-secondary-hover;
-  }
-
-  
   section {
     padding: 4rem 10%;
   }
@@ -88,7 +28,6 @@
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
-    // color: #362f27; //black is giving too so I don't really know 
   }
 
   .features {

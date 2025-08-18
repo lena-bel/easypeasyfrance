@@ -5,17 +5,15 @@
 
 {% block body %}
 	<main id="form">
-		<a href="{{ path('task-content') }}" class="back-btn">Go back</a>
+		<a href="{{ path('task-content') }}" class="back-btn">&larr; Go back</a>
 		<div class="task-form">
 			{{ form_start(form) }}
 			{{ form(form) }}
 			{{ form_end(form) }}
 		</div>
-		{# <div class="details-form">
-			{{ form_start(detailsForm) }}
-			{{ form(detailsForm) }}
-			{{ form_end(detailsForm) }}
-		</div> #}
+		
 
 	</main>
 {% endblock %}
+
+

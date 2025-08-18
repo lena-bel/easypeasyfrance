@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
 	<main id="admin-task-detail">
-		<a href="{{ path('task-content') }}" class="back-btn">Back to Tasks</a>
+		<a href="{{ path('task-content') }}" class="back-btn">&larr; Back to Tasks</a>
 		<h1>Task:
 			{{ title }}</h1>
 		<p>{{details.description}}</p>
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 
-			<a href="{{ path('edit_task_detail', {id: details.id}) }}">Edit</a>
+			<a href="{{ path('edit_task_detail', {id: details.id}) }}" class="sec-btn">Edit Details</a>
 		</div>
 
 

@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class TaskDetailEditForm extends AbstractType
@@ -27,6 +28,7 @@ class TaskDetailEditForm extends AbstractType
             'required' => false,
             'by_reference' => false,
             'label' => 'External Links',
+            'prototype' => true, 
         ])
         ->add('documentCheckList', CollectionType::class, [
             'entry_type' => TextType::class,
@@ -35,14 +37,14 @@ class TaskDetailEditForm extends AbstractType
             'required' => false,
             'by_reference' => false,
             'label' => 'Checklist Items',
+            'prototype' => true, 
         ])
         ->add('steps', CollectionType::class, [
             'entry_type' => TextType::class,
             'allow_add' => true,
             'allow_delete' => true,
             'required' => false,
-            // 'by_reference' => false,
-            // 'label' => 'Steps',
+            'prototype' => true, 
         ])
     ;
     }

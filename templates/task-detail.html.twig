@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 {% block header %}
-    {% include "partials/user-header.html.twig" %}
+	{% include "partials/user-header.html.twig" %}
 {% endblock %}
 {% block body %}
 	<main id="task-details">
-		<a href="{{ path('task_index') }}" class="back-btn">Go back</a>
+		<a href="{{ path('task_index') }}" class="back-btn">&larr; Go back</a>
 		<h1>{{ title }}</h1>
 		<div class="card">
 			<p>{{details.description}}</p>
@@ -15,7 +15,7 @@
 				{% for step in details.steps %}
 					<p>
 						<input type="checkbox" id="step-{{ loop.index }}" name="step-{{ loop.index }}">
-                        <label for="step-{{ loop.index }}">{{ step }}</label>
+						<label for="step-{{ loop.index }}">{{ step }}</label>
 					</p>
 				{% endfor %}
 			</div>
@@ -36,27 +36,54 @@
 			{% endfor %}
 		</section>
 
-        <section id="appointment">
-            <h2>Appointment Information</h2>
-            <div class="details">
+		<section id="appointment">
+			<h2>Appointment Information</h2>
+			<div class="details">
 				<p>{{details.appointmentNote}}</p>
-            {% if details.appointmentLink is defined %}
-                <a href="{{details.appointmentLink}}" target="_blank"> {{details.appointmentLink}} </a>
-            {% endif %}
-            
-            {% if details.externalLinks %}
-                <p><i>Other Links that might help you:</i></p>
-                {% for externalLink in details.externalLinks %}
-                    {% if externalLink.url is defined %}
-                    <a href="{{externalLink.url}}" target="_blank">{{externalLink.url}} </a> <br>
-                    {% endif %}
-                {% endfor %}
-                
-            {% endif %}
+				{% if details.appointmentLink is defined %}
+					<a href="{{details.appointmentLink}}" target="_blank">
+						{{details.appointmentLink}}
+					</a>
+				{% endif %}
+
+				{% set hasLink = false %}
+				{% if details.externalLinks %}
+					{% for externalLink in details.externalLinks %}
+						{% if externalLink.url is defined and externalLink.url is not empty %}
+							{% set hasLink = true %}
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+
+
+				{% if hasLink %}
+					<p>
+						<i>Other Links that might help you:</i>
+					</p>
+					{% for externalLink in details.externalLinks %}
+						{% if externalLink.url is defined and externalLink.url is not empty %}
+							<a href="{{ externalLink.url }}" target="_blank">{{ externalLink.url }}</a><br>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				{# {% if details.externalLinks %}
+				
+									<p>
+										<i>Other Links that might help you:</i>
+									</p>
+									{% for externalLink in details.externalLinks %}
+										{% if externalLink.url is defined %}
+											<a href="{{externalLink.url}}" target="_blank">{{externalLink.url}}
+											</a>
+											<br>
+										{% endif %}
+									{% endfor %}
+				
+								{% endif %} #}
 			</div>
-            
-            
-        </section>
+
+
+		</section>
 	</main>
 
 {% endblock %}

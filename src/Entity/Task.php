@@ -40,7 +40,12 @@ class Task
     /**
      * @var Collection<int, TaskDetails>
      */
-    #[ORM\OneToMany(targetEntity: TaskDetails::class, mappedBy: 'taskId')]
+    #[ORM\OneToMany(
+        targetEntity: TaskDetails::class,
+        mappedBy: 'taskId',
+        cascade: ['persist','remove'], //this is so that if we save the task we save the task details too
+        orphanRemoval: true //this means that if we delete the details they can delete them from the database as it doesn't belong to any other task
+        )]
     private Collection $taskDetails;
 
     /**
