@@ -238,6 +238,52 @@ footer .arrow {
 }
 
 /*end of buttons*/
+/*form*/
+form {
+  margin: 0 2rem 0 0;
+}
+
+form .label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: #924d2b;
+}
+
+form input[type=text],
+form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #c66b3d;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000000;
+}
+
+form textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+input[type=file] {
+  border: 1.5px solid #c66b3d;
+  background-color: #fff;
+  padding: 0.45rem 0.4rem;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.form-checkbox {
+  margin-top: 1rem;
+}
+.form-checkbox .anonymous-label {
+  color: #924d2b;
+  font-weight: bold;
+}
+
+/*end of form*/
 .card {
   background-color: #f2f1ed;
   border-left: 6px solid #c66b3d;
