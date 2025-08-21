@@ -138,7 +138,6 @@ footer .arrow {
   display: none;
 }
 
-/* end of footer styles */
 #task .section-one > input, #task .section-one > .progress {
   background-color: #fceeea;
   border-radius: 5px;
@@ -235,6 +234,17 @@ footer .arrow {
 
 .back-btn:hover {
   color: #924d2b;
+}
+
+.btn-save {
+  padding: 0.5rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  width: 10rem;
+  border: none;
+  color: white;
+  margin-top: 1.2rem;
 }
 
 /*end of buttons*/
@@ -631,9 +641,6 @@ input[type=file] {
 #new-post .form-checkbox .anonymous-label {
   color: #924d2b;
   font-weight: bold;
-}
-#new-post .btn-save-btn {
-  background-color: green;
 }
 #new-post .btn-save-btn:hover {
   background-color: #924d2b;
@@ -1291,6 +1298,20 @@ input[type=file] {
 }
 #testimonial-form .form {
   margin-right: 2rem;
+}
+
+.task-form {
+  margin: 0 20rem;
+}
+.task-form label {
+  display: block;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+.task-form input {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 6px;
 }
 
 /*# sourceMappingURL=app.css.map */
