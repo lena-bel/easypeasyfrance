@@ -1,0 +1,80 @@
+@use '../variables';
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 100%;
+    width: 100%;
+    height: 100vh;   
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    h2{
+        margin: 1rem;
+    }
+}
+.subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+    color: rgba(0, 0, 0, 0.75);
+}
+.login-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid variables.$border-line;
+    font-size: 14px;
+}
+
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.forgot-link {
+    text-decoration: none;
+    color: variables.$links;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+    color: variables.$links-hover;
+}
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-text a {
+    color: variables.$links;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+     color: variables.$links-hover;
+}

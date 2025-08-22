@@ -247,6 +247,35 @@ footer .arrow {
   margin-top: 1.2rem;
 }
 
+.btn-login {
+  width: 100%;
+  color: white;
+  background-color: #C66B3D;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  font-size: 1.2rem;
+}
+
+.btn-login:hover {
+  background-color: #924d2b;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.signup-text a {
+  color: var(--terracotta);
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
 /*end of buttons*/
 /*form*/
 form {
@@ -1312,6 +1341,91 @@ input[type=file] {
   display: block;
   margin-bottom: 1rem;
   padding: 6px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+.login-card h2 {
+  margin: 1rem;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c66b3d;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: #c66b3d;
+  box-shadow: 0 0 5px rgba(198, 107, 61, 0.3);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.forgot-link {
+  text-decoration: none;
+  color: #C66B3D;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: #f09068;
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #C66B3D;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+  color: #f09068;
 }
 
 /*# sourceMappingURL=app.css.map */

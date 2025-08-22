@@ -49,6 +49,33 @@
   color: white;
   margin-top: 1.2rem;
 }
+.btn-login{
+  width: 100%;
+  color: white;
+  background-color: variables.$button-primary-background;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  font-size: 1.2rem;
+}
+.btn-login:hover{
+  background-color: variables.$button-primary-hover;
+}
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--dark);
+}
+
+.signup-text a {
+    color: var(--terracotta);
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
   /*end of buttons*/
 
 
