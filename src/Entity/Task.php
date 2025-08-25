@@ -37,15 +37,15 @@ class Task
     #[ORM\Column(nullable: true)]
     private ?\DateTime $updatedAt = null;
 
-    /**
-     * @var Collection<int, TaskDetails>
-     */
-    #[ORM\OneToMany(
-        targetEntity: TaskDetails::class,
-        mappedBy: 'taskId',
-        cascade: ['persist','remove'], //this is so that if we save the task we save the task details too
-        orphanRemoval: true //this means that if we delete the details they can delete them from the database as it doesn't belong to any other task
-        )]
+    // /**
+    //  * @var Collection<int, TaskDetails>
+    //  */
+    // #[ORM\OneToMany(
+    //     targetEntity: TaskDetails::class,
+    //     mappedBy: 'taskId',
+    //     cascade: ['persist', 'remove'], //this is so that if we save the task we save the task details too
+    //     orphanRemoval: true //this means that if we delete the details they can delete them from the database as it doesn't belong to any other task
+    // )]
     private Collection $taskDetails;
 
     /**
@@ -57,10 +57,27 @@ class Task
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $status = null;
 
+    /**
+     * @var Collection<int, Steps>
+     */
+    #[ORM\OneToMany(targetEntity: Steps::class, mappedBy: 'taskId')]
+    private Collection $steps;
+
+    #[ORM\ManyToMany(targetEntity: Documents::class, inversedBy: 'tasks', cascade: ['persist'])]
+    #[ORM\JoinTable(name: 'task_document')] // This defines the pivot table name
+    private Collection $documents;
+
+    #[ORM\ManyToMany(targetEntity: Links::class, inversedBy: 'tasks', cascade: ['persist'])]
+    #[ORM\JoinTable(name: 'task_link')]
+    private Collection $links;
+
     public function __construct()
     {
         $this->taskDetails = new ArrayCollection();
         $this->visaType = new ArrayCollection();
+        $this->steps = new ArrayCollection();
+        $this->links = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,27 +177,27 @@ class Task
         return $this->taskDetails;
     }
 
-    public function addTaskDetail(TaskDetails $taskDetail): static
-    {
-        if (!$this->taskDetails->contains($taskDetail)) {
-            $this->taskDetails->add($taskDetail);
-            $taskDetail->setTaskId($this);
-        }
+    // public function addTaskDetail(TaskDetails $taskDetail): static
+    // {
+    //     if (!$this->taskDetails->contains($taskDetail)) {
+    //         $this->taskDetails->add($taskDetail);
+    //         $taskDetail->setTaskId($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeTaskDetail(TaskDetails $taskDetail): static
-    {
-        if ($this->taskDetails->removeElement($taskDetail)) {
-            // set the owning side to null (unless already changed)
-            if ($taskDetail->getTaskId() === $this) {
-                $taskDetail->setTaskId(null);
-            }
-        }
+    // public function removeTaskDetail(TaskDetails $taskDetail): static
+    // {
+    //     if ($this->taskDetails->removeElement($taskDetail)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($taskDetail->getTaskId() === $this) {
+    //             $taskDetail->setTaskId(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, VisaTypeProfile>
@@ -217,4 +234,76 @@ class Task
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Steps>
+     */
+    public function getSteps(): Collection
+    {
+        return $this->steps;
+    }
+
+    public function addStep(Steps $step): static
+    {
+        if (!$this->steps->contains($step)) {
+            $this->steps->add($step);
+            $step->setTaskId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStep(Steps $step): static
+    {
+        if ($this->steps->removeElement($step)) {
+            // set the owning side to null (unless already changed)
+            if ($step->getTaskId() === $this) {
+                $step->setTaskId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+ * @return Collection<int, Links>
+ */
+public function getLinks(): Collection
+{
+    return $this->links;
+}
+
+public function addLink(Links $link): static
+{
+    if (!$this->links->contains($link)) {
+        $this->links->add($link);
+        $link->addTask($this); // maintain inverse side
+    }
+    return $this;
+}
+
+public function removeLink(Links $link): static
+{
+    if ($this->links->removeElement($link)) {
+        $link->removeTask($this);
+    }
+    return $this;
+}
+
+public function addDocument(Documents $document): static
+{
+    if (!$this->documents->contains($document)) {
+        $this->documents->add($document);
+        $document->addTask($this);
+    }
+    return $this;
+}
+
+public function removeDocument(Documents $document): static
+{
+    if ($this->documents->removeElement($document)) {
+        $document->removeTask($this);
+    }
+    return $this;
+}
 }
