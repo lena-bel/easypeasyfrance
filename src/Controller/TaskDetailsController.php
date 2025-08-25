@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\TaskDetails;
+use App\Entity\Task;
+use App\Repository\TaskRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -10,16 +11,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TaskDetailsController extends AbstractController
 {
-    #[Route('/tasks/{id}', name: 'task_show')]
-    // #[IsGranted('ROLE_USER')]
-    public function show(TaskDetails $taskDetails): Response
-    {
-    // Because you mapped the relation, Doctrine will fetch the Task lazily
-        $title = $taskDetails->getTaskId()->getTitle();
+    #[Route('/tasks/{id}', name: 'task-details')]
+   
+public function taskDetails(int $id, TaskRepository $taskRepository): Response
+{
+    $task = $taskRepository->findTaskWithDetails($id);
 
-        return $this->render('task-detail.html.twig', [
-        'details' => $taskDetails,
-        'title'   => $title,
-        ]);
+    if (!$task) {
+        throw $this->createNotFoundException('Task not found');
     }
+    // dd($task->getSteps());
+
+    return $this->render('task-detail.html.twig', [
+        'task' => $task,
+        'steps' => $task->getSteps(),
+        'documents' => $task->getDocuments(),
+        'links' => $task->getLinks(),
+    ]);
+}
 }

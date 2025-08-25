@@ -8,12 +8,69 @@
 		<a href="{{ path('task-content') }}" class="back-btn">&larr; Go back</a>
 		<div class="task-form">
 			{{ form_start(form) }}
-			{{ form(form) }}
+
+			{{ form_row(form.title) }}
+			{{ form_row(form.description) }}
+			{{ form_row(form.appointmentNote) }}
+			{{ form_row(form.appointmentLink) }}
+			{{ form_row(form.informationalMessage) }}
+			{{ form_row(form.visaType) }}
+
+			<!-- Steps Collection -->
+			<div class="task">
+				<div class="title-button">
+					<h3>Steps</h3>
+					<button type="button" id="add-step" class="btn">+ Add Step</button>
+
+				</div>
+				<div class="collection-steps" data-prototype="{{ form_widget(form.steps.vars.prototype)|e('html_attr') }}">
+					{{ form_widget(form.steps) }}
+				</div>
+			</div>
+			<div class="task">
+				<div class="title-button">
+					<h3>Required Documents</h3>
+
+					<button type="button" class="btn" id="add-document">+ Add Document</button>
+				</div>
+				<div class="collection-documents" data-prototype="{{ form_widget(form.documents.vars.prototype)|e('html_attr') }}">
+					{{ form_widget(form.documents) }}
+				</div>
+			</div>
+			<div class="task">
+				<div class="title-button">
+                <h3>Helpful Links</h3>
+				
+				<button type="button" class="btn" id="add-link">+ Add Link</button>
+                </div>
+                <div class="collection-links" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}">
+					{{ form_widget(form.links) }}
+				</div>
+			</div>
+
+			{{ form_rest(form) }}
 			{{ form_end(form) }}
 		</div>
-		
 
 	</main>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+function addForm(buttonSelector, containerSelector) {
+document.querySelector(buttonSelector).addEventListener('click', function (e) {
+e.preventDefault();
+const container = document.querySelector(containerSelector);
+const prototype = container.dataset.prototype;
+const index = container.children.length;
+const newForm = prototype.replace(/__name__/g, index);
+container.insertAdjacentHTML('beforeend', newForm);
+});
+}
+
+addForm('#add-step', '.collection-steps');
+addForm('#add-link', '.collection-links');
+addForm('#add-document', '.collection-documents');
+
+});
+	</script>
 {% endblock %}
-
-

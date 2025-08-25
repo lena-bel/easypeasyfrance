@@ -60,7 +60,8 @@ class Task
     /**
      * @var Collection<int, Steps>
      */
-    #[ORM\OneToMany(targetEntity: Steps::class, mappedBy: 'taskId')]
+    #[ORM\OneToMany(targetEntity: Steps::class, mappedBy: 'taskId',
+    cascade: ['persist', 'remove'])]
     private Collection $steps;
 
     #[ORM\ManyToMany(targetEntity: Documents::class, inversedBy: 'tasks', cascade: ['persist'])]
@@ -288,6 +289,15 @@ public function removeLink(Links $link): static
         $link->removeTask($this);
     }
     return $this;
+}
+
+
+    /**
+ * @return Collection<int, Documents>
+ */
+public function getDocuments(): Collection
+{
+    return $this->documents;
 }
 
 public function addDocument(Documents $document): static

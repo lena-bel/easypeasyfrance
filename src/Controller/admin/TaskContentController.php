@@ -55,8 +55,8 @@ class TaskContentController extends AbstractController
     public function newTask(Request $request, EntityManagerInterface $em): Response
     {
         $task = new Task();
-        $taskDetail = new TaskDetails();
-        $task->addTaskDetail($taskDetail);
+        // $taskDetail = new TaskDetails();
+        // $task->addTaskDetail($taskDetail);
 
         $form = $this->createForm(TaskForm::class, $task);
         $form->handleRequest($request);
@@ -99,36 +99,34 @@ class TaskContentController extends AbstractController
 
 
 
-    #[Route('/task/{id}/details', name: 'task_details')]
-    public function showTaskDetails(TaskDetails $taskDetails): Response
-    {
-        $title = $taskDetails->getTaskId()->getTitle();
-        // dd($taskDetails);
-        return $this->render('admin/task-details.html.twig', [
-            'details' => $taskDetails,
-            'title'   => $title,
-        ]);
-    }
-    #[Route('/task-detail/{id}/edit', name: 'edit_task_detail')]
-    public function editTaskDetail(
-        TaskDetails $detail,
-        Request $request,
-        EntityManagerInterface $em
-    ): Response {
-        $form = $this->createForm(TaskDetailEditForm::class, $detail);
-        $form->handleRequest($request);
-        //    dd($form);
+    // #[Route('/task/{id}/details', name: 'task_details')]
+    // public function showTaskDetails(TaskDetails $taskDetails): Response
+    // {
+    //     $title = $taskDetails->getTaskId()->getTitle();
+    //     return $this->render('admin/task-details.html.twig', [
+    //         'details' => $taskDetails,
+    //         'title'   => $title,
+    //     ]);
+    // }
+    // #[Route('/task-detail/{id}/edit', name: 'edit_task_detail')]
+    // public function editTaskDetail(
+    //     TaskDetails $detail,
+    //     Request $request,
+    //     EntityManagerInterface $em
+    // ): Response {
+    //     $form = $this->createForm(TaskDetailEditForm::class, $detail);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $detail->setUpdatedAt(new \DateTime());
-            $em->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $detail->setUpdatedAt(new \DateTime());
+    //         $em->flush();
 
-            $this->addFlash('success', 'Task detail updated.');
-            return $this->redirectToRoute('task_details', ['id' => $detail->getTaskId()->getId()]);
-        }
+    //         $this->addFlash('success', 'Task detail updated.');
+    //         return $this->redirectToRoute('task_details', ['id' => $detail->getTaskId()->getId()]);
+    //     }
 
-        return $this->render('admin/task-detail-edit.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
+    //     return $this->render('admin/task-detail-edit.html.twig', [
+    //         'form' => $form->createView(),
+    //     ]);
+    // }
 }

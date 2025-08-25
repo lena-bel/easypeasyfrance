@@ -34,6 +34,18 @@ class TaskRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+     public function findTaskWithDetails(int $taskId): ?Task
+    {
+        return $this->createQueryBuilder('t')
+            ->leftJoin('t.steps', 's')->addSelect('s')
+            ->leftJoin('t.documents', 'd')->addSelect('d')
+            ->leftJoin('t.links', 'l')->addSelect('l')
+            ->where('t.id = :taskId')
+            ->setParameter('taskId', $taskId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     //    /**
     //     * @return Task[] Returns an array of Task objects
     //     */

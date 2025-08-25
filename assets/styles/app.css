@@ -138,7 +138,8 @@ footer .arrow {
   display: none;
 }
 
-#task .section-one > input, #task .section-one > .progress {
+#task .section-one > input,
+#task .section-one > .progress {
   background-color: #fceeea;
   border-radius: 5px;
   padding: 0.2rem 2rem;
@@ -193,6 +194,31 @@ footer .arrow {
 #task .task-actions .btn:hover {
   background-color: #C66B3D;
   color: white;
+}
+
+.task-form .task .title-button {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+.task-form .task .title-button .btn {
+  padding: 0.3rem 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  color: #C66B3D;
+  margin-top: 1.2rem;
+}
+.task-form .task .title-button .btn:hover {
+  padding: 0.3rem 1rem;
+  background-color: #C66B3D;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  margin-top: 1.2rem;
 }
 
 /*buttons*/
@@ -1388,11 +1414,6 @@ input[type=file] {
   border-radius: 8px;
   border: 1px solid #c66b3d;
   font-size: 14px;
-}
-
-.login-form input:focus {
-  border-color: #c66b3d;
-  box-shadow: 0 0 5px rgba(198, 107, 61, 0.3);
 }
 
 .form-options {

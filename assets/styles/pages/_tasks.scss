@@ -1,7 +1,8 @@
 @use "../variables";
 
 #task {
-  .section-one > input , .section-one > .progress  {
+  .section-one > input,
+  .section-one > .progress {
     background-color: #fceeea;
     border-radius: 5px;
     padding: 0.2rem 2rem;
@@ -15,7 +16,7 @@
     padding: 1rem 0;
   }
 
-  .section-one > .progress  {
+  .section-one > .progress {
     background-color: #fceeea;
     color: rgba(0, 0, 0, 0.7);
     width: 50%;
@@ -64,5 +65,35 @@
   .task-actions .btn:hover {
     background-color: variables.$button-primary-background;
     color: white;
+  }
+}
+
+.task-form {
+  .task{
+    .title-button {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+      .btn {
+        padding: 0.3rem 1rem;
+        font-weight: 600;
+        border-radius: 6px;
+        border: none;
+        color: variables.$button-primary-background;
+        margin-top: 1.2rem;
+      }
+
+      .btn:hover {
+        padding: 0.3rem 1rem;
+        background-color: variables.$button-primary-background;
+        font-weight: 600;
+        border-radius: 6px;
+        border: none;
+        color: white;
+        margin-top: 1.2rem;
+      }
+    }
   }
 }
