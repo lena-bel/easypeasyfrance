@@ -6,84 +6,78 @@
 	<main id="admin-task-detail">
 		<a href="{{ path('task-content') }}" class="back-btn">&larr; Back to Tasks</a>
 		<h1>Task:
-			{{ title }}</h1>
-		<p>{{details.description}}</p>
+			{{ task.title }}</h1>
+		{# <p>{{task.description}}</p> #}
 
 		<div class="task-detail">
 			<div class="block">
 				<h2>Description</h2>
-				<p>{{ details.description }}</p>
+				<p>{{ task.description }}</p>
 			</div>
 
 			<div class="block">
 				<h2>Appointment Note</h2>
-				<p>{{ details.appointmentNote }}</p>
+				<p>{{ task.appointmentNote }}</p>
 			</div>
 
 			<div class="block">
 				<h2>Appointment Link</h2>
-				{% if details.appointmentLink is defined %}
-					<a href="{{details.appointmentLink}}" target="_blank">
-						{{details.appointmentLink}}
+				{% if task.appointmentLink is defined %}
+					<a href="{{task.appointmentLink}}" target="_blank">
+						{{task.appointmentLink}}
 					</a>
 				{% endif %}
 			</div>
 
 			<div class="block">
 				<h2>Informational Message</h2>
-				<p>{{ details.informationalMessage }}</p>
+				<p>{{ task.informationalMessage }}</p>
 			</div>
 
 			<div class="block">
+			{% if externalLinks is defined %}
 				<h2>External Links</h2>
 				<ul>
-					{% if details.externalLinks %}
+					
 						<p>
 							<i>Other Links that might help you:</i>
 						</p>
-						{% for externalLink in details.externalLinks %}
-							{% if externalLink.url is defined %}
-								<a href="{{externalLink.url}}" target="_blank">{{externalLink.url}}
+						{% for externalLink in externalLinks %}
+							
+								<a href="{{externalLink}}" target="_blank">{{externalLink}}
 								</a>
 								<br>
-							{% endif %}
 						{% endfor %}
 
-					{% endif %}
+					
 				</ul>
+			{% endif %}
 			</div>
 
 			<div class="block">
 				<h2>Document Checklist</h2>
-				{% for document in details.documentCheckList %}
+				
 					<div class="documents details">
-						{% if document.title is defined %}
-							<p>{{ document.title }}
-							{% if document.description is defined %}
-								<small class="doc-descr">( {{ document.description }} )</small> </p>
-							{% endif %}
-						{% else %}
-							<p>{{ document }}</p>
-						{% endif %}
+						{% for document in documents %}
+							<p>{{ document.name }}
+						{% endfor %}
+						
 					</div>
-				{% endfor %}
+				
 			</div>
 
 			<div class="block">
 				<h2>Steps</h2>
 				<div class="steps">
-					{% for step in details.steps %}
+					{% for step in steps %}
 					<p>
 
-						{{ step }}
+						{{ step.step }}
 					</p>
 				{% endfor %}
 				</div>
 			</div>
 
-			<a href="{{ path('edit_task_detail', {id: details.id}) }}" class="sec-btn">Edit Details</a>
 		</div>
-
-
 	</main>
 {% endblock %}

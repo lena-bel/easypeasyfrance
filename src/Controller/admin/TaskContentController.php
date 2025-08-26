@@ -5,8 +5,6 @@ namespace App\Controller\admin;
 use DateTime;
 use App\Entity\Task;
 use App\Form\TaskForm;
-use App\Entity\TaskDetails;
-use App\Form\TaskDetailEditForm;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +19,6 @@ class TaskContentController extends AbstractController
     public function displayTasks(TaskRepository $taskRepository): Response
     {
         $tasks = $taskRepository->findAllTasks();
-        // dd($tasks);
 
         return $this->render('admin/task-content.html.twig', [
             'tasks' => $tasks
@@ -29,38 +26,36 @@ class TaskContentController extends AbstractController
     }
 
 
-    #[Route(path: '/task/{id}/edit', name: 'admin_task_edit')]
-    public function editTask(
-        Task $task,
-        Request $request,
-        EntityManagerInterface $em
-    ): Response {
-        $form = $this->createForm(TaskForm::class, $task);
-        $form->handleRequest($request);
+    // #[Route(path: '/task/{id}/edit', name: 'admin_task_edit')]
+    // public function editTask(
+    //     Task $task,
+    //     Request $request,
+    //     EntityManagerInterface $em
+    // ): Response {
+    //     $form = $this->createForm(TaskForm::class, $task);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $task->setUpdatedAt(new DateTime());
-            $em->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $task->setUpdatedAt(new DateTime());
+    //         $em->flush();
 
-            $this->addFlash('success', 'Task updated successfully!');
-            return $this->redirectToRoute('task-content');
-        }
+    //         $this->addFlash('success', 'Task updated successfully!');
+    //         return $this->redirectToRoute('task-content');
+    //     }
 
-        return $this->render('admin/task-edit.html.twig', [
-            'form' => $form->createView(),
-            'task' => $task,
-        ]);
-    }
+    //     return $this->render('admin/task-edit.html.twig', [
+    //         'form' => $form->createView(),
+    //         'task' => $task,
+    //     ]);
+    // }
     #[Route('/task/new', name: 'admin_task_new')]
     public function newTask(Request $request, EntityManagerInterface $em): Response
     {
         $task = new Task();
-        // $taskDetail = new TaskDetails();
-        // $task->addTaskDetail($taskDetail);
+
 
         $form = $this->createForm(TaskForm::class, $task);
         $form->handleRequest($request);
-        // dd($form);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($task);
@@ -99,15 +94,50 @@ class TaskContentController extends AbstractController
 
 
 
-    // #[Route('/task/{id}/details', name: 'task_details')]
-    // public function showTaskDetails(TaskDetails $taskDetails): Response
-    // {
-    //     $title = $taskDetails->getTaskId()->getTitle();
-    //     return $this->render('admin/task-details.html.twig', [
-    //         'details' => $taskDetails,
-    //         'title'   => $title,
-    //     ]);
-    // }
+    #[Route('/task/{id}/details', name: 'task_details')]
+    public function showTaskDetails(
+        TaskRepository $taskRepository,
+        Task $task
+    ): Response {
+        $tasks = $taskRepository->findTaskWithDetails($task->getId());
+        $steps = $task->getSteps();
+        $documents = $task->getDocuments();
+        $externalLinks = $task->getLinks();
+        return $this->render('admin/task-details.html.twig', [
+            'steps' => $steps,
+            'task'   => $tasks,
+            'documents' => $documents,
+            'externalLinks' => $externalLinks
+        ]);
+    }
+
+    #[Route(path: '/task/{id}/edit', name: 'task-edit')]
+    public function editTask(
+        Task $task,
+        Request $request,
+        EntityManagerInterface $em
+    ): Response {
+        $form = $this->createForm(TaskForm::class, $task);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            $this->addFlash('success', 'Task updated successfully!');
+            return $this->redirectToRoute('task-content');
+        }
+        return $this->render('admin/task-edit.html.twig', [
+            'task' => $task,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
+
+
+
+
+
     // #[Route('/task-detail/{id}/edit', name: 'edit_task_detail')]
     // public function editTaskDetail(
     //     TaskDetails $detail,

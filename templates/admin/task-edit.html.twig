@@ -3,7 +3,7 @@
 	{% include "partials/admin-header.html.twig" %}
 {% endblock %}
 {% block body %}
-	<main id="form">
+	<main id="form" class="admin-task-edit">
 		<a href="{{ path('task-content') }}" class="back-btn">&larr; Go back</a>
 		{{form_start(form)}}
 		{{form(form)}}
