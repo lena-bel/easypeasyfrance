@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Enum\Tags;
 use App\Repository\PostRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
@@ -33,6 +35,9 @@ class Post
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
     private ?User $user = null;
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true, enumType: Tags::class)]
+    private ?array $tags = null;
 
     public function getId(): ?int
     {
@@ -119,6 +124,21 @@ class Post
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Tags[]|null
+     */
+    public function getTags(): ?array
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?array $tags): static
+    {
+        $this->tags = $tags;
 
         return $this;
     }

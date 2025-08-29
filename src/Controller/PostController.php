@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostForm;
 use App\Repository\PostRepository;
+use App\Repository\VisaTypeProfileRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +18,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PostController extends AbstractController // extending AbstractController allow access to some frequently used utilities such as render() and redirectToRoute(), it facilitates the development of controllers
 {
     #[Route('/post', name:"posts_index")]
-    public function postsDisplay(PostRepository $postRepository): Response
+    public function postsDisplay(
+        PostRepository $postRepository,
+        VisaTypeProfileRepository $visaRepository
+    ): Response
     {
-        $posts = $postRepository-> findAll();
+        $posts = $postRepository-> findAllPosts();
+        $visas= $visaRepository->findAll();
         return $this->render('post.html.twig', [
             'posts' => $posts,
+            'visas'=>$visas
         ]);
     }
     #[Route('/post/new-post', name:"new-post")]
@@ -35,9 +41,10 @@ class PostController extends AbstractController // extending AbstractController 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($post);
+            $post->setUser($this->getUser());
             $post->setCreationDate(new DateTime());
             $post->setPublicationDate(new DateTime());
-            $post->setCommentsNumber('10');
+            $post->setCommentsNumber('0');
             $em->flush();
             $this->addFlash('success', "your post was posted successfully!");
             return $this->redirectToRoute('posts_index');

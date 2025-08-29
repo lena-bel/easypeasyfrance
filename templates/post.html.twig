@@ -1,53 +1,12 @@
 {% extends "base.html.twig" %}
 {% block header %}
-    {% include "partials/user-header.html.twig" %}
+	{% include "partials/user-header.html.twig" %}
 {% endblock %}
 {% block body %}
-	<main id="container" >
-		<aside class="navbar" aria-label="Sidebar with filters and actions">
+	<main id="container">
+		<aside class="navbar">
 			<h2>Filter Posts</h2>
-
 			<form action="">
-				<div class="filter-group">
-					<label for="latest-posts-select">
-						<strong>Latest Posts</strong>
-					</label>
-					<select id="latest-posts-select" name="latest-posts">
-						<option value="all" selected>All Time</option>
-						<option value="24h">Last 24 hours</option>
-						<option value="7d">Last 7 days</option>
-						<option value="30d">Last 30 days</option>
-					</select>
-				</div>
-
-				<div class="filter-group">
-					<strong>By User Profile</strong>
-					<div>
-						<input type="checkbox" id="profile-all" name="profile" value="all" checked/>
-						<label for="profile-all">All Profiles</label>
-					</div>
-					<div>
-						<input type="checkbox" id="profile-student" name="profile" value="student"/>
-						<label for="profile-student">Student</label>
-					</div>
-					<div>
-						<input type="checkbox" id="profile-family" name="profile" value="family"/>
-						<label for="profile-family">Private & Family Life</label>
-					</div>
-					<div>
-						<input type="checkbox" id="profile-talent" name="profile" value="talent"/>
-						<label for="profile-talent">Talent Passport</label>
-					</div>
-					<div>
-						<input type="checkbox" id="profile-refugee" name="profile" value="refugee"/>
-						<label for="profile-refugee">Refugees</label>
-					</div>
-					<div>
-						<input type="checkbox" id="profile-worker" name="profile" value="worker"/>
-						<label for="profile-worker">Workers</label>
-					</div>
-				</div>
-
 				<div class="filter-group">
 					<label for="sort-posts-select">
 						<strong>Sort Posts By</strong>
@@ -58,11 +17,26 @@
 						<option value="liked">Most Liked</option>
 					</select>
 				</div>
-
+				<div class="filter-group">
+					<label>
+						<strong>By User Profile</strong>
+					</label>
+					<div>
+						<input type="checkbox" id="profile-all" value="all" checked>
+						<label for="profile-all">All profiles</label>
+					</div>
+					{% for visa in visas %}
+						<div>
+							<input type="checkbox" id="profile-{{visa.name}}" value="all">
+							<label for="{{visa.name}}">{{visa.name}}</label>
+						</div>
+					{% endfor %}
+				</div>
 				<div class="buttons">
 					<a href="#" class="post-button filter" role="button">Filter</a>
 					<a href="#" class="post-button reset" role="button">Reset</a>
 				</div>
+
 			</form>
 		</aside>
 		<div class="content" aria-label="Community Help posts">
@@ -93,16 +67,39 @@
 								{{post.title}}</a>
 						</h3>
 						<p class="post-excerpt">{{post.content}}</p>
-						<div class="post-meta">By Anna — 2 hours ago —
-							{{post.commentsNumber}}
-							comments</div>
+						<div class="post-meta" data-date="{{ post.publicationDate|date('c') }}">
+							<p>By{{post.user.firstName}} - <span class="time-ago"></span> - {{post.commentsNumber}}comments - <i class="fa-heart favorite-icon far "></i></p>
+							
+						</div>
 					</li>
 				{% endfor %}
 			</ul>
 		</div>
 	</main>
+
+	<script>
+		let posts = document.querySelectorAll('.post-meta');
+for (let i = 0; i < posts.length; i++) {
+let currentPostMetaElement = posts[i];
+let dateString = currentPostMetaElement.getAttribute('data-date');
+if (! dateString) 
+continue;
+
+
+let date = new Date(dateString);
+let differenceInMilliseconds = Date.now() - date.getTime();
+let differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
+let differenceInMinutes = Math.floor(differenceInMilliseconds / (1000 * 60));
+let text = differenceInHours > 0 ? differenceInHours + 'hours ago' : differenceInMinutes + 'minutes ago';
+currentPostMetaElement.querySelector('.time-ago').textContent = text;
+// console.log(differenceInMilliseconds);
+// console.log(differenceInMinutes);
+// console.log(differenceInHours);
+
+}
+	</script>
 {% endblock %}
 
 {% block footer %}
-    {% include "partials/footer.html.twig" %}
+	{% include "partials/footer.html.twig" %}
 {% endblock %}
