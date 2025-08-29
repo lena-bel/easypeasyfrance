@@ -31,6 +31,9 @@ class Post
     #[ORM\Column(nullable: true)]
     private ?int $commentsNumber = null;
 
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Post
     public function setCommentsNumber(?int $commentsNumber): static
     {
         $this->commentsNumber = $commentsNumber;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

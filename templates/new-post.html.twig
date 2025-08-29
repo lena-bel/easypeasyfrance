@@ -6,37 +6,9 @@
 	<main id="new-post">
 		<div class="form-container">
 			<h1>Create a New Post</h1>
-			<form action="#" method="post" enctype="multipart/form-data">
-				<label for="title" class="label">Post Title</label>
-				<input type="text" id="title" name="title" placeholder="Example: Help with CAF housing form" required/>
-
-				<label for="profile" class="label">Your Profile</label>
-				<select id="profile" name="profile" required>
-					<option value="" disabled selected>Select your profile</option>
-					<option value="student">Student</option>
-					<option value="family">Private &amp; Family Life</option>
-					<option value="talent">Talent Passport</option>
-					<option value="refugee">Refugee</option>
-					<option value="worker">Worker</option>
-				</select>
-
-				<label for="content" class="label">Your Question or Experience</label>
-				<textarea id="content" name="content" placeholder="Write your full question, concern, or experience..." required></textarea>
-
-        {# uncomment this if you do decide to include pictures  #}
-				{# <label for="image" class="label">Upload Image (optional)</label>
-				<input type="file" id="image" name="image" accept="image/*"/> #}
-
-				<label for="tags" class="label">Tags (optional)</label>
-				<input type="text" id="tags" name="tags" placeholder="e.g. CAF, housing, Lyon"/>
-
-				<div class="form-checkbox">
-					<input type="checkbox" class="anonymous" name="anonymous"/>
-					<label for="anonymous" class="anonymous-label">Post anonymously</label>
-				</div>
-
-				<button type="submit" class="submit-btn">Submit Post</button>
-			</form>
+			{{form_start(form)}}
+			{{form(form)}}
+			{{form_end(form)}}
 		</div>
 	</main>
 

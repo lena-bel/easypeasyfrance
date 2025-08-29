@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\PostForm;
 use App\Repository\PostRepository;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -20,8 +25,27 @@ class PostController extends AbstractController // extending AbstractController 
         ]);
     }
     #[Route('/post/new-post', name:"new-post")]
-    public function createNewPost(): Response
+    public function createNewPost(
+        Request $request,
+        EntityManagerInterface $em
+    ): Response
     {
-        return $this->render('new-post.html.twig');
+        $post = new Post();
+        $form = $this->createForm(PostForm::class, $post);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($post);
+            $post->setCreationDate(new DateTime());
+            $post->setPublicationDate(new DateTime());
+            $post->setCommentsNumber('10');
+            $em->flush();
+            $this->addFlash('success', "your post was posted successfully!");
+            return $this->redirectToRoute('posts_index');
+        }
+
+        return $this->render('new-post.html.twig',[
+            'form'=>$form
+        ]);
     }
+
 }
