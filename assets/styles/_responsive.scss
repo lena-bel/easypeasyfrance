@@ -10,6 +10,23 @@
     nav {
       padding: 0;
     }
+    p {
+      font-size: 0.8rem;
+    }
+    h2{
+      font-size: 1.7rem;
+    }
+    h3{
+      font-size: 1.3rem;
+    }
+    button{
+      padding: 0.4rem 0.8rem;         
+    font-size: 0.9rem;               
+    height: auto;                   
+    margin-right: 0.5rem;            
+    width: 100%;                    
+    box-sizing: border-box;  
+    }
   }
   //end
   // for the header
@@ -72,12 +89,16 @@
       font-size: 0.8rem;
     }
     .btn, .sec-btn {
-    padding: 0.4rem 0.8rem;          /* slightly smaller padding */
-    font-size: 0.9rem;               /* smaller text */
-    height: auto;                   /* let height adjust */
-    margin-right: 0.5rem;            /* less margin */
-    width: 100%;                    /* make buttons full-width for easy tapping */
-    box-sizing: border-box;         /* include padding in width */
+    padding: 0.4rem 0.8rem;          
+    font-size: 0.9rem;               
+    height: auto;                  
+    margin-right: 0.5rem;            
+    width: 100%;                    
+    box-sizing: border-box;        
+  }
+  #testimonials{
+    margin: 0 4% !important;
+
   }
   .buttons{
     padding-bottom: 1rem;
@@ -98,12 +119,12 @@
       padding: 1.5rem 10%;
     }
     .btn, .sec-btn {
-    padding: 0.4rem 0.8rem;          /* slightly smaller padding */
-    font-size: 0.9rem;               /* smaller text */
-    height: auto;                   /* let height adjust */
-    margin-right: 0.5rem;            /* less margin */
-    width: 100%;                    /* make buttons full-width for easy tapping */
-    box-sizing: border-box;         /* include padding in width */
+    padding: 0.4rem 0.8rem;         
+    font-size: 0.9rem;               
+    height: auto;                   
+    margin-right: 0.5rem;            
+    width: 100%;                    
+    box-sizing: border-box;         
   }
   }
   //end of the responsive styles for the home page visitors' pages
@@ -135,6 +156,9 @@
     .footer-links {
       position: relative;
       left: 1rem;
+    }
+    a{
+      font-size: 0.8rem;
     }
   }
   //end of the responsive styles for the footer

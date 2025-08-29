@@ -130,33 +130,4 @@ class TaskContentController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-
-
-
-
-
-
-
-    // #[Route('/task-detail/{id}/edit', name: 'edit_task_detail')]
-    // public function editTaskDetail(
-    //     TaskDetails $detail,
-    //     Request $request,
-    //     EntityManagerInterface $em
-    // ): Response {
-    //     $form = $this->createForm(TaskDetailEditForm::class, $detail);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $detail->setUpdatedAt(new \DateTime());
-    //         $em->flush();
-
-    //         $this->addFlash('success', 'Task detail updated.');
-    //         return $this->redirectToRoute('task_details', ['id' => $detail->getTaskId()->getId()]);
-    //     }
-
-    //     return $this->render('admin/task-detail-edit.html.twig', [
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
 }
