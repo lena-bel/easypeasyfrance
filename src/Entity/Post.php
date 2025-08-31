@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\Tags;
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -38,6 +40,17 @@ class Post
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true, enumType: Tags::class)]
     private ?array $tags = null;
+
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoritePosts')]
+    private Collection $favoritedBy;
+
+    public function __construct()
+    {
+        $this->favoritedBy = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -139,6 +152,33 @@ class Post
     public function setTags(?array $tags): static
     {
         $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getFavoritedBy(): Collection
+    {
+        return $this->favoritedBy;
+    }
+
+    public function addFavoritedBy(User $favoritedBy): static
+    {
+        if (!$this->favoritedBy->contains($favoritedBy)) {
+            $this->favoritedBy->add($favoritedBy);
+            $favoritedBy->addFavoritePost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoritedBy(User $favoritedBy): static
+    {
+        if ($this->favoritedBy->removeElement($favoritedBy)) {
+            $favoritedBy->removeFavoritePost($this);
+        }
 
         return $this;
     }

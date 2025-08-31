@@ -68,7 +68,7 @@
 						</h3>
 						<p class="post-excerpt">{{post.content}}</p>
 						<div class="post-meta" data-date="{{ post.publicationDate|date('c') }}">
-							<p>By{{post.user.firstName}} - <span class="time-ago"></span> - {{post.commentsNumber}}comments - <i class="fa-heart favorite-icon far "></i></p>
+							<p>By{{post.user.firstName}} - <span class="time-ago"></span> - {{post.commentsNumber}}comments - <a href=""><i class="fa-heart favorite-icon far "></i></a></p>
 							
 						</div>
 					</li>
@@ -90,7 +90,27 @@ let date = new Date(dateString);
 let differenceInMilliseconds = Date.now() - date.getTime();
 let differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
 let differenceInMinutes = Math.floor(differenceInMilliseconds / (1000 * 60));
-let text = differenceInHours > 0 ? differenceInHours + 'hours ago' : differenceInMinutes + 'minutes ago';
+let differenceInDays = Math.floor(differenceInHours/24);
+let differenceInMonths = Math.floor(differenceInDays/30);
+let differenceInYears = Math.floor(differenceInMonths/12);
+let text;
+switch (true) {
+	case differenceInYears > 0:
+    text = differenceInYears + ' years ago';
+    break;
+  case differenceInMonths > 0:
+    text = differenceInMonths + ' months ago';
+    break;
+  case differenceInDays > 0:
+    text = differenceInDays + ' days ago';
+    break;
+  case differenceInHours > 0:
+    text = differenceInHours + ' hours ago';
+    break;
+  default:
+    text = differenceInMinutes + ' minutes ago';
+    break;
+}
 currentPostMetaElement.querySelector('.time-ago').textContent = text;
 // console.log(differenceInMilliseconds);
 // console.log(differenceInMinutes);

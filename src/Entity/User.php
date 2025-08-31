@@ -72,10 +72,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user')]
     private Collection $posts;
 
+    /**
+     * @var Collection<int, Post>
+     */
+    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'favoritedBy')]
+    private Collection $favoritePosts;
+
     public function __construct()
     {
         $this->testimonials = new ArrayCollection();
         $this->posts = new ArrayCollection();
+        $this->favoritePosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -317,6 +324,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $post->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getFavoritePosts(): Collection
+    {
+        return $this->favoritePosts;
+    }
+
+    public function addFavoritePost(Post $favoritePost): static
+    {
+        if (!$this->favoritePosts->contains($favoritePost)) {
+            $this->favoritePosts->add($favoritePost);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoritePost(Post $favoritePost): static
+    {
+        $this->favoritePosts->removeElement($favoritePost);
 
         return $this;
     }

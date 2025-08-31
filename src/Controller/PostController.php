@@ -55,4 +55,22 @@ class PostController extends AbstractController // extending AbstractController 
         ]);
     }
 
+    #[Route('/post/{id}/favorite', name: 'post_favorite', methods: ['POST'])]
+public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
+{
+    /** @var \App\Entity\User $user */
+    $user = $this->getUser();
+    if ($user->getFavoritePosts()->contains($post)) {
+        $user->removeFavoritePost($post);
+    } else {
+        $user->addFavoritePost($post);
+    }
+
+    $em->persist($user);
+    $em->flush();
+
+    return $this->redirectToRoute('posts_index'); 
+}
+
+
 }
