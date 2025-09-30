@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Post;
+use App\Enum\Tags;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -34,6 +35,15 @@ class PostRepository extends ServiceEntityRepository
             ->groupBy('p.id')
             ->getQuery()
             ->getResult();
+    }
+
+    public function findByTag(Tags $tag){
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.tags LIKE :tag')
+        ->setParameter('tag', $tag.'%')
+        // ->orderBy('p.publicationDate', 'DESC')
+        ->getQuery()
+        ->getResult();
     }
     // public function findAllWithQuery()
     // {

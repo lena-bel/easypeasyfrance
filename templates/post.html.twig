@@ -52,13 +52,14 @@
 			</form>
 
 			<div class="categories-filter" role="list" aria-label="Filter posts by categories">
-				<button type="button" class="active">All</button>
-				<button type="button">Housing</button>
-				<button type="button">Health</button>
-				<button type="button">Legal</button>
-				<button type="button">Education</button>
-				<button type="button">Employment</button>
-				<button type="button">Other</button>
+				{# <a href='{{path('posts_index')}}' class="{{ selectedTag is null ? 'active' : '' }}">All</a>
+				{% for tag  in tags %}
+					 <a href="{{ path('posts_by_tag', {'tag': tag}) }}"
+       class="{{ selectedTag is not null and selectedTag.value == tag ? 'active' : '' }}">
+       {{ tag }}
+    </a>
+				{% endfor %} #}
+				
 			</div>
 			<ul class="posts-list">
 				{% for post in posts %}

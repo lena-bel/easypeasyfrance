@@ -29,12 +29,32 @@ class PostController extends AbstractController // extending AbstractController 
         $posts = $postRepository-> findAllPosts();
         $visas= $visaRepository->findAll();
         $tags = array_map(fn($tag)=> $tag->value, Tags::cases());
+        // dd($posts);
         return $this->render('post.html.twig', [
             'posts' => $posts,
             'visas'=>$visas,
-            'tags'=>$tags
+            'tags'=>$tags,
+            'selectedTag' => null,
         ]);
     }
+
+    #[Route('/posts/tag/{tag}', name: 'posts_by_tag')]
+    public function findPostsByTag(
+        PostRepository $postRepository, 
+        string $tag
+    ): Response{
+        $tagEnum = Tags::from($tag);
+
+        $posts = $postRepository->findByTag($tagEnum);
+        dd($tagEnum);
+        return$this ->render('post.html.twig',
+        [
+            'posts'=>$posts,
+            'selectedTag'=>$tagEnum
+        ]);
+    }
+
+
     #[Route('/post/new-post', name:"new-post")]
     public function createNewPost(
         Request $request,
