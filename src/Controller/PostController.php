@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Post;
 use App\Form\PostForm;
+use App\Entity\Comment;
+use App\Form\CommentForm;
 use App\Repository\PostRepository;
-use App\Repository\VisaTypeProfileRepository;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\VisaTypeProfileRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -70,6 +72,31 @@ public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
     $em->flush();
 
     return $this->redirectToRoute('posts_index'); 
+}
+
+#[Route('/post/{id}', name:"post_detail")]
+public function postDetail(Post $post, Request $request, EntityManagerInterface $em): Response
+{
+    $comment = new Comment();
+    $form = $this->createForm(CommentForm::class, $comment);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $comment->setUser($this->getUser());
+        $comment->setPost($post);
+        $comment->setCreationDate(new \DateTime());
+
+        $em->persist($comment);
+        $em->flush();
+
+        $this->addFlash('success', 'Your comment has been added!');
+        return $this->redirectToRoute('post_detail', ['id' => $post->getId()]);
+    }
+
+    return $this->render('postComment.html.twig', [
+        'post' => $post,
+        'commentForm' => $form ->createView(),
+    ]);
 }
 
 

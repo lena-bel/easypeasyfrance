@@ -1,0 +1,59 @@
+@use "../variables";
+#comments {
+  margin: 0 auto;
+  width: 50%;
+  .post-card {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+
+    border: 1.5px solid variables.$border-line;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.2s ease;
+
+    .post-title {
+      margin: 0 0 0.4rem 0;
+      font-size: 1.2rem;
+    }
+  }
+  .comments {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .content {
+      font-size: 0.9em;
+      margin: 0.5rem 0;
+    }
+    .delete-btn, .reply-btn{
+      // background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    h3 {
+      padding: 1rem 0.5rem;
+    }
+
+    li {
+      list-style: none;
+    }
+    .line {
+      border: none;
+      border-top: 1px solid #c66b3d;
+      margin: 1rem auto;
+    }
+    #comment_form_content{
+        height: 3rem;
+        resize: vertical;
+        margin-bottom: 0.8rem; 
+    }
+  }
+}

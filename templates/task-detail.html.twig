@@ -4,8 +4,7 @@
 {% endblock %}
 {% block body %}
 	<main id="task-details">
-		<a href="{{ path('task_index') }}" class="back-btn">&larr; Go back</a>
-		<h1>{{ task.title }}</h1>
+		<h1> <a href="{{ path('task_index') }}" class="back-btn">&larr;</a> {{ task.title }}</h1>
 		<div class="card">
 			<p>{{task.informationalMessage}}</p>
 		</div>

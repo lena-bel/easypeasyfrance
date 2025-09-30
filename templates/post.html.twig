@@ -44,7 +44,7 @@
 				<p class="card">
 					Welcome to the community help page! Here you can ask questions, share tips, and support fellow newcomers navigating life in France.
 				</p>
-				<a href="{{path('new-post')}}" class="post-button new-post" role="button">Create New Post</a>
+				<a href="{{path('new-post')}}" class="post-button new-post" role="button">➕  &nbsp; ASK </a>
 			</div>
 			<form class="search-bar" role="search" aria-label="Search community posts">
 				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts"/>
@@ -63,12 +63,12 @@
 				{% for post in posts %}
 					<li>
 						<h3 class="post-title">
-							<a href="#" class="post-title-link">
+							<a href="{{ path('post_detail', {id: post.id}) }}" class="post-title-link">
 								{{post.title}}</a>
 						</h3>
 						<p class="post-excerpt">{{post.content}}</p>
 						<div class="post-meta" data-date="{{ post.publicationDate|date('c') }}">
-							<p>By{{post.user.firstName}} - <span class="time-ago"></span> - {{post.commentsNumber}}comments - <a href=""><i class="fa-heart favorite-icon far "></i></a></p>
+							<p>By{{post.user.firstName}} - <span class="time-ago"></span> - <a href="{{ path('post_detail', {id: post.id}) }}">{{post.commentsNumber}} comments</a></p>
 							
 						</div>
 					</li>

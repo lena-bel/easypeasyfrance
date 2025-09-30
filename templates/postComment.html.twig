@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/user-header.html.twig" %}
+{% endblock %}
+{% block body %}
+<main id="comments">
+    
+    <article >
+        <h2 class='post-title'> <a href="{{path('posts_index')}}" class="back-btn"> &lt; </a> {{ post.title }}</h2>
+        <div class="post-card">
+            <p>{{ post.content }}</p>
+        {% if post.image %}
+            <img src="{{ asset('uploads/' ~ post.image) }}" alt="Post image" />
+        {% endif %}
+        <div class="post-meta">
+            Posted by {{ post.user.firstName }} {{ post.user.lastName }}
+            • {{ post.publicationDate|date('d M Y H:i') }}
+        </div>
+        </div>
+    </article>
+    <section class="comments">
+        <h3>{{ post.comments|length }} Comments</h3>
+
+        <ul class="comment-list">
+            {% for comment in post.comments %}
+                <li class="comment-item">
+                    <strong>{{ comment.user.firstName }}</strong>
+                    {# <span class="comment-date">
+                        {{ comment.creationDate|date('d M Y H:i') }}
+                    </span> #}
+                    <p class="content">{{ comment.content }}</p>
+
+                    {% if app.user and (app.user == comment.user or is_granted('ROLE_ADMIN')) %}
+                        <form action="{{ path('delete_comment', {id: comment.id}) }}" method="post" style="display:inline">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button href='' type="submit" class="delete-btn"> <i>Delete </i><span class="dot">.</span></a>
+                            <a href=''class="reply-btn"> <i>Reply</i></a>
+                        </form>
+                    {% endif %}
+                </li>
+                <hr class='line'>
+            {% else %}
+                <p>No comments yet. Be the first to reply!</p>
+            {% endfor %}
+        </ul>
+
+        {% if app.user %}
+            <div class="add-comment">
+                {{ form_start(commentForm, {'action': path('addComment', {id: post.id}), 'method': 'POST'}) }}
+                    {{ form_widget(commentForm.content) }}
+                    <button type="submit" class="pri-btn">Comment</button>
+                {{ form_end(commentForm) }}
+            </div>
+        {% endif %}
+    </section>
+
+</main>
+{% endblock %}

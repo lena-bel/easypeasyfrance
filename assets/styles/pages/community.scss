@@ -4,6 +4,10 @@
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
+  a{
+    text-decoration: none;
+    color: inherit
+  }
   .navbar {
     flex: 0 0 280px;
     background-color: variables.$card-background;
@@ -38,11 +42,10 @@
   }
 
   .post-button {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     background-color: variables.$button-primary-background;
     font-weight: 600;
     border-radius: 6px;
-    height: 20px;
 
     text-decoration: none;
     color: white;
@@ -137,5 +140,6 @@
   .header {
     display: flex;
     justify-content: space-between;
-  }
+    gap: 1rem;
+}
 }

@@ -253,7 +253,7 @@ footer .arrow {
 }
 
 .back-btn {
-  color: white;
+  color: inherit;
   color: #C66B3D;
   text-decoration: none;
 }
@@ -468,6 +468,10 @@ input[type=file] {
   /* main content */
   /* Categories Filter */
 }
+#container a {
+  text-decoration: none;
+  color: inherit;
+}
 #container .navbar {
   flex: 0 0 280px;
   background-color: #f2f1ed;
@@ -498,11 +502,10 @@ input[type=file] {
   margin-right: 0.4rem;
 }
 #container .post-button {
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   background-color: #C66B3D;
   font-weight: 600;
   border-radius: 6px;
-  height: 20px;
   text-decoration: none;
   color: white;
 }
@@ -589,6 +592,7 @@ input[type=file] {
 #container .header {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .hero {
@@ -1470,6 +1474,58 @@ input[type=file] {
 .signup-text a:hover {
   text-decoration: underline;
   color: #f09068;
+}
+
+#comments {
+  margin: 0 auto;
+  width: 50%;
+}
+#comments .post-card {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+  border: 1.5px solid #c66b3d;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+#comments .post-card .post-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.2rem;
+}
+#comments .comments a {
+  text-decoration: none;
+  color: inherit;
+}
+#comments .comments .content {
+  font-size: 0.9em;
+  margin: 0.5rem 0;
+}
+#comments .comments .delete-btn, #comments .comments .reply-btn {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+#comments .comments h3 {
+  padding: 1rem 0.5rem;
+}
+#comments .comments li {
+  list-style: none;
+}
+#comments .comments .line {
+  border: none;
+  border-top: 1px solid #c66b3d;
+  margin: 1rem auto;
+}
+#comments .comments #comment_form_content {
+  height: 3rem;
+  resize: vertical;
+  margin-bottom: 0.8rem;
 }
 
 /*# sourceMappingURL=app.css.map */
