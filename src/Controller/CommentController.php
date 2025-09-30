@@ -28,14 +28,6 @@ class CommentController extends AbstractController
             $comment->setPost($post);
             $comment->setCreationDate(new \DateTime());
 
-            $parentId = $request->request->get('parent_id');
-            if ($parentId) {
-                $parentComment = $em->getRepository(Comment::class)->find($parentId);
-                if ($parentComment) {
-                    $comment->setParent($parentComment);
-                }
-            }
-
             $em->persist($comment);
             $em->flush();
 

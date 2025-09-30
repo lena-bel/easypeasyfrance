@@ -29,57 +29,6 @@ class Comment
     #[ORM\Column(nullable: true)]
     private ?\DateTime $creationDate = null;
 
-    #[ORM\ManyToOne(targetEntity: Comment::class, inversedBy: 'children')]
-    private ?Comment $parent = null;
-
-    /**
-     * @var Collection<int, Comment>
-     */
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Comment::class, orphanRemoval: true)]
-    private Collection $children;
-
-    public function __construct()
-    {
-        $this->children = new ArrayCollection();
-    }
-
-    public function getParent(): ?Comment
-    {
-        return $this->parent;
-    }
-
-    public function setParent(?Comment $parent): static
-    {
-        $this->parent = $parent;
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Comment>
-     */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
-
-    public function addChild(Comment $child): static
-    {
-        if (!$this->children->contains($child)) {
-            $this->children->add($child);
-            $child->setParent($this);
-        }
-        return $this;
-    }
-
-    public function removeChild(Comment $child): static
-    {
-        if ($this->children->removeElement($child)) {
-            if ($child->getParent() === $this) {
-                $child->setParent(null);
-            }
-        }
-        return $this;
-    }
 
     public function getId(): ?int
     {

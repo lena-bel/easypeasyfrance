@@ -6,7 +6,7 @@
 <main id="comments">
     
     <article >
-        <h2 class='post-title'> <a href="{{path('posts_index')}}" class="back-btn"> &lt; </a> {{ post.title }}</h2>
+        <h2 class='post-title'> <a href="{{path('posts_index')}}" class="back-btn"> &larr; {{ post.title }} </a> </h2>
         <div class="post-card">
             <p>{{ post.content }}</p>
         {% if post.image %}
@@ -25,16 +25,12 @@
             {% for comment in post.comments %}
                 <li class="comment-item">
                     <strong>{{ comment.user.firstName }}</strong>
-                    {# <span class="comment-date">
-                        {{ comment.creationDate|date('d M Y H:i') }}
-                    </span> #}
                     <p class="content">{{ comment.content }}</p>
 
                     {% if app.user and (app.user == comment.user or is_granted('ROLE_ADMIN')) %}
                         <form action="{{ path('delete_comment', {id: comment.id}) }}" method="post" style="display:inline">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button href='' type="submit" class="delete-btn"> <i>Delete </i><span class="dot">.</span></a>
-                            <a href=''class="reply-btn"> <i>Reply</i></a>
+                            <button href='' type="submit" class="delete-btn"> <i>Delete </i></a>
                         </form>
                     {% endif %}
                 </li>
