@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Enum\Tags;
 use App\Entity\Post;
 use App\Form\PostForm;
 use App\Entity\Comment;
@@ -27,9 +28,11 @@ class PostController extends AbstractController // extending AbstractController 
     {
         $posts = $postRepository-> findAllPosts();
         $visas= $visaRepository->findAll();
+        $tags = array_map(fn($tag)=> $tag->value, Tags::cases());
         return $this->render('post.html.twig', [
             'posts' => $posts,
-            'visas'=>$visas
+            'visas'=>$visas,
+            'tags'=>$tags
         ]);
     }
     #[Route('/post/new-post', name:"new-post")]
@@ -57,22 +60,22 @@ class PostController extends AbstractController // extending AbstractController 
         ]);
     }
 
-    #[Route('/post/{id}/favorite', name: 'post_favorite', methods: ['POST'])]
-public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
-{
-    /** @var \App\Entity\User $user */
-    $user = $this->getUser();
-    if ($user->getFavoritePosts()->contains($post)) {
-        $user->removeFavoritePost($post);
-    } else {
-        $user->addFavoritePost($post);
-    }
+//     #[Route('/post/{id}/favorite', name: 'post_favorite', methods: ['POST'])]
+// public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
+// {
+//     /** @var \App\Entity\User $user */
+//     $user = $this->getUser();
+//     if ($user->getFavoritePosts()->contains($post)) {
+//         $user->removeFavoritePost($post);
+//     } else {
+//         $user->addFavoritePost($post);
+//     }
 
-    $em->persist($user);
-    $em->flush();
+//     $em->persist($user);
+//     $em->flush();
 
-    return $this->redirectToRoute('posts_index'); 
-}
+//     return $this->redirectToRoute('posts_index'); 
+// }
 
 #[Route('/post/{id}', name:"post_detail")]
 public function postDetail(Post $post, Request $request, EntityManagerInterface $em): Response

@@ -472,6 +472,10 @@ input[type=file] {
   text-decoration: none;
   color: inherit;
 }
+#container .tag {
+  color: rgba(0, 0, 0, 0.607);
+  font-size: 0.9rem;
+}
 #container .navbar {
   flex: 0 0 280px;
   background-color: #f2f1ed;

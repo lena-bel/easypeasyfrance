@@ -16,13 +16,24 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findAllPosts(){
+    public function findAllPosts()
+    {
         return $this->createQueryBuilder('p')
-        ->addSelect('u') 
-        ->join('p.user', 'u') 
-        // ->orderBy('p.publicationDate', 'DESC') 
-        ->getQuery()
-        ->getResult();
+            ->addSelect('u')
+            ->join('p.user', 'u')
+            // ->orderBy('p.publicationDate', 'DESC') 
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllPostsWithCommentCount()
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.comments', 'c')
+            ->addSelect('COUNT(c.id) AS commentsCount')
+            ->groupBy('p.id')
+            ->getQuery()
+            ->getResult();
     }
     // public function findAllWithQuery()
     // {

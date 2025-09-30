@@ -29,6 +29,12 @@ class CommentController extends AbstractController
             $comment->setCreationDate(new \DateTime());
 
             $em->persist($comment);
+
+            $currentCount = $post->getCommentsNumber() ?? 0;
+            $post->setCommentsNumber($currentCount + 1);
+            $em->persist($post);
+
+
             $em->flush();
 
             $this->addFlash('success', 'Your comment has been added!');
@@ -40,9 +46,15 @@ class CommentController extends AbstractController
     public function deleteComment(Comment $comment, EntityManagerInterface $em)
     {
         $user = $this->getUser();
+        $post = $comment->getPost();
 
         if ($user === $comment->getUser() || $this->isGranted('ROLE_ADMIN')) {
             $em->remove($comment);
+
+            $currentCount = $post->getCommentsNumber() ?? 1;
+            $post->setCommentsNumber(max($currentCount - 1, 0));
+            $em->persist($post);
+            
             $em->flush();
             $this->addFlash('success', 'Comment deleted successfully!');
         } else {

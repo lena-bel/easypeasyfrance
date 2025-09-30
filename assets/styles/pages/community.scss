@@ -8,6 +8,10 @@
     text-decoration: none;
     color: inherit
   }
+  .tag{
+    color: rgba(0, 0, 0, 0.607);
+    font-size: 0.9rem;
+  }
   .navbar {
     flex: 0 0 280px;
     background-color: variables.$card-background;

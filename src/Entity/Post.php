@@ -41,11 +41,6 @@ class Post
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true, enumType: Tags::class)]
     private ?array $tags = null;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoritePosts')]
-    private Collection $favoritedBy;
 
     /**
      * @var Collection<int, Comment>
@@ -55,7 +50,6 @@ class Post
 
     public function __construct()
     {
-        $this->favoritedBy = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -158,38 +152,15 @@ class Post
 
     public function setTags(?array $tags): static
     {
+        if ($tags !== null) {
+        $tags = array_map(fn($tag) => $tag instanceof Tags? $tag: Tags::from($tag), $tags);
+    }
         $this->tags = $tags;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getFavoritedBy(): Collection
-    {
-        return $this->favoritedBy;
-    }
-
-    public function addFavoritedBy(User $favoritedBy): static
-    {
-        if (!$this->favoritedBy->contains($favoritedBy)) {
-            $this->favoritedBy->add($favoritedBy);
-            $favoritedBy->addFavoritePost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoritedBy(User $favoritedBy): static
-    {
-        if ($this->favoritedBy->removeElement($favoritedBy)) {
-            $favoritedBy->removeFavoritePost($this);
-        }
-
-        return $this;
-    }
-
+   
     /**
      * @return Collection<int, Comment>
      */
