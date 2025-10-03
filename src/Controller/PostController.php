@@ -18,32 +18,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // #[IsGranted('ROLE_USER')]
 class PostController extends AbstractController // extending AbstractController allow access to some frequently used utilities such as render() and redirectToRoute(), it facilitates the development of controllers
 {
-    #[Route('/post', name:"posts_index")]
+    #[Route('/post', name: "posts_index")]
     public function postsDisplay(
         PostRepository $postRepository,
         VisaTypeProfileRepository $visaRepository
-    ): Response
-    {
-        $posts = $postRepository-> findAllPosts();
-        $visas= $visaRepository->findAll();
+    ): Response {
+        $posts = $postRepository->findAllPosts();
+        $visas = $visaRepository->findAll();
         // dd($posts);
         return $this->render('post.html.twig', [
             'posts' => $posts,
-            'visas'=>$visas,
+            'visas' => $visas,
         ]);
     }
 
-
-    #[Route('/post/new-post', name:"new-post")]
+    #[Route('/post/new-post', name: "new-post")]
     public function createNewPost(
         Request $request,
         EntityManagerInterface $em
-    ): Response
-    {
+    ): Response {
         $post = new Post();
         $form = $this->createForm(PostForm::class, $post);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($post);
             $post->setUser($this->getUser());
             $post->setCreationDate(new DateTime());
@@ -54,52 +51,130 @@ class PostController extends AbstractController // extending AbstractController 
             return $this->redirectToRoute('posts_index');
         }
 
-        return $this->render('new-post.html.twig',[
-            'form'=>$form
+        return $this->render('new-post.html.twig', [
+            'form' => $form
         ]);
     }
 
-//     #[Route('/post/{id}/favorite', name: 'post_favorite', methods: ['POST'])]
-// public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
-// {
-//     /** @var \App\Entity\User $user */
-//     $user = $this->getUser();
-//     if ($user->getFavoritePosts()->contains($post)) {
-//         $user->removeFavoritePost($post);
-//     } else {
-//         $user->addFavoritePost($post);
-//     }
+    #[Route('/post/search', name: "posts_search")]
+    public function searchPosts(
+        Request $request,
+        PostRepository $postRepository,
+        VisaTypeProfileRepository $visaRepository
+    ): Response {
+        $keyword = $request->query->get('q', '');
 
-//     $em->persist($user);
-//     $em->flush();
+        $posts = $keyword
+            ? $postRepository->searchPosts($keyword)
+            : $postRepository->findAllPosts();
 
-//     return $this->redirectToRoute('posts_index'); 
-// }
+        $visas = $visaRepository->findAll();
 
-#[Route('/post/{id}', name:"post_detail")]
-public function postDetail(Post $post, Request $request, EntityManagerInterface $em): Response
-{
-    $comment = new Comment();
-    $form = $this->createForm(CommentForm::class, $comment);
-    $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        $comment->setUser($this->getUser());
-        $comment->setPost($post);
-        $comment->setCreationDate(new \DateTime());
-
-        $em->persist($comment);
-        $em->flush();
-
-        $this->addFlash('success', 'Your comment has been added!');
-        return $this->redirectToRoute('post_detail', ['id' => $post->getId()]);
+        return $this->render('post.html.twig', [
+            'posts' => $posts,
+            'visas' => $visas,
+            'keyword' => $keyword,
+        ]);
     }
 
-    return $this->render('postComment.html.twig', [
-        'post' => $post,
-        'commentForm' => $form ->createView(),
+   
+
+
+    
+
+    #[Route('/post/{id}', name: "post_detail")]
+    public function postDetail(Post $post, Request $request, EntityManagerInterface $em): Response
+    {
+        $comment = new Comment();
+        $form = $this->createForm(CommentForm::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setUser($this->getUser());
+            $comment->setPost($post);
+            $comment->setCreationDate(new \DateTime());
+
+            $em->persist($comment);
+            $em->flush();
+
+            $this->addFlash('success', 'Your comment has been added!');
+            return $this->redirectToRoute('post_detail', ['id' => $post->getId()]);
+        }
+
+        return $this->render('postComment.html.twig', [
+            'post' => $post,
+            'commentForm' => $form->createView(),
+        ]);
+    }
+
+    #[Route(path:'/my-posts', name:'my_posts')]
+    public function myPosts() :Response{
+
+        $user = $this->getUser();
+    if (!$user instanceof \App\Entity\User) {
+        throw $this->createAccessDeniedException();
+    }
+    $posts = $user->getPosts();
+
+    return $this->render('myPosts.html.twig', [
+        'posts' => $posts,
+        'favoritePosts'=>$user->getFavoritePosts()
     ]);
+    }
+
+    #[Route('/post/{id}/delete', name: 'post_delete', methods: ['POST'])]
+public function delete(Post $post, EntityManagerInterface $em, Request $request): Response
+{
+    $user = $this->getUser();
+    if (!$user instanceof \App\Entity\User || $post->getUser() !== $user) {
+        throw $this->createAccessDeniedException();
+    }
+
+    if ($this->isCsrfTokenValid('delete' . $post->getId(), $request->request->get('_token'))) {
+        $em->remove($post);
+        $em->flush();
+    }
+
+    return $this->redirectToRoute('my_posts');
 }
 
 
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+//     #[Route('/post/{id}/favorite', name: 'post_favorite')]
+    // public function toggleFavorite(Post $post, EntityManagerInterface $em): Response
+    // {
+    //     /** @var \App\Entity\User $user */
+    //     $user = $this->getUser();
+    //     if ($user->getFavoritePosts()->contains($post)) {
+    //         $user->removeFavoritePost($post);
+    //     } else {
+    //         $user->addFavoritePost($post);
+    //     }
+
+    //     $em->persist($user);
+    //     $em->flush();
+
+    //     return $this->redirectToRoute('posts_index'); 
+    // }
+
+

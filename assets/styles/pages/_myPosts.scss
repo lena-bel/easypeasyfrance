@@ -1,0 +1,118 @@
+@use "../variables";
+#my-posts {
+  h1{
+    display: none;
+  }
+
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  .tabs{
+    display: grid;
+    background-color: variables.$button-secondary-background;
+    color: white;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 1rem 0;
+  }
+  .tab-link.active.buttons {
+    background-color: variables.$button-primary-background;
+    color: variables.$button-primary-text;
+    
+}
+
+  .buttons{
+    background: none;
+    border: none;
+    padding: 1rem;
+    margin: 0;
+    font: inherit;
+    outline: none;
+    
+  }
+  
+  table {
+    width: 100%;
+    text-align: left;
+  }
+  thead th {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #eee5dc;
+  }
+  tbody tr {
+    border-bottom: 1px solid #eee5dc;
+  }
+  tbody tr:hover {
+    background-color: #fceeea;
+  }
+  td {
+    padding: 0.75rem 1rem;
+  }
+  
+  td:last-child a {
+    margin-right: 0.5rem;
+    text-decoration: none;
+  }
+  td:last-child a:nth-child(1) {
+    color: #c66b3d;
+  }
+  td:last-child a:hover {
+    text-decoration: underline;
+  }
+  .delete-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: red;
+    cursor: pointer;
+    outline: none;
+  }
+  span {
+    margin: 0 0.5rem 0 0;
+  }
+  .tab-content {
+    display: none; /* hide by default */
+}
+
+.tab-content.active {
+    display: block; /* show only active */
+    
+}
+
+ .posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  .posts-list li {
+    border: 1.5px solid variables.$border-line;
+    border-radius: 8px;
+    margin-bottom: 1.3rem;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.2s ease;
+  }
+  .posts-list li:hover {
+    box-shadow: 0 3px 8px rgb(0 0 0 / 0.2);
+  }
+  .post-title {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.2rem;
+  }
+  .post-meta {
+    font-size: 0.85rem;
+    color: variables.$button-secondary-text;
+    margin-bottom: 0.8rem;
+  }
+  .post-excerpt {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+}

@@ -2,11 +2,9 @@
 
 namespace App\Entity;
 
-use App\Enum\Tags;
 use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
@@ -38,18 +36,20 @@ class Post
     #[ORM\ManyToOne(inversedBy: 'posts')]
     private ?User $user = null;
 
-  
+  #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoritePosts')]
+    private Collection $favoritedBy;
 
 
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post',  cascade: ['remove'])]
     private Collection $comments;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->favoritedBy = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,4 +171,27 @@ class Post
 
         return $this;
     }
+
+     public function getFavoritedBy(): Collection
+    {
+        return $this->favoritedBy;
+    }
+
+    public function addFavoritedBy(User $user): self
+    {
+        if (!$this->favoritedBy->contains($user)) {
+            $this->favoritedBy->add($user);
+        }
+        return $this;
+    }
+
+    public function removeFavoritedBy(User $user): self
+    {
+        if ($this->favoritedBy->contains($user)) {
+            $this->favoritedBy->removeElement($user);
+        }
+        return $this;
+    }
+
 }
+

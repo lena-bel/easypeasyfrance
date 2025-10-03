@@ -3,43 +3,7 @@
 	{% include "partials/user-header.html.twig" %}
 {% endblock %}
 {% block body %}
-	<main
-		id="container">
-		<aside class="navbar">
-					<h2>Filter Posts</h2>
-					<form action="">
-						<div class="filter-group">
-							<label for="sort-posts-select">
-								<strong>Sort Posts By</strong>
-							</label>
-							<select id="sort-posts-select" name="sort-posts">
-								<option value="recent" selected>Most Recent</option>
-								<option value="commented">Most Commented</option>
-								<option value="liked">Most Liked</option>
-							</select>
-						</div>
-						<div class="filter-group">
-							<label>
-								<strong>By User Profile</strong>
-							</label>
-							<div>
-								<input type="checkbox" id="profile-all" value="all" checked>
-								<label for="profile-all">All profiles</label>
-							</div>
-							{% for visa in visas %}
-								<div>
-									<input type="checkbox" id="profile-{{visa.name}}" value="all">
-									<label for="{{visa.name}}">{{visa.name}}</label>
-								</div>
-							{% endfor %}
-						</div>
-						<div class="buttons">
-							<a href="#" class="post-button filter" role="button">Filter</a>
-							<a href="#" class="post-button reset" role="button">Reset</a>
-						</div>
-		
-					</form>
-				</aside>
+	<main id="container">
 		<div class="content" aria-label="Community Help posts">
 			<div class="header">
 				<p class="card">
@@ -48,8 +12,8 @@
 				<a href="{{path('new-post')}}" class="post-button new-post" role="button">➕  &nbsp; ASK
 				</a>
 			</div>
-			<form class="search-bar" role="search" aria-label="Search community posts">
-				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts"/>
+			<form class="search-bar" role="search" aria-label="Search community posts" method="get" action="{{ path('posts_search') }}">
+				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts" name='q' value="{{ keyword|default('') }}"/>
 			</form>
 
 			<ul class="posts-list">
@@ -63,13 +27,22 @@
 
 						<div class="post-meta" data-date="{{ post.publicationDate|date('c') }}">
 							<p>By{{post.user.firstName}}
-								-
+								<span>-</span>
 								<span class="time-ago"></span>
-								-
+								<span>-</span>
 								<a href="{{ path('post_detail', {id: post.id}) }}">{{post.commentsNumber}}
 									comments
 								</a>
+								<span>-</span>
+								<a href="{{ path('post_favorite', {id: post.id}) }}" class="favorite-btn">
+								{% if app.user.favoritePosts.contains(post) %}
+									<i class="fa-solid fa-heart favorite-icon" style="color: #C66B3D; font-size: 20px;"></i>
+								{% else %}
+									<i class="fa-regular fa-heart favorite-icon" style="color: black; font-size: 20px;"></i>
+								{% endif %}
+							</a>
 							</p>
+							
 
 						</div>
 					</li>
