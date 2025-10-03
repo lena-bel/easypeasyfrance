@@ -38,8 +38,7 @@ class Post
     #[ORM\ManyToOne(inversedBy: 'posts')]
     private ?User $user = null;
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true, enumType: Tags::class)]
-    private ?array $tags = null;
+  
 
 
     /**
@@ -142,23 +141,6 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Tags[]|null
-     */
-    public function getTags(): ?array
-    {
-        return $this->tags;
-    }
-
-    public function setTags(?array $tags): static
-    {
-        if ($tags !== null) {
-        $tags = array_map(fn($tag) => $tag instanceof Tags? $tag: Tags::from($tag), $tags);
-    }
-        $this->tags = $tags;
-
-        return $this;
-    }
 
    
     /**
@@ -182,7 +164,6 @@ class Post
     public function removeComment(Comment $comment): static
     {
         if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
             if ($comment->getPost() === $this) {
                 $comment->setPost(null);
             }

@@ -37,14 +37,7 @@ class PostRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findByTag(Tags $tag){
-        return $this->createQueryBuilder('p')
-        ->andWhere('p.tags LIKE :tag')
-        ->setParameter('tag', $tag.'%')
-        // ->orderBy('p.publicationDate', 'DESC')
-        ->getQuery()
-        ->getResult();
-    }
+   
     // public function findAllWithQuery()
     // {
     //     $qb = $this->createQueryBuilder('name');

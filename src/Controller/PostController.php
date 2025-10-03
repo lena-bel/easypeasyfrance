@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use DateTime;
-use App\Enum\Tags;
 use App\Entity\Post;
 use App\Form\PostForm;
 use App\Entity\Comment;
@@ -14,7 +13,6 @@ use App\Repository\VisaTypeProfileRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 // #[IsGranted('ROLE_USER')]
@@ -28,29 +26,10 @@ class PostController extends AbstractController // extending AbstractController 
     {
         $posts = $postRepository-> findAllPosts();
         $visas= $visaRepository->findAll();
-        $tags = array_map(fn($tag)=> $tag->value, Tags::cases());
         // dd($posts);
         return $this->render('post.html.twig', [
             'posts' => $posts,
             'visas'=>$visas,
-            'tags'=>$tags,
-            'selectedTag' => null,
-        ]);
-    }
-
-    #[Route('/posts/tag/{tag}', name: 'posts_by_tag')]
-    public function findPostsByTag(
-        PostRepository $postRepository, 
-        string $tag
-    ): Response{
-        $tagEnum = Tags::from($tag);
-
-        $posts = $postRepository->findByTag($tagEnum);
-        dd($tagEnum);
-        return$this ->render('post.html.twig',
-        [
-            'posts'=>$posts,
-            'selectedTag'=>$tagEnum
         ]);
     }
 

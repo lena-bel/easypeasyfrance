@@ -3,42 +3,43 @@
 	{% include "partials/user-header.html.twig" %}
 {% endblock %}
 {% block body %}
-	<main id="container">
-		{# <aside class="navbar">
-			<h2>Filter Posts</h2>
-			<form action="">
-				<div class="filter-group">
-					<label for="sort-posts-select">
-						<strong>Sort Posts By</strong>
-					</label>
-					<select id="sort-posts-select" name="sort-posts">
-						<option value="recent" selected>Most Recent</option>
-						<option value="commented">Most Commented</option>
-						<option value="liked">Most Liked</option>
-					</select>
-				</div>
-				<div class="filter-group">
-					<label>
-						<strong>By User Profile</strong>
-					</label>
-					<div>
-						<input type="checkbox" id="profile-all" value="all" checked>
-						<label for="profile-all">All profiles</label>
-					</div>
-					{% for visa in visas %}
-						<div>
-							<input type="checkbox" id="profile-{{visa.name}}" value="all">
-							<label for="{{visa.name}}">{{visa.name}}</label>
+	<main
+		id="container">
+		<aside class="navbar">
+					<h2>Filter Posts</h2>
+					<form action="">
+						<div class="filter-group">
+							<label for="sort-posts-select">
+								<strong>Sort Posts By</strong>
+							</label>
+							<select id="sort-posts-select" name="sort-posts">
+								<option value="recent" selected>Most Recent</option>
+								<option value="commented">Most Commented</option>
+								<option value="liked">Most Liked</option>
+							</select>
 						</div>
-					{% endfor %}
-				</div>
-				<div class="buttons">
-					<a href="#" class="post-button filter" role="button">Filter</a>
-					<a href="#" class="post-button reset" role="button">Reset</a>
-				</div>
-
-			</form>
-		</aside> #}
+						<div class="filter-group">
+							<label>
+								<strong>By User Profile</strong>
+							</label>
+							<div>
+								<input type="checkbox" id="profile-all" value="all" checked>
+								<label for="profile-all">All profiles</label>
+							</div>
+							{% for visa in visas %}
+								<div>
+									<input type="checkbox" id="profile-{{visa.name}}" value="all">
+									<label for="{{visa.name}}">{{visa.name}}</label>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="buttons">
+							<a href="#" class="post-button filter" role="button">Filter</a>
+							<a href="#" class="post-button reset" role="button">Reset</a>
+						</div>
+		
+					</form>
+				</aside>
 		<div class="content" aria-label="Community Help posts">
 			<div class="header">
 				<p class="card">
@@ -51,16 +52,6 @@
 				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts"/>
 			</form>
 
-			<div class="categories-filter" role="list" aria-label="Filter posts by categories">
-				{# <a href='{{path('posts_index')}}' class="{{ selectedTag is null ? 'active' : '' }}">All</a>
-				{% for tag  in tags %}
-					 <a href="{{ path('posts_by_tag', {'tag': tag}) }}"
-       class="{{ selectedTag is not null and selectedTag.value == tag ? 'active' : '' }}">
-       {{ tag }}
-    </a>
-				{% endfor %} #}
-				
-			</div>
 			<ul class="posts-list">
 				{% for post in posts %}
 					<li>
@@ -68,15 +59,8 @@
 							<a href="{{ path('post_detail', {id: post.id}) }}" class="post-title-link">
 								{{post.title}}</a>
 						</h3>
-						<p class="post-excerpt">{{post.content}} <br>
-						
-							{% if post.tags %}
-								{% for tag in post.tags %}
-									<i><span class="tag">#{{ tag.value|lower }} </span></i>
-									
-								{% endfor %}
-							{% endif %} </p>
-						
+						<p class="post-excerpt">{{post.content}}</p>
+
 						<div class="post-meta" data-date="{{ post.publicationDate|date('c') }}">
 							<p>By{{post.user.firstName}}
 								-
