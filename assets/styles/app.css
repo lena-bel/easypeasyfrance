@@ -231,6 +231,7 @@ footer .arrow {
   text-decoration: none;
   color: #FAF9F6;
   margin-right: 1rem;
+  margin-top: 0.4rem;
 }
 
 .pri-btn:hover {
@@ -1646,6 +1647,86 @@ input[type=file] {
 #my-posts .post-excerpt {
   font-size: 1rem;
   margin-bottom: 0.8rem;
+}
+
+#appointment h1 {
+  margin-bottom: 1.5rem;
+}
+#appointment h2 {
+  margin: 0 0 1rem 0;
+}
+#appointment .section-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 1rem 0 0.2rem 0;
+}
+#appointment .appointment-card {
+  background-color: #FAF9F6;
+  border: 1px solid #D2BBA0;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+#appointment .appointment-card p {
+  margin-bottom: 0.5rem;
+}
+#appointment .calendar .day-card {
+  border: 1px solid #c66b3d;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  background-color: #ffffff;
+}
+#appointment .day-header {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#appointment .day-header:hover {
+  background-color: #D2BBA0;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+#appointment .arrow {
+  font-size: 1rem;
+}
+#appointment .time-slots {
+  display: grid;
+  border-top: 1px solid #D2BBA0;
+  padding: 0.5rem 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  display: grid;
+}
+@media (max-width: 500px) {
+  #appointment .time-slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#appointment .time-slot {
+  background-color: #FAF9F6;
+  border: 1px solid #D2BBA0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.2s;
+}
+#appointment .time-slot:hover {
+  background-color: #C66B3D;
+  color: #fff;
+}
+#appointment .selected {
+  background-color: #C66B3D;
+  color: #fff;
+}
+#appointment .hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */

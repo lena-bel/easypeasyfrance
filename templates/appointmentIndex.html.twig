@@ -1,0 +1,109 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/user-header.html.twig" %}
+{% endblock %}
+
+
+{% block body %}
+	<main id='appointment'>
+
+		<div class='container'>
+			<h1>My Appointments</h1>
+
+			{% if existingAppointment %}
+				<div class="appointment-card">
+					<h2>You already have an appointment</h2>
+					<p>📅
+						<strong>Date:</strong>
+						{{ existingAppointment.preferredDate|date('d M Y') }}</p>
+					<p>⏰
+						<strong>Time:</strong>
+						{{ existingAppointment.preferredTime|date('H:i') }}</p>
+					<p>You can only book another appointment once this one is completed or cancelled.</p>
+				</div>
+
+			{% else %}
+				<h2 class="section-title">Available Slots</h2>
+
+				<div class="calendar">
+					{% for key, day in groupedSlots %}
+						<div class="day-card">
+							<button class="day-header" onclick="toggleSlots('{{ key }}')">
+								<span>{{ day.date|date('l, d M Y') }}</span>
+								<span id="arrow-{{ key }}">▼</span>
+							</button>
+
+
+							<div id="slots-{{ key }}" class="time-slots">
+								{% for time in day.times %}
+									<div class="time-slot" onclick="selectSlot(this,'{{ day.date|date('Y-m-d') }}', '{{ time }}')">
+										{{ time }}
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					{% else %}
+						<p class="no-slots">No available slots at the moment.</p>
+					{% endfor %}
+				</div>
+
+
+			</div>
+
+			<div id="appointmentForm" class="hidden">
+				{{form_start(form)}}
+
+				{{ form_row(form.preferredDate, {'attr': {'id': 'dateField'}}) }}
+				{{ form_row(form.preferredTime, {'attr': {'id': 'timeField'}}) }}
+
+				{{ form_row(form.reason) }}
+				{{ form_row(form.message) }}
+
+				{{form_end(form)}}
+			</div>
+		</div>
+
+
+	{% endif %}
+</div></main><script>
+function selectSlot(slotElement, date, time) {
+const form = document.getElementById('appointmentForm');
+if (form) 
+form.classList.remove('hidden');
+
+
+
+const dateInput = document.getElementById('dateField');
+const timeInput = document.getElementById('timeField');
+
+if (dateInput) 
+dateInput.value = date;
+
+
+if (timeInput) 
+timeInput.value = time;
+
+
+
+form.scrollIntoView({behavior: 'smooth', block: 'start'});
+
+document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+slotElement.classList.add('selected');
+}
+
+function toggleSlots(dayKey) {
+const slots = document.getElementById('slots-' + dayKey);
+const arrow = document.getElementById('arrow-' + dayKey);
+if (! slots || ! arrow) 
+return;
+
+
+
+if (slots.style.display === 'grid') {
+slots.style.display = 'none';
+arrow.textContent = '▼';
+} else {
+slots.style.display = 'grid';
+arrow.textContent = '▲';
+}
+}</script>{% endblock %}{% block footer %}{% include "partials/footer.html.twig" %}{% endblock %}
