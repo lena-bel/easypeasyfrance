@@ -35,9 +35,9 @@
 
 
 							<div id="slots-{{ key }}" class="time-slots">
-								{% for time in day.times %}
-									<div class="time-slot" onclick="selectSlot(this,'{{ day.date|date('Y-m-d') }}', '{{ time }}')">
-										{{ time }}
+								{% for slot in day.slots %}
+									<div class="time-slot" onclick="selectSlot(this,'{{ slot.date|date('Y-m-d') }}','{{ slot.time|date('H:i') }}','{{ slot.id }}')">
+										{{ slot.time|date('H:i') }}
 									</div>
 								{% endfor %}
 							</div>
@@ -58,6 +58,7 @@
 
 				{{ form_row(form.reason) }}
 				{{ form_row(form.message) }}
+				 <input type="hidden" id="slotIdField" name="slot_id" />
 
 				{{form_end(form)}}
 			</div>
@@ -65,31 +66,32 @@
 
 
 	{% endif %}
-</div></main><script>
-function selectSlot(slotElement, date, time) {
-const form = document.getElementById('appointmentForm');
-if (form) 
-form.classList.remove('hidden');
+</div>
+</main>
+<script>
+function selectSlot(slotElement, date, time, slotId) {
+    const form = document.getElementById('appointmentForm');
+    if (form) form.classList.remove('hidden');
 
+    document.getElementById('dateField').value = date;
+    document.getElementById('timeField').value = time;
 
+    // Hidden field for slot ID
+    let slotIdInput = document.getElementById('slotIdField');
+    if (!slotIdInput) {
+        slotIdInput = document.createElement('input');
+        slotIdInput.type = 'hidden';
+        slotIdInput.name = 'appointment[slot]';
+        slotIdInput.id = 'slotIdField';
+        form.appendChild(slotIdInput);
+    }
+    slotIdInput.value = slotId;
 
-const dateInput = document.getElementById('dateField');
-const timeInput = document.getElementById('timeField');
-
-if (dateInput) 
-dateInput.value = date;
-
-
-if (timeInput) 
-timeInput.value = time;
-
-
-
-form.scrollIntoView({behavior: 'smooth', block: 'start'});
-
-document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-slotElement.classList.add('selected');
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    slotElement.classList.add('selected');
 }
+
 
 function toggleSlots(dayKey) {
 const slots = document.getElementById('slots-' + dayKey);

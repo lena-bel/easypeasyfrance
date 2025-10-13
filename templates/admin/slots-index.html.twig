@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<main id="appointment-slots">
+		<div class="title">
+			<h1>Appointment Slots</h1>
+
+			<a href="{{ path('create_slot') }}" class="pri-btn slot-btn">+ Add New Slot</a>
+		</div>
+
+		<div class="table-container">
+			<table class="slot-table">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for slot in slots %}
+						<tr>
+							<td>{{ slot.date|date('Y-m-d') }}</td>
+							<td>{{ slot.time|date('H:i') }}</td>
+							<td>{{ slot.isBooked ? 'Booked' : 'Available' }}</td>
+							<td>
+								<a href="{{ path('slot_delete', {'id': slot.id}) }}" class='delete' onclick="return confirm('Are you sure?');">Delete</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">No slots yet.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</main>
+{% endblock %}

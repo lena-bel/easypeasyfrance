@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+    <main id="new-slot">
+    <h1><a href="{{path('appointment_slot_index')}}">&larr; {{ title }}</a></h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.time) }}
+        <button class="pri-btn">Save Slot</button>
+    {{ form_end(form) }}
+</main>
+
+{% endblock %}

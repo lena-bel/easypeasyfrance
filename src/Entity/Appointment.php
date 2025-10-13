@@ -34,6 +34,9 @@ class Appointment
     #[ORM\Column(nullable: true)]
     private ?\DateTime $createdAt = null;
 
+    #[ORM\OneToOne(mappedBy: 'appointment', cascade: ['persist', 'remove'])]
+    private ?AppointmentSlot $appointmentSlot = null;
+
     
 
     public function getId(): ?int
@@ -115,6 +118,28 @@ class Appointment
         }
 
         // return $this;
+    }
+
+    public function getAppointmentSlot(): ?AppointmentSlot
+    {
+        return $this->appointmentSlot;
+    }
+
+    public function setAppointmentSlot(?AppointmentSlot $appointmentSlot): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($appointmentSlot === null && $this->appointmentSlot !== null) {
+            $this->appointmentSlot->setAppointment(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($appointmentSlot !== null && $appointmentSlot->getAppointment() !== $this) {
+            $appointmentSlot->setAppointment($this);
+        }
+
+        $this->appointmentSlot = $appointmentSlot;
+
+        return $this;
     }
 
     

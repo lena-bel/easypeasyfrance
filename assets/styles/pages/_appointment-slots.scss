@@ -1,0 +1,54 @@
+@use "../variables";
+
+#appointment-slots {
+  margin-left: 16rem;
+  margin-right: 2rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .slot-btn {
+    height: 1rem;
+    padding: 1rem;
+  }
+  .delete{
+    color: red;
+  }
+}
+
+#new-slot {
+  margin-left: 16rem;
+  margin-right: 2rem;
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+  form{
+    margin: 0 2rem 0 0;
+  }
+  form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+    color: variables.$header-color;
+    
+  }
+  form :nth-child(2) {
+  margin-bottom: 0.5rem;
+}
+button{
+  border: none;
+}
+  #appointment_slot_form_date_month, #appointment_slot_form_date_day, #appointment_slot_form_date_year, #appointment_slot_form_time_hour, #appointment_slot_form_time_minute{
+    padding: 0.4rem;
+    margin-right: 0.5rem;
+  }
+  #appointment_slot_form_time_minute{
+    margin-left: 0.5rem;
+  }
+}

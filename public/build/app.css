@@ -1736,50 +1736,5 @@ input[type=file] {
   margin-left: 16rem;
   margin-right: 2rem;
 }
-#appointment-slots .title {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-}
-#appointment-slots .slot-btn {
-  height: 1rem;
-  padding: 1rem;
-}
-#appointment-slots .delete {
-  color: red;
-}
-
-#new-slot {
-  margin-left: 16rem;
-  margin-right: 2rem;
-}
-#new-slot a {
-  text-decoration: none;
-  color: inherit;
-}
-#new-slot form {
-  margin: 0 2rem 0 0;
-}
-#new-slot form label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.4rem;
-  font-weight: bold;
-  color: #924d2b;
-}
-#new-slot form :nth-child(2) {
-  margin-bottom: 0.5rem;
-}
-#new-slot button {
-  border: none;
-}
-#new-slot #appointment_slot_form_date_month, #new-slot #appointment_slot_form_date_day, #new-slot #appointment_slot_form_date_year, #new-slot #appointment_slot_form_time_hour, #new-slot #appointment_slot_form_time_minute {
-  padding: 0.4rem;
-  margin-right: 0.5rem;
-}
-#new-slot #appointment_slot_form_time_minute {
-  margin-left: 0.5rem;
-}
 
 /*# sourceMappingURL=app.css.map */
