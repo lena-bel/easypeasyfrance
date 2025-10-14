@@ -22,12 +22,6 @@ class Appointment
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $reason = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTime $preferredDate = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTime $preferredTime = null;
-
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $message = null;
 
@@ -37,7 +31,10 @@ class Appointment
     #[ORM\OneToOne(mappedBy: 'appointment', cascade: ['persist', 'remove'])]
     private ?AppointmentSlot $appointmentSlot = null;
 
-    
+    #[ORM\Column(length: 255, nullable: true)]
+    private $status = 'active';
+
+
 
     public function getId(): ?int
     {
@@ -67,31 +64,6 @@ class Appointment
 
         return $this;
     }
-    
-
-    public function getPreferredDate(): ?\DateTime
-    {
-        return $this->preferredDate;
-    }
-
-    public function setPreferredDate(?\DateTime $preferredDate): static
-    {
-        $this->preferredDate = $preferredDate;
-
-        return $this;
-    }
-
-    public function getPreferredTime(): ?\DateTime
-    {
-        return $this->preferredTime;
-    }
-
-    public function setPreferredTime(?\DateTime $preferredTime): static
-    {
-        $this->preferredTime = $preferredTime;
-
-        return $this;
-    }
 
     public function getMessage(): ?string
     {
@@ -110,14 +82,10 @@ class Appointment
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTime $createdAt): void
+    public function setCreatedAt(?\DateTime $createdAt): static
     {
-        // $this->createdAt = $createdAt;
-         if ($this->createdAt === null) {
-            $this->createdAt = new DateTime();
-        }
-
-        // return $this;
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
     public function getAppointmentSlot(): ?AppointmentSlot
@@ -127,12 +95,10 @@ class Appointment
 
     public function setAppointmentSlot(?AppointmentSlot $appointmentSlot): static
     {
-        // unset the owning side of the relation if necessary
         if ($appointmentSlot === null && $this->appointmentSlot !== null) {
             $this->appointmentSlot->setAppointment(null);
         }
 
-        // set the owning side of the relation if necessary
         if ($appointmentSlot !== null && $appointmentSlot->getAppointment() !== $this) {
             $appointmentSlot->setAppointment($this);
         }
@@ -142,5 +108,14 @@ class Appointment
         return $this;
     }
 
-    
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+        return $this;
+    }
 }

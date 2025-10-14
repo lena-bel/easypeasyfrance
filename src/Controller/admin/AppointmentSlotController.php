@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Appointment;
 use App\Entity\AppointmentSlot;
 use App\Form\AppointmentSlotForm;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,11 +41,6 @@ class AppointmentSlotController extends AbstractController
                 'time' => $slot->getTime(),
             ]);
             if ($existingSlot) {
-                // $this->addFlash('error', sprintf(
-                //     'A slot already exists on %s at %s.',
-                //     $slot->getDate()->format('Y-m-d'),
-                //     $slot->getTime()->format('H:i')
-                // ));
                 return $this->redirectToRoute('appointment_slot_index');
             }
 
@@ -69,5 +65,22 @@ class AppointmentSlotController extends AbstractController
         $em->flush();
         $this->addFlash('success', 'Slot deleted.');
         return $this->redirectToRoute('appointment_slot_index');
+    }
+
+
+    #[Route('/admin/slot/{id}', name: 'appointment_info', methods: ['GET'])]
+    public function showSlot(int $id, EntityManagerInterface $em): Response
+    {
+        $slotRepo = $em->getRepository(AppointmentSlot::class);
+        $slot = $slotRepo->findSlotWithAppointment($id);
+
+        if (!$slot) {
+            $this->addFlash('error', 'Slot not found.');
+            return $this->redirectToRoute('appointment_info');
+        }
+        return $this->render('admin/appointment-info.html.twig', [
+            'slot' => $slot,
+            'appointment' => $slot->getAppointment(),
+        ]);
     }
 }

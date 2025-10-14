@@ -55,7 +55,7 @@ class AppointmentSlot
         return $this;
     }
 
-    public function isBooked(): ?bool
+    public function getIsBooked(): ?bool
     {
         return $this->isBooked;
     }

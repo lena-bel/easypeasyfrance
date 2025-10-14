@@ -1,0 +1,39 @@
+@use "../variables";
+
+#appointment-info {
+  margin-left: 16rem;
+  margin-right: 2rem;
+  h2 {
+    margin: 1rem 0;
+  }
+  h1 {
+    margin: 1rem 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    li {
+      margin-bottom: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      background: variables.$card-background;
+      border-left: 4px solid variables.$border-line;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+
+      strong {
+        color: variables.$header-color;
+        font-weight: 600;
+        margin-right: 0.3rem;
+      }
+    }
+  }
+  .user-info, .no-appointment{
+    margin-bottom: 1.5rem;
+  }
+  .action{
+    margin-left: 1.5rem;
+  }
+}

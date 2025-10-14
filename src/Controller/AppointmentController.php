@@ -23,24 +23,20 @@ class AppointmentController extends AbstractController
         $appointmentRepo = $em->getRepository(Appointment::class);
         $slotRepo = $em->getRepository(AppointmentSlot::class);
 
-        $existingAppointment = $appointmentRepo->findByUser($user);
-
-        $availableSlots = $slotRepo->findBy(['isBooked' => false], ['date' => 'ASC', 'time' => 'ASC']);
+        $existingAppointment = $appointmentRepo->findAvailableAppointmentByUser($user);
+        $availableSlots = $em->getRepository(AppointmentSlot::class)->findAvailableSlots();
         $groupedSlots = [];
 
         foreach ($availableSlots as $slot) {
             $dateKey = $slot->getDate()->format('Y-m-d');
 
-            // Save the date once per day
             if (!isset($groupedSlots[$dateKey])) {
                 $groupedSlots[$dateKey]['date'] = $slot->getDate();
                 $groupedSlots[$dateKey]['slots'] = [];
             }
 
-            // Add the current slot to the array of slots for that day
             $groupedSlots[$dateKey]['slots'][] = $slot;
         }
-        // dd($groupedSlots);
 
         if ($existingAppointment) {
             return $this->render('appointmentIndex.html.twig', [
@@ -65,9 +61,8 @@ class AppointmentController extends AbstractController
             }
             $slot->setIsBooked(true);
             $appointment->setAppointmentSlot($slot);
-             $appointment->setUser($user);
+            $appointment->setUser($user);
             $appointment->setcreatedAt(new \DateTime());
-
             $em->persist($appointment);
             $em->flush();
 
@@ -80,5 +75,38 @@ class AppointmentController extends AbstractController
             'existingAppointment' => null,
             'groupedSlots' => $groupedSlots,
         ]);
+    }
+
+
+    #[Route(path: '/appointment/cancel/{id}', name: 'appointment_cancel', methods: ['POST'])]
+    public function cancelAppointment(int $id, EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
+        $appointmentRepo = $em->getRepository(Appointment::class);
+
+        $appointment = $appointmentRepo->find($id);
+
+        if (!$appointment || $appointment->getUser() !== $user) {
+            $this->addFlash('error', 'Appointment not found or not authorized.');
+            return $this->redirectToRoute('appointment_index');
+        }
+
+        $appointment->setStatus('cancelled');
+
+        $slot = $appointment->getAppointmentSlot();
+
+            
+
+
+        if ($slot) {
+            $slot->setIsBooked(false);
+            $slot->setAppointment(null); 
+        }
+
+        // $em->remove($appointment);
+        $em->flush();
+
+        $this->addFlash('success', 'Your appointment has been successfully cancelled.');
+        return $this->redirectToRoute('appointment_index');
     }
 }

@@ -28,6 +28,8 @@
 							<td>{{ slot.time|date('H:i') }}</td>
 							<td>{{ slot.isBooked ? 'Booked' : 'Available' }}</td>
 							<td>
+								<a href="{{path('appointment_info', {'id': slot.id})}}">Appointment Info</a>
+								<span>|</span>
 								<a href="{{ path('slot_delete', {'id': slot.id}) }}" class='delete' onclick="return confirm('Are you sure?');">Delete</a>
 							</td>
 						</tr>

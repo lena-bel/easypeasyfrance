@@ -1731,6 +1731,13 @@ input[type=file] {
 #appointment .hidden {
   display: none;
 }
+#appointment .cancel-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: red;
+}
 
 #appointment-slots {
   margin-left: 16rem;
@@ -1780,6 +1787,42 @@ input[type=file] {
 }
 #new-slot #appointment_slot_form_time_minute {
   margin-left: 0.5rem;
+}
+
+#appointment-info {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#appointment-info h2 {
+  margin: 1rem 0;
+}
+#appointment-info h1 {
+  margin: 1rem 0;
+}
+#appointment-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+}
+#appointment-info ul li {
+  margin-bottom: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  background: #f2f1ed;
+  border-left: 4px solid #c66b3d;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+#appointment-info ul li strong {
+  color: #924d2b;
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+#appointment-info .user-info, #appointment-info .no-appointment {
+  margin-bottom: 1.5rem;
+}
+#appointment-info .action {
+  margin-left: 1.5rem;
 }
 
 /*# sourceMappingURL=app.css.map */

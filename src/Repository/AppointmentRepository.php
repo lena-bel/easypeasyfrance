@@ -17,35 +17,20 @@ class AppointmentRepository extends ServiceEntityRepository
     }
 
 
-//     public function isSlotTaken(\DateTimeInterface $date, \DateTimeInterface $time): bool
-// {
-//     return (bool) $this->createQueryBuilder('a')
-//         ->andWhere('a.preferredDate = :date')
-//         ->andWhere('a.preferredTime = :time')
-//         ->setParameter('date', $date->format('Y-m-d'))
-//         ->setParameter('time', $time->format('H:i:s'))
-//         ->getQuery()
-//         ->getOneOrNullResult();
-// }
 
-    public function findByUser($user) : ?Appointment
+
+    public function findAvailableAppointmentByUser($user) : ?Appointment
     {
         return $this->createQueryBuilder('a')
         ->andWhere('a.user = :user')
+        ->andWhere('a.status != :cancelled')
         ->setParameter('user', $user)
+        ->setParameter('cancelled', 'cancelled')
         ->getQuery()
         ->getOneOrNullResult();
     }
 
-    public function findAvailableSlots() :array{
-        return $this->createQueryBuilder('s')
-        ->andWhere('s.isBooked = :booked')
-        ->setParameter('booked', false)
-        ->orderBy('s.date', 'ASC')
-        ->addOrderBy('s.time', 'ASC')
-        ->getQuery()
-        ->getResult();
-    }
+    
 
     //    /**
     //     * @return Appointment[] Returns an array of Appointment objects

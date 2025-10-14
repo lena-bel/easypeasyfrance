@@ -91,5 +91,12 @@ h2{
 .hidden{
     display: none;
 }
+.cancel-btn{
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: red;
+}
 
 }
