@@ -1,0 +1,154 @@
+@use "../variables";
+
+#register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 100%;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+
+  .register-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    h2 {
+      margin: 1rem;
+    }
+    form > div {
+      margin-bottom: 20px;
+      text-align: left;
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid variables.$border-line;
+        font-size: 14px;
+      }
+      select {
+        width: 105%;
+        padding: 12px 14px;
+        border: 1px solid variables.$border-line;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #faf9f6;
+        color: #c66b3d;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  button {
+    border: none;
+  }
+  #password-requirements p.invalid {
+    color: red;
+  }
+  #password-requirements p.valid {
+    color: green;
+  }
+}
+
+#verify-account,
+#forgot-password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 100%;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  .form-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    h1 {
+      margin-bottom: 1.2rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #c66b3d;
+    }
+    form {
+      margin-bottom: 20px;
+      text-align: left;
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid variables.$border-line;
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+#reset-password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  .form-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    form {
+      margin-bottom: 20px;
+      text-align: left;
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid variables.$border-line;
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+      #password-requirements {
+        margin-bottom: 1rem;
+        p.invalid {
+          color: red;
+        }
+        p.valid {
+          color: green;
+        }
+      }
+    }
+  }
+  h1 {
+    margin-bottom: 1.2rem;
+  }
+}

@@ -1485,6 +1485,161 @@ input[type=file] {
   color: #f09068;
 }
 
+#register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+}
+#register .register-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+#register .register-container h2 {
+  margin: 1rem;
+}
+#register .register-container form > div {
+  margin-bottom: 20px;
+  text-align: left;
+}
+#register .register-container form > div label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+#register .register-container form > div input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c66b3d;
+  font-size: 14px;
+}
+#register .register-container form > div select {
+  width: 105%;
+  padding: 12px 14px;
+  border: 1px solid #c66b3d;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #faf9f6;
+  color: #c66b3d;
+  box-sizing: border-box;
+}
+#register button {
+  border: none;
+}
+#register #password-requirements p.invalid {
+  color: red;
+}
+#register #password-requirements p.valid {
+  color: green;
+}
+
+#verify-account,
+#forgot-password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+#verify-account .form-container,
+#forgot-password .form-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+#verify-account .form-container h1,
+#forgot-password .form-container h1 {
+  margin-bottom: 1.2rem;
+}
+#verify-account .form-container p,
+#forgot-password .form-container p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #c66b3d;
+}
+#verify-account .form-container form,
+#forgot-password .form-container form {
+  margin-bottom: 20px;
+  text-align: left;
+}
+#verify-account .form-container form label,
+#forgot-password .form-container form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+#verify-account .form-container form input,
+#forgot-password .form-container form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c66b3d;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+#reset-password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+#reset-password .form-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+#reset-password .form-container form {
+  margin-bottom: 20px;
+  text-align: left;
+}
+#reset-password .form-container form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+#reset-password .form-container form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c66b3d;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+#reset-password .form-container form #password-requirements {
+  margin-bottom: 1rem;
+}
+#reset-password .form-container form #password-requirements p.invalid {
+  color: red;
+}
+#reset-password .form-container form #password-requirements p.valid {
+  color: green;
+}
+#reset-password h1 {
+  margin-bottom: 1.2rem;
+}
+
 #comments {
   margin: 0 auto;
   width: 50%;
