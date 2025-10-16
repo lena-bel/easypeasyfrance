@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<main id="appointment-info">
+		<h1>Appointment Slot Details</h1>
+
+		<section class="slot-info">
+			<h2>Slot Information</h2>
+			<ul>
+				<li>
+					<strong>ID:</strong>
+					{{ slot.id }}</li>
+				<li>
+					<strong>Date:</strong>
+					{{ slot.date|date('d M Y') }}</li>
+				<li>
+					<strong>Time:</strong>
+					{{ slot.time|date('H:i') }}</li>
+				<li>
+					<strong>Booked:</strong>
+					<span class="">
+						{{ slot.isBooked ? 'Yes' : 'No' }}
+					</span>
+				</li>
+			</ul>
+		</section>
+
+		{% if slot.appointment %}
+			{% set appointment = slot.appointment %}
+			{% set user = appointment.user %}
+
+			<section class="appointment-info ">
+				<h2>Appointment Details</h2>
+				<ul>
+					<li>
+						<strong>Appointment ID:</strong>
+						{{ appointment.id }}</li>
+					<li>
+						<strong>Reason:</strong>
+						{{ appointment.reason }}</li>
+					<li>
+						<strong>Message:</strong>
+						{{ appointment.message }}</li>
+					<li>
+						<strong>Status:</strong>
+						<span class="">
+							{{ appointment.status|capitalize }}
+						</span>
+					</li>
+					<li>
+						<strong>Created At:</strong>
+						{{ appointment.createdAt|date('d M Y H:i') }}</li>
+				</ul>
+			</section>
+
+			<section class="user-info">
+				<h2>User Information</h2>
+				<ul>
+					<li>
+						<strong>Name:</strong>
+						{{ user.firstName }}
+						{{ user.lastName }}</li>
+					<li>
+						<strong>Email:</strong>
+						{{ user.email }}</li>
+					<li>
+						<strong>Phone:</strong>
+						{{ user.telephoneNumber }}</li>
+					<li>
+						<strong>Registered:</strong>
+						{{ user.registryDate|date('d M Y') }}</li>
+					<li>
+						<strong>Active:</strong>
+						{{ user.isActive ? 'Yes' : 'No' }}</li>
+					<li>
+						<strong>Visa Type:</strong>
+						{{ user.profile.name }}</li>
+				</ul>
+			</section>
+
+		{% else %}
+			<div class="no-appointment ">
+				<p>
+					<strong>This slot is not currently booked.</strong>
+				</p>
+			</div>
+		{% endif %}
+
+		<div class="action">
+			<a href="{{ path('appointment_slot_index') }}" class="pri-btn">
+				Back to Slots</a>
+		</div>
+
+
+	</main>
+{% endblock %}

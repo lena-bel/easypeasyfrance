@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\User;
 use App\Repository\UserRepository;
 
+// #[Route(path:'/dashboard',name:'user_dashboard')]
 class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'task_index')]
@@ -66,4 +67,65 @@ class TaskController extends AbstractController
             // 'tasks'=>$pagination
         ]);
     }
+
+
+
+
+
+
+
+
+    #[Route('/task', name: 'user_dashboard')]
+
+    #[IsGranted('ROLE_USER')]
+    public function userDashboard(
+        Request $request,
+        UserRepository $userRepository,
+        TaskRepository $taskRepository,
+        PaginatorInterface $pagination
+    ): Response {
+        /** @var \App\Entity\User $user */ //this is basically to tell the developper tool that the user is an instance of the user entity
+        $user = $this->getUser();
+        $profile = $user->getProfile();
+        if (!$profile) {
+            throw $this->createNotFoundException('Profile not found');
+        }
+
+        $profileId = $profile->getId();
+        // dd($profile);
+        // $profileId = $user->getProfileId();
+        $searchTerm = $request->query->get('searchbar');
+        // $status = $request->query->get('status');
+
+        if ($searchTerm) {
+            $tasks = $taskRepository->createQueryBuilder('t')
+                ->where('t.title LIKE :term OR t.description LIKE :term')
+                ->setParameter('term', '%' . $searchTerm . '%')
+                ->getQuery()
+                ->getResult();
+        }
+
+        // else if ($status && $status !== 'all') {
+        //     $tasks = $taskRepository->createQueryBuilder('t')
+        //         ->andWhere('t.status = :status')
+        //         ->setParameter('status', $status);
+        // }
+        else { //remove all that is pagination please
+            // $tasks = $taskRepository->findAll();
+            $tasks = $taskRepository->findByVisaTypeProfileId($profileId);
+            // $query = $taskRepository->findAll();
+            // $pagination = $pagination-> paginate(
+            //     $query,
+            //     $request->query->getInt('page',1), 3
+            // );
+        }
+
+        return $this->render('task.html.twig', [
+            'tasks' => $tasks,
+            // 'tasks'=>$pagination
+        ]);
+    }
+
+
+
 }

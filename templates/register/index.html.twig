@@ -4,12 +4,96 @@
 {% block body %}
 
 
-<div class="example-wrapper">
-    {{form_start(form)}}
-        {{form_row(form)}}
-        <button type='submit'>Register</button>
-    {{form_end(form)}}
+	<main id="register">
+		<div class="register-container">
+			<h2>Welcome !!!</h2>
+			<p class="subtitle">Create an account and start your journey with Easy Peasy France</p>
+			{{form_start(form)}}
 
-    
-</div>
+
+			{{ form_start(form) }}
+			{{ form_row(form.firstName) }}
+			{{ form_row(form.lastName) }}
+			{{ form_row(form.profile) }}
+			{{ form_row(form.telephoneNumber) }}
+			{{ form_row(form.email) }}
+			{{ form_row(form.password.first) }}
+			{{ form_row(form.password.second) }}
+			<div id="password-requirements">
+				<p id="length" class="invalid">Minimum 8 characters</p>
+				<p id="letter" class="invalid">At least one letter</p>
+				<p id="number" class="invalid">At least one number</p>
+				<p id="special" class="invalid">At least one special character</p>
+				<p id="match" class="invalid">Passwords must match</p>
+			</div>
+
+
+			<button type='submit' class='btn-login'>Register</button>
+			{{form_end(form)}}
+
+			<p class="signup-text">Have an account?
+				<a href="{{path('app_login')}}" class="btn">login</a>
+			</p>
+
+		</div>
+
+
+	</main>
+	<script>
+		const password = document.getElementById('register_form_password_first');
+const confirmPassword = document.getElementById('register_form_password_second');
+
+const lengthReq = document.getElementById('length');
+const letterReq = document.getElementById('letter');
+const numberReq = document.getElementById('number');
+const specialReq = document.getElementById('special');
+const matchReq = document.getElementById('match');
+
+function validatePassword() {
+const val = password.value;
+
+// length
+if (val.length >= 8) 
+lengthReq.className = 'valid';
+ else 
+lengthReq.className = 'invalid';
+
+
+
+// letter
+if (/[A-Za-z]/.test(val)) 
+letterReq.className = 'valid';
+ else 
+letterReq.className = 'invalid';
+
+
+
+// number
+if (/\d/.test(val)) 
+numberReq.className = 'valid';
+ else 
+numberReq.className = 'invalid';
+
+
+
+// special character
+if (/[^A-Za-z0-9]/.test(val)) 
+specialReq.className = 'valid';
+ else 
+specialReq.className = 'invalid';
+
+
+
+// match
+if (val === confirmPassword.value && val.length > 0) 
+matchReq.className = 'valid';
+ else 
+matchReq.className = 'invalid';
+
+
+}
+
+password.addEventListener('input', validatePassword);
+confirmPassword.addEventListener('input', validatePassword);
+	</script>
 {% endblock %}
