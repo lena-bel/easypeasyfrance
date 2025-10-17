@@ -1980,4 +1980,13 @@ input[type=file] {
   margin-left: 1.5rem;
 }
 
+#user-dashboard a {
+  text-decoration: none;
+  color: green;
+}
+#user-dashboard .dashboard-grid {
+  background-color: green;
+  display: flex;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -1980,4 +1980,23 @@ input[type=file] {
   margin-left: 1.5rem;
 }
 
+#user-dashboard h1 {
+  margin-bottom: 0.5rem;
+}
+#user-dashboard p {
+  margin-bottom: 1rem;
+}
+#user-dashboard a {
+  text-decoration: none;
+  color: inherit;
+}
+#user-dashboard a:hover {
+  color: #f09068;
+}
+#user-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
 /*# sourceMappingURL=app.css.map */
