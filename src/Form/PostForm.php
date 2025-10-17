@@ -17,7 +17,7 @@ class PostForm extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('image')
+            // ->add('image')
             ->add('save', SubmitType::class, [
                 'label' => 'Save Changes',
                 'attr' => ['class' => 'btn-save']
