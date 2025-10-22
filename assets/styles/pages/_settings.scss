@@ -1,0 +1,102 @@
+@use "../variables";
+
+#settings {
+  h1 {
+    display: none;
+    // margin-bottom: 1rem;
+  }
+  h2 {
+    margin-bottom: 0.7rem;
+  }
+
+  .user-summary {
+    margin-bottom: 1.5rem;
+    .user-info {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+
+      :nth-child(1) {
+      }
+      p {
+        width: 100%;
+      }
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 5rem;
+      text-align: center;
+      border-radius: 10px;
+      background-color: variables.$card-background;
+      color: rgba(0, 0, 0, 0.65);
+      span {
+        margin-bottom: 0.6rem;
+        color: rgba(0, 0, 0, 0.41);
+      }
+    }
+  }
+  hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.21);
+  }
+
+  .update-info {
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      div {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 5rem;
+        text-align: center;
+        border-radius: 10px;
+        background-color: variables.$card-background;
+        label {
+          color: rgba(0, 0, 0, 0.41);
+          margin-bottom: 0.6rem;
+        }
+      }
+      .sec-btn {
+        grid-column: 1 / -1;
+        justify-self: center;
+        border: none;
+      }
+    }
+    margin: 1.5rem 0;
+  }
+  .change-password {
+    form {
+      .form-div {
+        padding: 1rem 5rem;
+        border-radius: 10px;
+        background-color: variables.$card-background;
+        margin-bottom: 1.5rem;
+        label {
+          margin-bottom: 0.6rem;
+          display: block;
+          color: rgba(0, 0, 0, 0.41);
+        }
+        input {
+          width: 50%;
+        }
+      }
+    }
+    .sec-btn {
+      grid-column: 1 / -1;
+      justify-self: center;
+      border: none;
+      margin: 1.5rem 0;
+    }
+    #password-requirements {
+      margin-left: 3rem;
+      p.invalid {
+        color: red;
+      }
+      p.valid {
+        color: green;
+      }
+    }
+  }
+}

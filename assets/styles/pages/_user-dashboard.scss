@@ -18,6 +18,7 @@
   .dashboard-grid {
     display: grid;
     // grid-column: repeat(2,1fr);
+    background-color: white;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     

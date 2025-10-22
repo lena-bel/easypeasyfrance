@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+	{% include "partials/user-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<main id="settings">
+		<h1>
+			Account Settings</h1>
+
+		<div class="user-summary">
+			<h2>My Information:</h2>
+			<div class='user-info'>
+				<p>
+					<span>firstname</span>
+					{{ user.firstname }}</p>
+				<p>
+					<span>lastname</span>
+					{{ user.lastname }}</p>
+			</div>
+			<p>
+				<span>Profile Type:</span>
+				{{ user.profile.name ?? 'N/A' }}</p>
+		</div>
+
+		<hr>
+
+		<div class="update-info">
+			<h2>Update Contact Information:</h2>
+			{{ form_start(form) }}
+			{{ form_row(form.email) }}
+			{{ form_row(form.telephoneNumber) }}
+			<button class="sec-btn">Save Changes</button>
+			{{ form_end(form) }}
+			{% for message in app.flashes('success') %}
+				<div class="alert success">{{ message }}</div>
+			{% endfor %}
+		</div>
+
+		<hr>
+
+		<div class="change-password">
+
+			<h2>Change Password:</h2>
+			{{ form_start(passwordForm) }}
+			{# {{ form_row(passwordForm) }} #}
+			{{ form_row(passwordForm.currentPassword) }}
+			{{ form_row(passwordForm.plainPassword.first) }}
+			{{ form_row(passwordForm.plainPassword.second) }}
+
+			<button class="sec-btn">Update Password</button>
+			{{ form_end(passwordForm) }}
+
+
+			{% for message in app.flashes('success') %}
+				<div class="alert success">{{ message }}</div>
+			{% endfor %}
+		</div>
+
+	</main>
+{% endblock %}
+{% block footer %}
+	{% include "partials/footer.html.twig" %}
+{% endblock %}

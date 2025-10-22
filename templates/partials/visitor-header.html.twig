@@ -10,9 +10,17 @@
 		<a href="{{path('faq')}}">FAQ</a>
 
 		<a href="{{path('Contact')}}">Contact us</a>
-		<a href="{{ path('app_login') }}">
+		{% if app.user %}
+		<a href="{{path('user_dashboard')}}">My Dashboard</a>
+		{% else %}
+			<a href="{{ path('app_login') }}">
 			<i class="fas fa-sign-in-alt"></i>
 			Login</a>
+		{% endif %}
+		
+		{# <a href="{{ path('app_login') }}">
+			<i class="fas fa-sign-in-alt"></i>
+			Login</a> #}
 	</div>
 	<p class="hamburger-menu">
 		<i class="fas fa-bars"></i>
