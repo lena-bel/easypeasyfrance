@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+	{% include "partials/user-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+	<main id="user-dashboard">
+
+		<h1>Welcome back,
+			{{ user.firstname ?? user.email }}</h1>
+
+		<p>
+			<strong>
+				<i>Visa Type:
+					{{ user.profile.name ?? 'Not specified' }}</i>
+			</strong>
+		</p>
+
+		<div class="dashboard-grid">
+			<a href="{{ path('task_index') }}" class="card">
+				<h2>
+					My To-Do Guide</h2>
+				<p>Explore the steps and information for your profile.</p>
+			</a>
+
+			<a href="{{ path('posts_index') }}" class="card">
+				<h2>
+					Community Help</h2>
+				<p>Ask questions, get help, and share with others.</p>
+			</a>
+
+			<a href="{{ path('my_posts') }}" class="card">
+				<h2>
+					My Posts & Favorites</h2>
+				<p>Access your contributions and saved resources.</p>
+			</a>
+
+			<a href="{{ path('user_settings') }}" class="card">
+				<h2>Settings</h2>
+				<p>Update your profile and account information.</p>
+			</a>
+
+		</div>
+	</main>
+
+{% endblock %}
+
+{% block footer %}
+	{% include "partials/footer.html.twig" %}
+{% endblock %}
