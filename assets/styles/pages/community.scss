@@ -111,6 +111,7 @@
     margin-bottom: 1.5rem;
     margin-top: 1rem;
     display: flex;
+    justify-content: space-between;
     height: 3.5rem;
     gap: 1rem;
   }
@@ -120,6 +121,7 @@
     border: 2px solid variables.$border-line;
     border-radius: 4px;
     outline-offset: 2px;
+    width: 90%;
     transition: border-color 0.3s ease;
   }
 

@@ -598,6 +598,7 @@ input[type=file] {
   margin-bottom: 1.5rem;
   margin-top: 1rem;
   display: flex;
+  justify-content: space-between;
   height: 3.5rem;
   gap: 1rem;
 }
@@ -607,6 +608,7 @@ input[type=file] {
   border: 2px solid #c66b3d;
   border-radius: 4px;
   outline-offset: 2px;
+  width: 90%;
   transition: border-color 0.3s ease;
 }
 #container .categories-filter {
@@ -651,7 +653,7 @@ input[type=file] {
   }
   #container .post-button {
     width: 20%;
-    padding-bottom: 1rem !important;
+    padding-bottom: 2rem !important;
     padding-top: 0.5rem;
   }
   #container form {
@@ -942,6 +944,9 @@ input[type=file] {
 }
 
 @media screen and (max-width: 576px) {
+  html, body {
+    overflow-x: hidden;
+  }
   body {
     padding: 0;
     margin: 0;
@@ -976,8 +981,7 @@ input[type=file] {
     box-sizing: border-box;
   }
   .header {
-    width: 100%;
-    width: 100vw;
+    width: auto;
     margin: 0;
     padding: 1rem 0 1rem 1rem !important;
     background-color: #2E2E2E;
@@ -1075,7 +1079,6 @@ input[type=file] {
     padding: 0 0 1.5rem 1rem !important;
     margin-top: 1rem;
     width: 100%;
-    max-width: 100vh;
   }
   footer .footer-column {
     flex: 0 0 auto;
@@ -1486,6 +1489,12 @@ input[type=file] {
   padding: 6px;
 }
 
+@media screen and (max-width: 576px) {
+  .task-form {
+    margin: 0;
+    width: auto;
+  }
+}
 .login-container {
   display: flex;
   justify-content: center;
@@ -1778,14 +1787,22 @@ input[type=file] {
 
 @media screen and (max-width: 576px) {
   #comments {
-    width: 100%;
+    margin: 0;
+    width: auto;
     padding: 0 1rem 1.5rem 1rem !important;
   }
   #comments .post-card {
     padding: 0.8rem;
   }
-  #comments .post-card .post-meta > p {
+  #comments .post-card .post-meta {
+    padding: 0;
+    margin: 0;
+  }
+  #comments .post-card .post-meta p {
     font-size: 0.8rem !important;
+  }
+  #comments .comment-item article {
+    width: 100% !important;
   }
   #comments .comment-item button {
     text-align: left;
@@ -2124,7 +2141,9 @@ input[type=file] {
 
 @media screen and (max-width: 576px) {
   #user-dashboard {
+    overflow-x: hidden;
     margin: 0 0.5rem;
+    width: auto;
   }
   #user-dashboard p > strong {
     font-size: 0.8rem;
