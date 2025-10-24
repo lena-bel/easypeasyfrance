@@ -486,6 +486,12 @@ input[type=file] {
   padding: 0 1.5rem;
 }
 
+@media screen and (max-width: 576px) {
+  #task-details,
+  #new-post {
+    padding: 0 1rem 1.5rem 1rem !important;
+  }
+}
 #container {
   margin: 1.5rem auto;
   padding: 1rem 2rem;
@@ -2222,6 +2228,9 @@ input[type=file] {
 }
 
 @media screen and (max-width: 576px) {
+  #settings {
+    padding: 0 1rem 1.5rem 1rem !important;
+  }
   #settings .user-summary {
     width: 100%;
   }

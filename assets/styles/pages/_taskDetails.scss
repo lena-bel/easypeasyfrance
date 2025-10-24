@@ -21,7 +21,7 @@
     div > p {
       padding-top: 0.7rem;
     }
-    div>p::before{
+    div > p::before {
       content: "• ";
       color: inherit;
     }
@@ -36,8 +36,14 @@
     }
   }
 
-  
-  .details{
+  .details {
     padding: 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #task-details,
+  #new-post {
+    padding: 0 1rem 1.5rem 1rem !important;
   }
 }

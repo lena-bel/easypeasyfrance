@@ -16,7 +16,6 @@
       gap: 1.5rem;
       margin-bottom: 1.5rem;
 
-      
       p {
         width: 100%;
       }
@@ -100,39 +99,40 @@
   }
 }
 
-@media screen and (max-width: 576px){
-  #settings{
-    .user-summary{
+@media screen and (max-width: 576px) {
+  #settings {
+    padding: 0 1rem 1.5rem 1rem !important;
+
+    .user-summary {
       width: 100%;
     }
-    
-    .user-info{
+
+    .user-info {
       flex-direction: column;
-      p{
+      p {
         width: auto !important;
       }
     }
-    .update-info >form{
+    .update-info > form {
       display: flex;
       flex-direction: column;
       width: 100%;
-      div{
+      div {
         padding: 0.5rem;
-        input{
+        input {
           width: auto;
           padding: 0.6rem 0.8rem;
           border: 1.5px solid variables.$border-line;
           border-radius: 6px;
         }
       }
-      
     }
-    .change-password > form{
+    .change-password > form {
       width: 100%;
       text-align: center;
-      div{
+      div {
         padding: 0.5rem !important;
-        input{
+        input {
           width: 100% !important;
           border: 1.5px solid variables.$border-line;
           border-radius: 6px;
