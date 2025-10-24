@@ -4,9 +4,16 @@
   .section-one > input,
   .section-one > .progress {
     background-color: #fceeea;
-    border-radius: 5px;
-    padding: 0.2rem 2rem;
-    width: 50%;
+    // border-radius: 5px;
+    // padding: 0.2rem 2rem;
+    // width: 50%;
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .section-one {
@@ -69,7 +76,7 @@
 }
 
 .task-form {
-  .task{
+  .task {
     .title-button {
       display: flex;
       flex-direction: row;
@@ -94,6 +101,32 @@
         color: white;
         margin-top: 1.2rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #task {
+    // p{
+    //   font-size: 0.8rem;
+    // }
+    .data{
+      font-size: 0.9rem !important;
+    }
+    
+    form {
+      input {
+        width: 100%;
+      }
+    }
+
+    .btn{
+      background-color: variables.$button-secondary-background;
+      color: variables.$button-secondary-text;
+    }
+    .btn:hover{
+      background-color: variables.$button-primary-background;
+      color: variables.$button-primary-text;
     }
   }
 }

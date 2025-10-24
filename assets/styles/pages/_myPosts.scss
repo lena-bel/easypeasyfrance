@@ -1,6 +1,6 @@
 @use "../variables";
 #my-posts {
-  h1{
+  h1 {
     display: none;
   }
 
@@ -8,7 +8,7 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  .tabs{
+  .tabs {
     display: grid;
     background-color: variables.$button-secondary-background;
     color: white;
@@ -18,19 +18,17 @@
   .tab-link.active.buttons {
     background-color: variables.$button-primary-background;
     color: variables.$button-primary-text;
-    
-}
+  }
 
-  .buttons{
+  .buttons {
     background: none;
     border: none;
     padding: 1rem;
     margin: 0;
     font: inherit;
     outline: none;
-    
   }
-  
+
   table {
     width: 100%;
     text-align: left;
@@ -49,7 +47,7 @@
   td {
     padding: 0.75rem 1rem;
   }
-  
+
   td:last-child a {
     margin-right: 0.5rem;
     text-decoration: none;
@@ -74,19 +72,18 @@
     margin: 0 0.5rem 0 0;
   }
   .tab-content {
-    display: none; /* hide by default */
-}
+    display: none;
+  }
 
-.tab-content.active {
-    display: block; /* show only active */
-    
-}
+  .tab-content.active {
+    display: block;
+  }
 
- .posts-list {
+  .posts-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    a{
+    a {
       text-decoration: none;
       color: inherit;
     }
@@ -114,5 +111,22 @@
   .post-excerpt {
     font-size: 1rem;
     margin-bottom: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #my-posts {
+    padding: 0 !important;
+.tabs{
+  margin-top: 0.1rem;
+}
+.action{
+  display: flex;
+}
+.favorite-posts{
+    padding: 0 1rem 1.5rem 1rem !important;
+
+}
+   
   }
 }

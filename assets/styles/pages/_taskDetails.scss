@@ -13,12 +13,17 @@
       padding-top: 0.7rem;
     }
   }
+
   #documents {
     h2 {
       padding-top: 1rem;
     }
     div > p {
       padding-top: 0.7rem;
+    }
+    div>p::before{
+      content: "• ";
+      color: inherit;
     }
   }
 

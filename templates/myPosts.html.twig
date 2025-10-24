@@ -27,7 +27,7 @@
 							<tr>
 								<td>{{ post.title }}</td>
 								<td>{{ post.creationDate ? post.creationDate|date('d/m/Y ') : 'N/A' }}</td>
-								<td>
+								<td class='action'>
 									<a href="{{ path('post_detail', {id: post.id}) }}">View</a>
 									<span>|</span>
 									<form method="post" action="{{ path('post_delete', {id: post.id}) }}" style="display:inline" onsubmit="return confirm('Are you sure?');">

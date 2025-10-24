@@ -9,11 +9,13 @@
 				<p class="card">
 					Welcome to the community help page! Here you can ask questions, share tips, and support fellow newcomers navigating life in France.
 				</p>
-				<a href="{{path('new-post')}}" class="post-button new-post" role="button">➕  &nbsp; ASK
-				</a>
+				
 			</div>
 			<form class="search-bar" role="search" aria-label="Search community posts" method="get" action="{{ path('posts_search') }}">
+			
 				<input type="search" placeholder="Search posts by keyword…" aria-label="Search posts" name='q' value="{{ keyword|default('') }}"/>
+				<a href="{{path('new-post')}}" class="post-button new-post" role="button">➕  &nbsp; ASK
+				</a>
 			</form>
 
 			<ul class="posts-list">

@@ -13,8 +13,8 @@
             <img src="{{ asset('uploads/' ~ post.image) }}" alt="Post image" />
         {% endif %}
         <div class="post-meta">
-            Posted by {{ post.user.firstName }} {{ post.user.lastName }}
-            • {{ post.publicationDate|date('d M Y H:i') }}
+            <p>Posted by {{ post.user.firstName }} {{ post.user.lastName }}
+            • {{ post.publicationDate|date('d M Y H:i') }}</p>
         </div>
         </div>
     </article>

@@ -24,3 +24,43 @@
     
   }
 }
+
+@media screen and (max-width: 576px)  {
+  #user-dashboard{
+    margin: 0 0.5rem;
+    p>strong{
+      font-size: 0.8rem;
+    }
+    h1{
+      // font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .dashboard-grid{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
+      // h2{
+      //   // font-size: 1.3rem;
+      // }
+    }
+  //   .dashboard {
+  //   flex-direction: column;
+  //   gap: 1rem;
+  // }
+
+  // .sidebar {
+  //   width: 100%;
+  //   display: none; 
+  // }
+
+  // .sidebar.active {
+  //   display: block;
+  // }
+
+  // .menu-toggle {
+  //   display: block;
+  //   cursor: pointer;
+  // }
+  }
+}

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -141,9 +142,13 @@ footer .arrow {
 #task .section-one > input,
 #task .section-one > .progress {
   background-color: #fceeea;
-  border-radius: 5px;
-  padding: 0.2rem 2rem;
-  width: 50%;
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 #task .section-one {
   display: flex;
@@ -221,6 +226,22 @@ footer .arrow {
   margin-top: 1.2rem;
 }
 
+@media screen and (max-width: 576px) {
+  #task .data {
+    font-size: 0.9rem !important;
+  }
+  #task form input {
+    width: 100%;
+  }
+  #task .btn {
+    background-color: #A8A69F;
+    color: #2E2E2E;
+  }
+  #task .btn:hover {
+    background-color: #C66B3D;
+    color: #FAF9F6;
+  }
+}
 /*buttons*/
 .pri-btn {
   padding: 0.5rem 1rem;
@@ -451,6 +472,10 @@ input[type=file] {
 #task-details #documents div > p {
   padding-top: 0.7rem;
 }
+#task-details #documents div > p::before {
+  content: "• ";
+  color: inherit;
+}
 #task-details #appointment h2 {
   padding-top: 1rem;
 }
@@ -511,6 +536,7 @@ input[type=file] {
   background-color: #C66B3D;
   font-weight: 600;
   border-radius: 6px;
+  width: 10%;
   text-decoration: none;
   color: white;
 }
@@ -562,11 +588,14 @@ input[type=file] {
   text-decoration: underline;
 }
 #container .search-bar {
+  width: 100%;
   margin-bottom: 1.5rem;
   margin-top: 1rem;
+  display: flex;
+  height: 3.5rem;
+  gap: 1rem;
 }
 #container .search-bar input[type=search] {
-  width: 100%;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: 2px solid #c66b3d;
@@ -604,6 +633,37 @@ input[type=file] {
   margin-left: 0.2rem;
 }
 
+@media screen and (max-width: 576px) {
+  #container {
+    margin: 0;
+    padding: 0 1rem 1.5rem 1rem !important;
+    display: block;
+  }
+  #container .card {
+    margin: 0;
+    padding: 0.8rem 1rem;
+  }
+  #container .post-button {
+    width: 20%;
+    padding-bottom: 1rem !important;
+    padding-top: 0.5rem;
+  }
+  #container form {
+    height: 2.5rem;
+  }
+  #container .post-meta > p {
+    font-size: 0.8rem !important;
+  }
+  #container .header {
+    background-color: white !important;
+    padding: 1rem 0 !important;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
 .hero {
   background-color: #eee5dc;
   padding: 6rem 10%;
@@ -883,16 +943,23 @@ input[type=file] {
   body main,
   body footer,
   body nav {
-    padding: 0;
+    padding: 0 1rem;
   }
   body p {
-    font-size: 0.8rem;
+    font-size: 1rem !important;
+    font-weight: 400;
+  }
+  body h1 {
+    font-size: 2rem;
+    font-weight: 700;
   }
   body h2 {
-    font-size: 1.7rem;
+    font-size: 1.7rem !important;
+    font-weight: 600;
   }
   body h3 {
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
+    font-weight: 600;
   }
   body button {
     padding: 0.4rem 0.8rem;
@@ -904,8 +971,9 @@ input[type=file] {
   }
   .header {
     width: 100%;
+    width: 100vw;
     margin: 0;
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem !important;
     background-color: #2E2E2E;
   }
   .header .logo {
@@ -939,8 +1007,9 @@ input[type=file] {
   .header .hamburger-menu {
     display: block;
     position: relative;
-    right: 3.5rem;
-    top: 0rem;
+    right: 2rem;
+    top: -0.2rem;
+    font-size: 1rem;
   }
   .hero {
     padding: 1rem 10%;
@@ -997,7 +1066,10 @@ input[type=file] {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 0;
+    padding: 0 0 1.5rem 1rem !important;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 100vh;
   }
   footer .footer-column {
     flex: 0 0 auto;
@@ -1008,6 +1080,9 @@ input[type=file] {
   }
   footer a {
     font-size: 0.8rem;
+  }
+  footer .footer-bottom > p {
+    padding-bottom: 1.5rem;
   }
 }
 #testimonials h1 {
@@ -1695,6 +1770,33 @@ input[type=file] {
   margin-bottom: 0.8rem;
 }
 
+@media screen and (max-width: 576px) {
+  #comments {
+    width: 100%;
+    padding: 0 1rem 1.5rem 1rem !important;
+  }
+  #comments .post-card {
+    padding: 0.8rem;
+  }
+  #comments .post-card .post-meta > p {
+    font-size: 0.8rem !important;
+  }
+  #comments .comment-item button {
+    text-align: left;
+  }
+  #comments .comment-item button:hover {
+    padding: 1rem;
+    background-color: #C66B3D;
+    color: #FAF9F6;
+  }
+  #comments form {
+    margin: 0;
+    padding: 0;
+  }
+  #comments form textarea {
+    padding: 0 !important;
+  }
+}
 #my-posts {
   background: white;
   border-radius: 0.5rem;
@@ -1765,10 +1867,10 @@ input[type=file] {
   margin: 0 0.5rem 0 0;
 }
 #my-posts .tab-content {
-  display: none; /* hide by default */
+  display: none;
 }
 #my-posts .tab-content.active {
-  display: block; /* show only active */
+  display: block;
 }
 #my-posts .posts-list {
   list-style: none;
@@ -1804,6 +1906,20 @@ input[type=file] {
   margin-bottom: 0.8rem;
 }
 
+@media screen and (max-width: 576px) {
+  #my-posts {
+    padding: 0 !important;
+  }
+  #my-posts .tabs {
+    margin-top: 0.1rem;
+  }
+  #my-posts .action {
+    display: flex;
+  }
+  #my-posts .favorite-posts {
+    padding: 0 1rem 1.5rem 1rem !important;
+  }
+}
 #appointment {
   height: 100%;
 }
@@ -2000,6 +2116,22 @@ input[type=file] {
   gap: 2rem;
 }
 
+@media screen and (max-width: 576px) {
+  #user-dashboard {
+    margin: 0 0.5rem;
+  }
+  #user-dashboard p > strong {
+    font-size: 0.8rem;
+  }
+  #user-dashboard h1 {
+    margin-bottom: 0.5rem;
+  }
+  #user-dashboard .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
 #settings h1 {
   display: none;
 }
@@ -2087,6 +2219,45 @@ input[type=file] {
 }
 #settings .change-password #password-requirements p.valid {
   color: green;
+}
+
+@media screen and (max-width: 576px) {
+  #settings .user-summary {
+    width: 100%;
+  }
+  #settings .user-info {
+    flex-direction: column;
+  }
+  #settings .user-info p {
+    width: auto !important;
+  }
+  #settings .update-info > form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #settings .update-info > form div {
+    padding: 0.5rem;
+  }
+  #settings .update-info > form div input {
+    width: auto;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid #c66b3d;
+    border-radius: 6px;
+  }
+  #settings .change-password > form {
+    width: 100%;
+    text-align: center;
+  }
+  #settings .change-password > form div {
+    padding: 0.5rem !important;
+  }
+  #settings .change-password > form div input {
+    width: 100% !important;
+    border: 1.5px solid #c66b3d;
+    border-radius: 6px;
+    height: 2rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
