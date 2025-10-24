@@ -4,11 +4,11 @@
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
-  a{
+  a {
     text-decoration: none;
-    color: inherit
+    color: inherit;
   }
-  .tag{
+  .tag {
     color: rgba(0, 0, 0, 0.607);
     font-size: 0.9rem;
   }
@@ -50,11 +50,11 @@
     background-color: variables.$button-primary-background;
     font-weight: 600;
     border-radius: 6px;
-
+    width: 10%;
     text-decoration: none;
     color: white;
   }
-  .post-button:hover{
+  .post-button:hover {
     background-color: variables.$button-primary-hover;
   }
 
@@ -107,11 +107,14 @@
     text-decoration: underline;
   }
   .search-bar {
+    width: 100%;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
+    display: flex;
+    height: 3.5rem;
+    gap: 1rem;
   }
   .search-bar input[type="search"] {
-    width: 100%;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border: 2px solid variables.$border-line;
@@ -145,9 +148,42 @@
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+  }
+  .favorite-icon {
+    font-size: 0.8rem !important;
+    margin-left: 0.2rem;
+  }
 }
-.favorite-icon{
-  font-size: 0.8rem!important;
-  margin-left: 0.2rem;
-}
+
+@media screen and (max-width: 576px) {
+  #container {
+    margin: 0;
+    padding: 0 1rem 1.5rem 1rem !important;
+    display: block;
+
+    .card {
+      margin: 0;
+      padding: 0.8rem 1rem;
+    }
+    .post-button{
+      width: 20%;
+      padding-bottom: 1rem !important;
+      padding-top: 0.5rem;
+    }
+    form{
+      height: 2.5rem;
+    }
+    .post-meta>p{
+      font-size: 0.8rem !important;
+    }
+    .header {
+      background-color: white !important;
+      padding: 1rem 0 !important;
+      flex-direction: column;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  }
 }

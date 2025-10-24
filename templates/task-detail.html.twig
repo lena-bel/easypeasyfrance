@@ -12,10 +12,11 @@
 			<h2>Step-by-step Instructions</h2>
 			<div class="details">
 				{% for step in steps %}
-					<p>
-						<input type="checkbox" id="step-{{ loop.index }}" name="step-{{ loop.index }}">
-						<label for="step-{{ loop.index }}">{{ step.step }}</label>
-					</p>
+				<p>{{loop.index}}. &nbsp; {{ step.step }}</p>
+					
+						
+						
+					
 				{% endfor %}
 			</div>
 		</section>

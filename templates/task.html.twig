@@ -8,13 +8,14 @@
 {% block body %}
 
 	<main id="task">
+	<h1>My Guide</h1>
 		<form action="{{ path('task_index') }}" method="GET" class="section-one">
 			<input type="search" name="searchbar" placeholder="Search..."/>
-			<select name="status" class="progress">
+			{# <select name="status" class="progress">
 				<option value="all">All</option>
 				<option value="in-progress">In progress</option>
 				<option value="completed">Finished</option>
-			</select>
+			</select> #}
 		</form>
 
 		{% if tasks is empty %}
@@ -38,7 +39,7 @@
 							</p>
 							<div class="task-actions">
 								<a href="{{ path('task-details', { id: task.id }) }}" class="btn">See details</a>
-								<a href="#" class="btn">Finish</a>
+								{# <a href="#" class="btn">Finish</a> #}
 							</div>
 						</div>
 					{% endfor %}

@@ -59,3 +59,37 @@
     }
   }
 }
+
+@media screen and (max-width: 576px){
+#comments{
+  width: 100%;
+  padding: 0 1rem 1.5rem 1rem !important;
+
+  .post-card{
+    padding: 0.8rem;
+
+    .post-meta>p{
+    font-size: 0.8rem !important;
+  }
+  }
+  .comment-item{
+    button{
+      text-align: left;
+    }
+    button:hover{
+      padding: 1rem;
+      background-color: variables.$button-primary-background;
+      color: variables.$button-primary-text;
+    }
+  }
+  form{
+    margin: 0;
+    padding: 0;
+    textarea{
+      padding: 0 !important;
+    }
+  }
+  
+}
+
+}
