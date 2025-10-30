@@ -39,7 +39,7 @@ final class RegisterController extends AbstractController
 
             $email = new Email();
             $email
-            ->from('no-reply@easypeasyfrance.fr') 
+            ->from('lena.mutima@easypeasyfrance.fr') 
             ->to($user->getEmail())
             ->subject('Activate your account')
             ->html('<p>Your activation code is: <strong>' . $verificationCode . '</strong></p>

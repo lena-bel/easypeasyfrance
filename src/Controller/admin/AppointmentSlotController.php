@@ -73,14 +73,25 @@ class AppointmentSlotController extends AbstractController
     {
         $slotRepo = $em->getRepository(AppointmentSlot::class);
         $slot = $slotRepo->findSlotWithAppointment($id);
-
+        // dd($slot);
+        // dd($slot->getAppointment()->first());
         if (!$slot) {
             $this->addFlash('error', 'Slot not found.');
             return $this->redirectToRoute('appointment_info');
         }
         return $this->render('admin/appointment-info.html.twig', [
             'slot' => $slot,
-            'appointment' => $slot->getAppointment(),
+            'appointment' => $slot->getAppointment()->first(),
         ]);
+    }
+
+    #[Route(path: 'admin/slot/manage/{id}', name: 'manage_booking')]
+    public function manageBooking(
+        int $id,
+        Request $request,
+        EntityManagerInterface $em,
+        \Symfony\Component\Mailer\MailerInterface $mailer
+    ): Response {
+        return $this->render('admin/manage-appointment.html.twig');
     }
 }

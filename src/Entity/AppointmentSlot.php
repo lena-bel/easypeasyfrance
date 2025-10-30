@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AppointmentSlotRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,8 +25,18 @@ class AppointmentSlot
     #[ORM\Column(nullable: true)]
     private ?bool $isBooked = false;
 
-    #[ORM\OneToOne(inversedBy: 'appointmentSlot', cascade: ['persist', 'remove'])]
-    private ?Appointment $appointment = null;
+    /**
+     * @var Collection<int, Appointment>
+     */
+    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'appointmentSlot')]
+    private Collection $appointment;
+
+    public function __construct()
+    {
+        $this->appointment = new ArrayCollection();
+    }
+
+    
 
     public function getId(): ?int
     {
@@ -67,15 +79,35 @@ class AppointmentSlot
         return $this;
     }
 
-    public function getAppointment(): ?Appointment
+    /**
+     * @return Collection<int, Appointment>
+     */
+    public function getAppointment(): Collection
     {
         return $this->appointment;
     }
 
-    public function setAppointment(?Appointment $appointment): static
+    public function addAppointment(Appointment $appointment): static
     {
-        $this->appointment = $appointment;
+        if (!$this->appointment->contains($appointment)) {
+            $this->appointment->add($appointment);
+            $appointment->setAppointmentSlot($this);
+        }
 
         return $this;
     }
+
+    public function removeAppointment(Appointment $appointment): static
+    {
+        if ($this->appointment->removeElement($appointment)) {
+            // set the owning side to null (unless already changed)
+            if ($appointment->getAppointmentSlot() === $this) {
+                $appointment->setAppointmentSlot(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

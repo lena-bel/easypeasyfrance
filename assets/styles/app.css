@@ -6,6 +6,7 @@
 
 body {
   background-color: #FAF9F6;
+  overflow-y: scroll;
 }
 
 h1,
@@ -971,6 +972,14 @@ input[type=file] {
     width: 100%;
     box-sizing: border-box;
   }
+  .sec-btn, .pri-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    height: auto;
+    margin-right: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
   .header {
     width: 100%;
     width: 100vw;
@@ -1022,7 +1031,7 @@ input[type=file] {
   .hero p {
     font-size: 0.8rem;
   }
-  .hero .btn, .hero .sec-btn {
+  .hero .btn, .hero .sec-btn, .hero .pri-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
     height: auto;

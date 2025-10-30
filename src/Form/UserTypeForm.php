@@ -25,10 +25,10 @@ class UserTypeForm extends AbstractType
                 'choices' => [
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
-                    // add more roles if needed
+                    
                 ],
-                'multiple' => false,    // roles is an array
-                'expanded' => true,    // renders as checkboxes
+                'multiple' => false,    
+                'expanded' => true,   
                 'label' => 'Roles',
             ])
 
