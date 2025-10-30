@@ -37,7 +37,7 @@ class ForgotPasswordController extends AbstractController
 
                
                 $emailMsg = (new Email())
-                    ->from('no-reply@easypeasyfrance.fr')
+                    ->from('lena.mutima@easypeasyfrance.fr')
                     ->to($user->getEmail())
                     ->subject('Your password reset code')
                     ->html('<p>Your reset code is: <strong>' . $code . '</strong></p>');

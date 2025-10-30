@@ -114,6 +114,7 @@
     justify-content: space-between;
     height: 3.5rem;
     gap: 1rem;
+    display: flex;
   }
   .search-bar input[type="search"] {
     padding: 0.5rem 1rem;
@@ -123,6 +124,7 @@
     outline-offset: 2px;
     width: 90%;
     transition: border-color 0.3s ease;
+    width: 90%;
   }
 
   /* Categories Filter */

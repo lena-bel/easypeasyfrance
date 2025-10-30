@@ -69,6 +69,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getSingleScalarResult();
     }
    
+    public function getTotalNumberPerVisaType() :array{
+        return $this->createQueryBuilder('user')
+        -> select('profile.name AS visaType , COUNT(user.id) AS total ')
+        ->join('user.profile','profile')
+        ->groupBy('profile.name')
+        ->getQuery()
+        ->getResult();
+    }
     //    /**
     //     * @return User[] Returns an array of User objects
     //     */

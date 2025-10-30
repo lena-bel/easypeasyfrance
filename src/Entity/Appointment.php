@@ -28,11 +28,13 @@ class Appointment
     #[ORM\Column(nullable: true)]
     private ?\DateTime $createdAt = null;
 
-    #[ORM\OneToOne(mappedBy: 'appointment', cascade: ['persist', 'remove'])]
-    private ?AppointmentSlot $appointmentSlot = null;
+    
 
     #[ORM\Column(length: 255, nullable: true)]
     private $status = 'active';
+
+    #[ORM\ManyToOne(inversedBy: 'appointment')]
+    private ?AppointmentSlot $appointmentSlot = null;
 
 
 
@@ -88,26 +90,7 @@ class Appointment
         return $this;
     }
 
-    public function getAppointmentSlot(): ?AppointmentSlot
-    {
-        return $this->appointmentSlot;
-    }
-
-    public function setAppointmentSlot(?AppointmentSlot $appointmentSlot): static
-    {
-        if ($appointmentSlot === null && $this->appointmentSlot !== null) {
-            $this->appointmentSlot->setAppointment(null);
-        }
-
-        if ($appointmentSlot !== null && $appointmentSlot->getAppointment() !== $this) {
-            $appointmentSlot->setAppointment($this);
-        }
-
-        $this->appointmentSlot = $appointmentSlot;
-
-        return $this;
-    }
-
+  
     public function getStatus(): ?string
     {
         return $this->status;
@@ -116,6 +99,18 @@ class Appointment
     public function setStatus(string $status): self
     {
         $this->status = $status;
+        return $this;
+    }
+
+    public function getAppointmentSlot(): ?AppointmentSlot
+    {
+        return $this->appointmentSlot;
+    }
+
+    public function setAppointmentSlot(?AppointmentSlot $appointmentSlot): static
+    {
+        $this->appointmentSlot = $appointmentSlot;
+
         return $this;
     }
 }

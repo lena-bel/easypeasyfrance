@@ -38,6 +38,14 @@
     box-sizing: border-box;  
     }
   }
+  .sec-btn, .pri-btn {
+    padding: 0.4rem 0.8rem;          
+    font-size: 0.9rem;               
+    height: auto;                  
+    margin-right: 0.5rem;            
+    width: 100%;                    
+    box-sizing: border-box;        
+  }
   //end
   // for the header
   .header {
@@ -95,7 +103,7 @@
     p {
       font-size: 0.8rem;
     }
-    .btn, .sec-btn {
+    .btn, .sec-btn, .pri-btn {
     padding: 0.4rem 0.8rem;          
     font-size: 0.9rem;               
     height: auto;                  

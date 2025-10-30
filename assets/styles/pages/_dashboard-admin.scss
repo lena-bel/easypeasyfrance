@@ -2,8 +2,13 @@
 #admin-dashboard {
   margin-left: 16rem;
   display: grid;
-  grid-template-columns: repeat(1fr, 3);
+  grid-template-areas:
+    "section1 section1 section1"
+    "profile piechart piechart"
+    "apt apt apt"
+    "buttons buttons buttons";
   gap: 1.5rem;
+
   ul {
     margin-top: 0.5rem;
   }
@@ -17,10 +22,42 @@
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
+  .profile-section {
+    grid-area: profile;
+  }
+  .piechart {
+    grid-area: piechart;
+   
+
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+       height: fit-content;
+      #userChart {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+        max-width: 400px;
+        max-height: 400px;
+      }
+    }
+  }
+
+  .appointments {
+    grid-area: apt;
+  }
+  .quick-actions {
+    grid-area: buttons;
+  }
 
   .summary-cards {
+    grid-area: section1;
+    flex: 1;
     display: flex;
     justify-content: space-between;
+    height: fit-content;
 
     grid-column: span 3;
 
@@ -56,37 +93,51 @@
     }
   }
 
-  .quick-actions{
+  .quick-actions {
     grid-column: span 3;
-    h2{
-        text-align: center;
-        margin-bottom: 2rem;
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    .quick-actions-buttons{
-        display: flex;
-    justify-content: space-between;
+    .quick-actions-buttons {
+      display: flex;
+      justify-content: space-between;
     }
   }
 
-  .button {
+  .btn{
     padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.375rem;
-    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+
   }
-  .primary {
+  .pri{
     background-color: variables.$button-primary-background;
     color: variables.$button-primary-text;
   }
-  .primary:hover {
-    background-color: variables.$button-primary-hover;
-  }
 
-  .secondary {
+  .sec{
     background-color: variables.$button-secondary-background;
     color: variables.$button-secondary-text;
   }
-  .secondary:hover {
-    color: white;
+
+  .btn:hover{
+    background-color: variables.$button-primary-hover;
+    color: variables.$button-primary-text;
   }
+  // .primary {
+  //   background-color: variables.$button-primary-background;
+  //   color: variables.$button-primary-text;
+  // }
+  // .primary:hover {
+  //   background-color: variables.$button-primary-hover;
+  // }
+
+  // .secondary {
+  //   background-color: variables.$button-secondary-background;
+  //   color: variables.$button-secondary-text;
+  // }
+  // .secondary:hover {
+  //   color: white;
+  // }
 }

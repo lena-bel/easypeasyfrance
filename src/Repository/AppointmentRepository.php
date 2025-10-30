@@ -19,18 +19,44 @@ class AppointmentRepository extends ServiceEntityRepository
 
 
 
-    public function findAvailableAppointmentByUser($user) : ?Appointment
+    public function findAvailableAppointmentByUser($user): ?Appointment
     {
-        return $this->createQueryBuilder('a')
-        ->andWhere('a.user = :user')
-        ->andWhere('a.status != :cancelled')
-        ->setParameter('user', $user)
-        ->setParameter('cancelled', 'cancelled')
-        ->getQuery()
-        ->getOneOrNullResult();
+        return $this->createQueryBuilder('apt')
+            ->andWhere('apt.user = :user')
+            ->andWhere('apt.status != :cancelled')
+            ->setParameter('user', $user)
+            ->setParameter('cancelled', 'cancelled')
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
-    
+    public function findAvailableAppointments(): array
+    {
+        $start = new \DateTime('today');
+        $end = (new \DateTime('today'))->setTime(23, 59, 59);
+
+        return $this->createQueryBuilder('apt')
+            ->join('apt.appointmentSlot', 'slot')           
+            ->andWhere('apt.status LIKE :status')           
+            ->andWhere('slot.date BETWEEN :start AND :end') 
+            ->setParameter('status', '%active%')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getAllAppointments(): int
+    {
+        return $this->createQueryBuilder('apt')
+            ->select('COUNT(apt.id)')
+            ->where('apt.status LIKE :status')
+            ->setParameter('status', '%active%')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+
 
     //    /**
     //     * @return Appointment[] Returns an array of Appointment objects

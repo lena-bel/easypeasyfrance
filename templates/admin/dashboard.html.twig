@@ -5,120 +5,120 @@
 
 {% block body %}
 	<main id="admin-dashboard" class="main-wrapper">
-		<div class="cards summary-cards">
+
+		<section class="cards summary-cards">
 			<div class="summary-item">
 				<h2>Total Users</h2>
-				<p>{{totalUsers}}</p>
+				<p>{{ totalUsers }}</p>
 			</div>
 			<div class="summary-item">
-				<h2>Total Active Users</h2>
-				<p>{{totalActiveUsers}}</p>
+				<h2>Active Users</h2>
+				<p>{{ totalActiveUsers }}</p>
 			</div>
 			<div class="summary-item">
 				<h2>Upcoming Appointments</h2>
-				<p>21</p>
+				<p>{{totalAppointments}}</p>
 			</div>
-			<div class="summary-item">
-				<h2>Unread Messages</h2>
-				<p>5</p>
+		</section>
+
+		<section class="cards profile-section">
+			<div class="user-list">
+				<h2>Users by Profile</h2>
+				<ul>
+					{% for userProfile in totalUsersPerProfile %}
+						<li>👤
+							{{ userProfile.visaType|capitalize }}:
+							{{ userProfile.total }}</li>
+					{% else %}
+						<li>No data</li>
+					{% endfor %}
+				</ul>
 			</div>
-		</div>
+		</section>
+		<section class='piechart'>
+			<div class="chart-container cards chart">
+				<h2>User Distribution Chart</h2>
+				<canvas id="userChart"></canvas>
 
-		<div class="cards profile">
-			<h2>Users by Profile</h2>
-			<ul class="text-sm space-y-1">
-				<li>👩‍🎓 Students: 82</li>
-				<li>👨‍👩‍👧 Families: 41</li>
-				<li>👷 Workers: 18</li>
-				<li>🕊 Refugees: 13</li>
-			</ul>
-		</div>
+			</div>
+		</section>
 
-		<div class="cards appointments">
+		<section class="cards appointments">
 			<h2>Upcoming Appointments</h2>
-			<ul>
-				<li>
-					<strong>Jane Doe</strong>
-					— June 10, 14:00</li>
-				<li>
-					<strong>Ahmed R.</strong>
-					— June 11, 10:00</li>
-				<li>
-					<strong>Chloe B.</strong>
-					— June 12, 09:30</li>
-				<li>
-					<strong>Maria S.</strong>
-					— June 12, 16:15</li>
-			</ul>
-		</div>
+			{% if availableAppointments %}
 
-		<div class="cards messages">
-			<h2>Recent Messages</h2>
-			<ul class="text-sm space-y-3">
-				<li>
-					<strong>Jane Doe:</strong>
-					I need help with my OFII appointment.
-					<span>2 hours ago</span>
-				</li>
-				<li>
-					<strong>Ali K.:</strong>
-					Can I upload documents from my phone?
-					<span>5 hours ago</span>
-				</li>
-				<li>
-					<strong>Rebecca N.:</strong>
-					I'm stuck on the visa task.
-					<span>1 day ago</span>
-				</li>
-			</ul>
-		</div>
-		<div class="cards flagged-posts">
-			<h2>Flagged Posts</h2>
-			<ul>
-				<li>"This doesn't work" –
-					<em>Reported by Jane D.</em>
-				</li>
-				<li>"Inappropriate comment" –
-					<em>Reported by Ahmed R.</em>
-				</li>
-			</ul>
-		</div>
-		<div class="cards community-posts">
-			<h2>New Community Posts</h2>
-			<ul>
-				<li>
-					<strong>Ali K.:</strong>
-					How do I upload my OFII proof?
-					<span>1 hour ago</span>
-				</li>
-				<li>
-					<strong>Sofia M.:</strong>
-					I missed my prefecture appointment!
-					<span>3 hours ago</span>
-				</li>
-				<li>
-					<strong>Rebecca N.:</strong>
-					Any help for single parents arriving with kids?
-					<span>1 day ago</span>
-				</li>
-			</ul>
-		</div>
-		<div class="cards notifications">
-			<h2>System Notifications</h2>
-			<ul>
-				<li>✅ Platform updated to v1.2.3</li>
-				<li>⚠️ 3 users reported login issues</li>
-				<li>📦 New roadmap content published</li>
-			</ul>
-		</div>
-		<div class="cards quick-actions">
+				<ul>
+					{% for apt in availableAppointments %}
+						<li>
+							<strong>{{apt.user.lastName}}
+								{{apt.user.firstName}}</strong>
+							—
+							{{apt.appointmentSlot.date|date('Y-m-d')}}
+							<strong>
+								<i>{{apt.appointmentSlot.time|date('H:i')}}</i>
+							</strong>
+						</li>
+					{% endfor %}
+
+				</ul>
+			{% else %}
+				<h3>No appointments Today</h3>
+			{% endif %}
+		</section>
+
+
+		<section class="cards quick-actions">
 			<h2>Quick Actions</h2>
 			<div class="quick-actions-buttons">
-				<button class="button primary">Add New Task</button>
-				<button class="button secondary">Schedule Appointment</button>
-				<button class="button primary">View All Users</button>
-				<button class="button secondary">Send Notification</button>
+        <a href="{{ path('admin_task_new') }}" class='pri btn'>Add New Task</a>
+				<a href="" class="sec btn">Schedule Appointment</a>
+				<a href="{{path('users')}}" class="pri btn">View All Users</a>
+				{# <a href="" class="sec btn">Send Notification</a> #}
 			</div>
-		</div>
+		</section>
+		
+
 	</main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<script>
+    const ctx = document.getElementById('userChart');
+    const labels = {{ totalUsersPerProfile|map(p => p.visaType)|json_encode|raw }};
+    const values = {{ totalUsersPerProfile|map(p => p.total)|json_encode|raw }};
+    const userData = {
+    labels: labels,
+    datasets: [
+    {
+    label: 'User Profiles',
+    data: values,
+    backgroundColor: [
+    '#C66B3D',
+    '#D2BBA0',
+    '#A8A69F',
+    '#2E2E2E',
+    '#FAF9F6'
+    ],
+    borderWidth: 1
+    }
+    ]
+    };
+
+    new Chart(ctx, {
+    type: 'pie',
+    data: userData,
+    options: {
+    plugins: {
+    legend: {
+    position: 'bottom'
+    },
+    title: {
+    display: true,
+    text: 'User Distribution by Profile'
+    }
+    }
+    }
+    });
+	</script>
+
+
 {% endblock %}

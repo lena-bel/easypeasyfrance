@@ -26,7 +26,7 @@ class AppointmentController extends AbstractController
         $existingAppointment = $appointmentRepo->findAvailableAppointmentByUser($user);
         $availableSlots = $em->getRepository(AppointmentSlot::class)->findAvailableSlots();
         $groupedSlots = [];
-
+// dd($existingAppointment);
         foreach ($availableSlots as $slot) {
             $dateKey = $slot->getDate()->format('Y-m-d');
 
@@ -91,19 +91,18 @@ class AppointmentController extends AbstractController
             return $this->redirectToRoute('appointment_index');
         }
 
-        $appointment->setStatus('cancelled');
-
         $slot = $appointment->getAppointmentSlot();
-
-            
-
 
         if ($slot) {
             $slot->setIsBooked(false);
-            $slot->setAppointment(null); 
+            // $slot->setAppointment(null); 
+            $appointment->setAppointmentSlot(null);
+            $em->persist($slot);
         }
 
-        // $em->remove($appointment);
+        $appointment->setStatus('cancelled');
+        $appointment->setUser(null);
+        $em->remove($appointment);
         $em->flush();
 
         $this->addFlash('success', 'Your appointment has been successfully cancelled.');
