@@ -1,0 +1,31 @@
+@use "../variables";
+
+#faq {
+  margin-left: 16rem;
+  margin-right: 2rem;
+
+  h1{
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .actions>.delete{
+    color: red;
+  }
+  
+
+}
+
+#new-faq{
+  margin-left: 16rem;
+  margin-right: 2rem;
+  .faq-form{
+    margin-top: 1.5rem;
+  }
+ form textarea{
+  height: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+ }
+
+}
+

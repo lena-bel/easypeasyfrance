@@ -82,7 +82,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<script>
-    const ctx = document.getElementById('userChart');
+	document.addEventListener("turbo:load", function() {
+     const ctx = document.getElementById('userChart');
     const labels = {{ totalUsersPerProfile|map(p => p.visaType)|json_encode|raw }};
     const values = {{ totalUsersPerProfile|map(p => p.total)|json_encode|raw }};
     const userData = {
@@ -118,6 +119,11 @@
     }
     }
     });
+});
+
+
+
+   
 	</script>
 
 

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block header %}
+	{% include "partials/admin-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<main id="new-faq">
+    <a href="{{ path('admin_faq') }}" class="back-btn">&larr; Go back</a>
+    <div class="faq-form">
+    {{form_start(form)}}
+    {{form(form)}}
+    {{form_end(form)}}
+    </div>
+</main>
+{% endblock %}

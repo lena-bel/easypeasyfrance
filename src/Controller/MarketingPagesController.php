@@ -39,11 +39,11 @@ class MarketingPagesController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/faq', name: 'faq')]
-    public function faqDisplay(): Response
-    {
-        return $this->render('marketingPages/faq.html.twig');
-    }
+    // #[Route(path: '/faq', name: 'faq')]
+    // public function faqDisplay(): Response
+    // {
+    //     return $this->render('marketingPages/faq.html.twig');
+    // }
 
     #[Route('/testimonial/new', name: 'testimonial_new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

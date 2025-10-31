@@ -17,20 +17,15 @@
 		</section>
 
 		<section class="faq-list">
-
+		{% for faq in faqs %}
 			<div class="faq-item">
-				<p class="question">What is Easy Peasy France?</p>
+				<p class="question">{{faq.question}}</p>
 				<div class="answer">
-					<p>It’s a free step-by-step platform that helps international newcomers manage administrative tasks in France.</p>
+					<p>{{faq.response}}</p>
 				</div>
 			</div>
-
-			<div class="faq-item">
-				<p class="question">Do I need to pay for this service?</p>
-				<div class="answer">
-					<p>No — Easy Peasy France is completely free. We are a non-profit supporting equality and inclusion.</p>
-				</div>
-			</div>
+		{% endfor %}
+{#
 
 			<div class="faq-item">
 				<p class="question">Is it for refugees, students, or families?</p>
@@ -85,7 +80,7 @@
 				<div class="answer">
 					<p>Registration is free and recommended so you can save your progress and get personalized assistance.</p>
 				</div>
-			</div>
+			</div> #}
 
 
 		</section>
