@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="google-site-verification" content="AYTr70zhib6hRiEhewCeW0uSAjbIIxCY5cL_59Jj--E" />
+		<meta name="google-site-verification" content="AYTr70zhib6hRiEhewCeW0uSAjbIIxCY5cL_59Jj--E"/>
 
 		<title>
 			{% block title %}Easy Peasy France
@@ -25,35 +25,37 @@
 		<section
 			style='flex:1;'>
 			{# ✅ Add flash messages here so they appear everywhere #}
-			{# <div class="container">
-				{% for message in app.flashes('success') %}
-					<div class="alert alert-success">{{ message }}</div>
+			<div id="flash-container">
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="flash-message {{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
 				{% endfor %}
-				{% for message in app.flashes('error') %}
-					<div class="alert alert-danger">{{ message }}</div>
-				{% endfor %}
-			</div> #}
+			</div>
 			{% include 'partials/_cookie_consent.html.twig' %}
 
 
 			{% block body %}{% endblock %}
 		</section>
-		{# {% block body %}{% endblock %} #}
 		{% block footer %}{% endblock %}
 
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
 				{% if app.request.cookies.get('easy_peasy_consent') == 'accepted' %}
-    <!-- Load optional scripts like analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXX');
-    </script>
-{% endif %}
+					<!-- Load optional scripts like analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+					<script>
+						window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXX');
+					</script>
+				{% endif %}
 			{% endblock %}
 		{% endblock %}
 	</body>

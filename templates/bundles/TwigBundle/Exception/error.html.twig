@@ -1,0 +1,6 @@
+{% set title = 'Une erreur est survenue' %}
+{% set heading = 'Une erreur est survenue' %}
+{% set subheading = "Pas d’inquiétude : réessayez plus tard ou revenez à l’accueil." %}
+{% set badge = status_code is defined ? status_code : '—' %}
+
+{% extends 'error/_layout.html.twig' %}

@@ -30,9 +30,9 @@ class ContactPageController extends AbstractController
             // $data = $form->getData();
 
             $email = (new Email())
-                ->from("no-reply@easypeasyfrance.fr")
+                ->from("contact@easypeasyfrance.fr")
                 ->replyTo($contactMessage->getEmail())
-                ->to('mlenabelise@gmail.com')
+                ->to('lena.mutima@easypeasyfrance.fr')
                 ->subject('New Contact Form Message')
                 ->text(
                     "Name: {$contactMessage->getName()}\n" .
