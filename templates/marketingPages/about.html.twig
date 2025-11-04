@@ -47,7 +47,9 @@
 			<div class="team-grid">
 				{% for member in members %}
 					<div class="team-card">
-						<img src="{{ asset('images/markettingImages/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}" class="team-image">
+						<div class="image">
+							<img src="{{ asset('images/markettingImages/' ~ member.photoUrl) }}" alt="{{ member.firstName }} {{ member.lastName }}" class="team-image">
+						</div>
 						<h3>{{ member.lastName }}
 							{{ member.firstName }}</h3>
 						<p>{{ member.jobTitle }}</p>

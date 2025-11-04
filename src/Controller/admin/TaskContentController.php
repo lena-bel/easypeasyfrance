@@ -16,9 +16,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TaskContentController extends AbstractController
 {
     #[Route(path: '/task-content', name: 'task-content')]
-    public function displayTasks(TaskRepository $taskRepository): Response
+    public function displayTasks(
+        TaskRepository $taskRepository,
+        Request $request
+        ): Response
     {
-        $tasks = $taskRepository->findAllTasks();
+        $search = $request ->query ->get('search');
+        if($search){
+            $tasks = $taskRepository ->findTasksBySearch($search);
+        } else{
+            $tasks = $taskRepository->findAllTasks();
+        }
 
         return $this->render('admin/task-content.html.twig', [
             'tasks' => $tasks
@@ -26,28 +34,6 @@ class TaskContentController extends AbstractController
     }
 
 
-    // #[Route(path: '/task/{id}/edit', name: 'admin_task_edit')]
-    // public function editTask(
-    //     Task $task,
-    //     Request $request,
-    //     EntityManagerInterface $em
-    // ): Response {
-    //     $form = $this->createForm(TaskForm::class, $task);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $task->setUpdatedAt(new DateTime());
-    //         $em->flush();
-
-    //         $this->addFlash('success', 'Task updated successfully!');
-    //         return $this->redirectToRoute('task-content');
-    //     }
-
-    //     return $this->render('admin/task-edit.html.twig', [
-    //         'form' => $form->createView(),
-    //         'task' => $task,
-    //     ]);
-    // }
     #[Route('/task/new', name: 'admin_task_new')]
     public function newTask(Request $request, EntityManagerInterface $em): Response
     {

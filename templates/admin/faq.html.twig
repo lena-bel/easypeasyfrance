@@ -6,7 +6,7 @@
 {% block body %}
 	<main id="faq">
 		<h1>FAQ</h1>
-		<form class="search" method="get" action="">
+		<form class="search" method="get" action="{{ path('admin_faq') }}">
 					<input name="search" type="text" placeholder="Search tasks..." class="search-bar"/>
 					<a href="{{ path('new_faq') }}" class="button-clear">+ New FAQ</a>
 				</form>

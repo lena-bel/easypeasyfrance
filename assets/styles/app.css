@@ -828,11 +828,6 @@ input[type=file] {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-#about .team-card img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 1rem;
-}
 #about .team-card p {
   font-size: 0.8rem;
 }
@@ -851,6 +846,9 @@ input[type=file] {
 }
 #about .team-image {
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
 }
 
 #users {

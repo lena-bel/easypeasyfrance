@@ -23,6 +23,14 @@ class FaqRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    public function getFaqsBySearch(string $searchFaq){
+        return $this->createQueryBuilder('faq')
+        ->where('faq.question LIKE :term OR faq.response LIKE :term')
+        ->setParameter('term', '%' . $searchFaq . '%')
+        ->getQuery()
+        ->getResult();
+    }
+
     //    /**
     //     * @return Faq[] Returns an array of Faq objects
     //     */

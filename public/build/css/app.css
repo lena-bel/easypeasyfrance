@@ -688,7 +688,6 @@ input[type=file] {
 .hero .free-phrase {
   margin-top: 0.4rem;
   font-size: 0.8rem;
-  font-style: italic;
 }
 .hero p {
   font-size: 1.2rem;
@@ -829,11 +828,6 @@ input[type=file] {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-#about .team-card img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 1rem;
-}
 #about .team-card p {
   font-size: 0.8rem;
 }
@@ -849,9 +843,6 @@ input[type=file] {
 }
 #about .socials a:hover {
   color: #C66B3D;
-}
-#about .team-image {
-  border-radius: 50%;
 }
 
 #users {
@@ -2331,6 +2322,30 @@ input[type=file] {
     border-radius: 6px;
     height: 2rem;
   }
+}
+#faq {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#faq h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+#faq .actions > .delete {
+  color: red;
+}
+
+#new-faq {
+  margin-left: 16rem;
+  margin-right: 2rem;
+}
+#new-faq .faq-form {
+  margin-top: 1.5rem;
+}
+#new-faq form textarea {
+  height: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 /*# sourceMappingURL=app.css.map */

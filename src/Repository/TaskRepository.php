@@ -46,6 +46,14 @@ class TaskRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findTasksBySearch($searchTask){
+        return $this->createQueryBuilder('task')
+        ->where('task.title LIKE :term OR task.description LIKE :term')
+        ->setParameter('term' , '%' . $searchTask . '%')
+        ->getQuery()
+        ->getResult();
+    }
+
     //    /**
     //     * @return Task[] Returns an array of Task objects
     //     */
