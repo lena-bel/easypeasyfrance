@@ -2354,4 +2354,45 @@ input[type=file] {
   margin-bottom: 1rem;
 }
 
+#legal-page, #privacy-page {
+  padding: 3rem 1rem;
+}
+#legal-page .update-date, #privacy-page .update-date {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#legal-page .legal-container, #legal-page .privacy-container, #privacy-page .legal-container, #privacy-page .privacy-container {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+#legal-page .legal-container article, #legal-page .privacy-container article, #privacy-page .legal-container article, #privacy-page .privacy-container article {
+  margin-bottom: 1rem;
+}
+#legal-page .legal-container article ul, #legal-page .privacy-container article ul, #privacy-page .legal-container article ul, #privacy-page .privacy-container article ul {
+  margin-left: 1.5rem;
+}
+#legal-page .legal-container h1, #legal-page .privacy-container h1, #privacy-page .legal-container h1, #privacy-page .privacy-container h1 {
+  text-align: center;
+  color: #c66b3d;
+}
+#legal-page .legal-container h2, #legal-page .privacy-container h2, #privacy-page .legal-container h2, #privacy-page .privacy-container h2 {
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #c66b3d;
+  padding-bottom: 0.5rem;
+}
+#legal-page a, #privacy-page a {
+  color: #c66b3d;
+  text-decoration: none;
+}
+#legal-page a:hover, #privacy-page a:hover {
+  text-decoration: underline;
+}
+
+.github {
+  color: green;
+  text-transform: capitalize;
+  margin-top: 2rem;
+}
+
 /*# sourceMappingURL=app.css.map */

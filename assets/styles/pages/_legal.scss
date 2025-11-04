@@ -1,0 +1,38 @@
+@use "../variables";
+
+#legal-page, #privacy-page {
+  padding: 3rem 1rem;
+  .update-date{
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .legal-container, .privacy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+    article{
+        margin-bottom: 1rem;
+        ul{
+            margin-left: 1.5rem;
+        }
+    }
+    h1 {
+      text-align: center;
+      
+      color: #c66b3d;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      border-bottom: 1px solid variables.$border-line;
+      padding-bottom: 0.5rem;
+    }
+  }
+  a {
+    color: #c66b3d;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}

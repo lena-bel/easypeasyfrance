@@ -81,4 +81,14 @@ class MarketingPagesController extends AbstractController
             'testimonialForm' => $form->createView(),
         ]);
     }
+
+    #[Route(path:'/legal-notice', name:'legal_notice')]
+    public function legalNotice() :Response{
+        return $this-> render('marketingPages/legal-notice.html.twig');
+    }
+
+    #[Route(path:'/privacy', name:'privacy')]
+    public function privacy() :Response{
+        return $this-> render('marketingPages/privacy.html.twig');
+    }
 }

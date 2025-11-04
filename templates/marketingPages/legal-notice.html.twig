@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "partials/visitor-header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<main id="legal-page">
+    <section class="legal-container">
+        <h1>Legal Notice</h1>
+
+        <article>
+            <h2>1 – Website Publisher</h2>
+            <p>In accordance with Article 6 of French Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users of the website 
+                <a href="https://easypeasyfrance.fr">https://easypeasyfrance.fr</a> are informed of the following details:</p>
+            <ul>
+                <li><strong>Owner:</strong> Lena Belise MUTIMA, Easy Peasy France (EPF)</li>
+                <li><strong>Email:</strong> <a href="mailto:mutimalena@gmail.com">mutimalena@gmail.com</a></li>
+                <li><strong>Phone:</strong> +33 6 66 78 17 65</li>
+                <li><strong>Address:</strong> Somewhere in France</li>
+                <li><strong>Hosting Provider:</strong> IONOS SARL, 7 Place de la Gare, 57200 Sarreguemines, France</li>
+            </ul>
+        </article>
+
+        <article>
+            <h2>2 – Intellectual Property</h2>
+            <p>All content on this website is the property of Easy Peasy France. Any reproduction or use without prior authorization is strictly prohibited.</p>
+        </article>
+
+        <article>
+            <h2>3 – Limitation of Liability</h2>
+            <p>Easy Peasy France cannot be held responsible for direct or indirect damages resulting from the use of this website or its contents.</p>
+        </article>
+
+        <article>
+            <h2>4 – Data Protection (CNIL)</h2>
+            <p>You may access, modify, or delete your personal data by contacting 
+                <a href="mailto:mutimalena@gmail.com">mutimalena@gmail.com</a>. 
+                For more information, please read our 
+                {# <a href="{{ path('privacy_policy') }}">Privacy Policy</a>. #}
+            </p>
+        </article>
+
+        <article>
+            <h2>5 – Cookies and External Links</h2>
+            <p>This website may contain links to external sites. Cookies may also be stored to improve your browsing experience, with your consent. 
+               {# Learn more in our <a href="{{ path('privacy_policy') }}">Privacy Policy</a>. #}
+            </p>
+        </article>
+
+        <article>
+            <h2>6 – Applicable Law</h2>
+            <p>All disputes related to the use of this website fall under French jurisdiction, with exclusive competence granted to the courts of Bron.</p>
+        </article>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+	{% include "partials/footer.html.twig" %}
+{% endblock %}
