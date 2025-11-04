@@ -33,6 +33,8 @@
 					<div class="alert alert-danger">{{ message }}</div>
 				{% endfor %}
 			</div> #}
+			{% include 'partials/_cookie_consent.html.twig' %}
+
 
 			{% block body %}{% endblock %}
 		</section>
@@ -42,6 +44,16 @@
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
+				{% if app.request.cookies.get('easy_peasy_consent') == 'accepted' %}
+    <!-- Load optional scripts like analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXX');
+    </script>
+{% endif %}
 			{% endblock %}
 		{% endblock %}
 	</body>

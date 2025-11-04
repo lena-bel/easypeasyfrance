@@ -1,0 +1,94 @@
+{# {% if app.request.cookies.get('easy_peasy_consent') is not defined %} #}
+{% set consent = app.request.cookies.get('easy_peasy_consent') %}
+{% if consent is null %}
+<div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+        <h3>We value your privacy</h3>
+        <p>We use cookies to ensure you get the best experience on our website. You can accept or refuse them at any time.</p>
+        <div class="cookie-buttons">
+            <button class="pri-btn" id="acceptCookies">Accept All</button>
+            <button class="sec-btn" id="rejectCookies">Reject All</button>
+            <a href="{{ path('privacy') }}" class="link">Learn more</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const rejectBtn = document.getElementById('rejectCookies');
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            document.cookie = "easy_peasy_consent=accepted; path=/; max-age=" + (60 * 60 * 24 * 180);
+            banner.remove();
+            location.reload();
+        });
+    }
+
+    if (rejectBtn) {
+        rejectBtn.addEventListener('click', function() {
+            document.cookie = "easy_peasy_consent=rejected; path=/; max-age=" + (60 * 60 * 24 * 180);
+            banner.remove();
+        });
+    }
+});
+</script>
+
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 050%;
+    left: 25%;
+    width: 50%;
+    background-color: rgba(217, 166, 107, 1);
+    border-top: 2px solid #d9a66bff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    color: #2E2E2E;
+    z-index: 9999;
+    padding: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+}
+.cookie-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+.cookie-content h3 {
+    color: #ad3e07ff;
+    margin-bottom: 0.5rem;
+}
+.cookie-buttons {
+    margin-top: 1rem;
+}
+.cookie-buttons .pri-btn {
+    background-color: #C66B3D;
+    color: #FAF9F6;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.cookie-buttons .sec-btn {
+    background-color: #A8A69F;
+    color: #2E2E2E;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+.cookie-buttons .link {
+    display: inline-block;
+    margin-left: 1rem;
+    color: #c24507ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.cookie-buttons .link:hover {
+    text-decoration: underline;
+}
+</style>
+ 
