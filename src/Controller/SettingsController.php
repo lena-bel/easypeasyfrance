@@ -2,15 +2,17 @@
 
 namespace App\Controller;
 
-use App\Form\ChangePasswordForm;
 use App\Form\SettingsForm;
+use App\Form\ChangePasswordForm;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+#[IsGranted('ROLE_USER')]
 class SettingsController extends AbstractController
 {
     #[Route(path: '/settings', name: 'user_settings')]

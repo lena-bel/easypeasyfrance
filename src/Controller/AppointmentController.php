@@ -11,7 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_USER')]
 class AppointmentController extends AbstractController
 {
     #[Route(path: '/appointment', name: 'appointment_index')]
@@ -26,7 +28,7 @@ class AppointmentController extends AbstractController
         $existingAppointment = $appointmentRepo->findAvailableAppointmentByUser($user);
         $availableSlots = $em->getRepository(AppointmentSlot::class)->findAvailableSlots();
         $groupedSlots = [];
-// dd($existingAppointment);
+        // dd($existingAppointment);
         foreach ($availableSlots as $slot) {
             $dateKey = $slot->getDate()->format('Y-m-d');
 
@@ -87,7 +89,7 @@ class AppointmentController extends AbstractController
         $appointment = $appointmentRepo->find($id);
 
         if (!$appointment || $appointment->getUser() !== $user) {
-            $this->addFlash('error', 'Appointment not found or not authorized.');
+            $this->addFlash('error', 'Appointment not found.');
             return $this->redirectToRoute('appointment_index');
         }
 

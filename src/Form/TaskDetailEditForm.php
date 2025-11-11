@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Steps;
 use App\Entity\Task;
 use App\Entity\TaskDetails;
 use Symfony\Component\Form\AbstractType;
@@ -52,7 +53,7 @@ class TaskDetailEditForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => TaskDetails::class,
+            'data_class' => Steps::class,
         ]);
     }
 }

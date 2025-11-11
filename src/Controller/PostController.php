@@ -13,9 +13,10 @@ use App\Repository\VisaTypeProfileRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-// #[IsGranted('ROLE_USER')]
+#[IsGranted('ROLE_USER')]
 class PostController extends AbstractController // extending AbstractController allow access to some frequently used utilities such as render() and redirectToRoute(), it facilitates the development of controllers
 {
     #[Route('/post', name: "posts_index")]

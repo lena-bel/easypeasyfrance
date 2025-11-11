@@ -6,10 +6,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 class UserDasboardController extends AbstractController
 {
     #[Route('/dashboard', name: 'user_dashboard')]
-    #[IsGranted('ROLE_USER')]
+    // #[IsGranted('ROLE_USER')]
     public function index(): Response
     {
         $user = $this->getUser();

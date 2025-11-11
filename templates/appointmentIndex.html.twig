@@ -66,7 +66,9 @@
 		</div>
 
 	{% endif %}
-</div></main><script>
+</div></main>
+<script>
+document.addEventListener("turbo:load", function() {
 function selectSlot(slotElement, date, time, slotId) {
 const form = document.getElementById('appointmentForm');
 if (form) 
@@ -74,7 +76,6 @@ form.classList.remove('hidden');
 
 
 
-// Hidden field for slot ID
 let slotIdInput = document.getElementById('slotIdField');
 if (! slotIdInput) {
 slotIdInput = document.createElement('input');
@@ -109,12 +110,18 @@ arrow.textContent = '▲';
 }
 
 const cancelBtn = document.querySelector('.cancel-btn');
-    if (cancelBtn) {
-        cancelBtn.addEventListener('click', (e) => {
-            if (!confirm('Are you sure you want to cancel your appointment?')) {
-                e.preventDefault();
-            }
-        });
-    }
+if (cancelBtn) {
+cancelBtn.addEventListener('click', (e) => {
+if (!confirm('Are you sure you want to cancel your appointment?')) {
+e.preventDefault();
+}
+});
+}
 
-}</script>{% endblock %}{% block footer %}{% include "partials/footer.html.twig" %}{% endblock %}
+}
+})
+</script>
+{% endblock %}
+{% block footer %}
+{% include "partials/footer.html.twig" %}
+{% endblock %}

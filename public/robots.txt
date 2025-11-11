@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /post
+Disallow: /post/
+Disallow: /post/new-post
+Disallow: /post/search
+Disallow: /post/*/comment
+Disallow: /post/*/delete
+Disallow: /my-posts
+Disallow: /appointment
+Disallow: /appointment/
+Disallow: /settings
+Disallow: /tasks
+Disallow: /tasks/
+Disallow: /tasks/*
+Disallow: /forgot-password
+Disallow: /reset-password/
+Disallow: /verify-account/
+Disallow: /verify-code/
+
+# BLOCK ADMIN AREA (CRITICAL)
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /adminadmin/   # you have a malformed route, block it
+
+# Sitemap reference
+Sitemap: https://easypeasyfrance.fr/sitemap.xml

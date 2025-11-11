@@ -40,60 +40,58 @@
 
 	</main>
 	<script>
-		const password = document.getElementById('register_form_password_first');
-const confirmPassword = document.getElementById('register_form_password_second');
+document.addEventListener("turbo:load", function() {
+  const password = document.getElementById('register_form_password_first');
+  const confirmPassword = document.getElementById('register_form_password_second');
 
-const lengthReq = document.getElementById('length');
-const letterReq = document.getElementById('letter');
-const numberReq = document.getElementById('number');
-const specialReq = document.getElementById('special');
-const matchReq = document.getElementById('match');
+  const lengthReq = document.getElementById('length');
+  const letterReq = document.getElementById('letter');
+  const numberReq = document.getElementById('number');
+  const specialReq = document.getElementById('special');
+  const matchReq = document.getElementById('match');
 
-function validatePassword() {
-const val = password.value;
+  function validatePassword() {
+    const val = password.value;
 
-// length
-if (val.length >= 8) 
-lengthReq.className = 'valid';
- else 
-lengthReq.className = 'invalid';
+    // length
+    if (val.length >= 8) {
+      lengthReq.className = 'valid';
+    } else {
+      lengthReq.className = 'invalid';
+    }
 
+    // letter
+    if (/[A-Za-z]/.test(val)) {
+      letterReq.className = 'valid';
+    } else {
+      letterReq.className = 'invalid';
+    }
 
+    // number
+    if (/\d/.test(val)) {
+      numberReq.className = 'valid';
+    } else {
+      numberReq.className = 'invalid';
+    }
 
-// letter
-if (/[A-Za-z]/.test(val)) 
-letterReq.className = 'valid';
- else 
-letterReq.className = 'invalid';
+    // special character
+    if (/[^A-Za-z0-9]/.test(val)) {
+      specialReq.className = 'valid';
+    } else {
+      specialReq.className = 'invalid';
+    }
 
+    // match
+    if (val === confirmPassword.value && val.length > 0) {
+      matchReq.className = 'valid';
+    } else {
+      matchReq.className = 'invalid';
+    }
+  }
 
+  password.addEventListener('input', validatePassword);
+  confirmPassword.addEventListener('input', validatePassword);
+});
+</script>
 
-// number
-if (/\d/.test(val)) 
-numberReq.className = 'valid';
- else 
-numberReq.className = 'invalid';
-
-
-
-// special character
-if (/[^A-Za-z0-9]/.test(val)) 
-specialReq.className = 'valid';
- else 
-specialReq.className = 'invalid';
-
-
-
-// match
-if (val === confirmPassword.value && val.length > 0) 
-matchReq.className = 'valid';
- else 
-matchReq.className = 'invalid';
-
-
-}
-
-password.addEventListener('input', validatePassword);
-confirmPassword.addEventListener('input', validatePassword);
-	</script>
 {% endblock %}

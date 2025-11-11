@@ -55,7 +55,8 @@
 	</main>
 
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
+	document.addEventListener("turbo:load", function() {
+		
 function addForm(buttonSelector, containerSelector) {
 document.querySelector(buttonSelector).addEventListener('click', function (e) {
 e.preventDefault();
@@ -70,7 +71,7 @@ container.insertAdjacentHTML('beforeend', newForm);
 addForm('#add-step', '.collection-steps');
 addForm('#add-link', '.collection-links');
 addForm('#add-document', '.collection-documents');
-
-});
+})
 	</script>
 {% endblock %}
+{# document.addEventListener("turbo:load", function() {}) #}

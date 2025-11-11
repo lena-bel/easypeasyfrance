@@ -15,11 +15,12 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 
 // #[Route(path:'/dashboard',name:'user_dashboard')]
+#[IsGranted('ROLE_USER')]
 class TaskController extends AbstractController
 {
     #[Route('/tasks', name: 'task_index')]
 
-    #[IsGranted('ROLE_USER')]
+    // #[IsGranted('ROLE_USER')]
     public function tasksDisplay(
         Request $request,
         UserRepository $userRepository,

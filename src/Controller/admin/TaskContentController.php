@@ -10,8 +10,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route(path: '/admin')]
 class TaskContentController extends AbstractController
 {
@@ -35,7 +37,10 @@ class TaskContentController extends AbstractController
 
 
     #[Route('/task/new', name: 'admin_task_new')]
-    public function newTask(Request $request, EntityManagerInterface $em): Response
+    public function newTask(
+        Request $request, 
+        EntityManagerInterface $em
+        ): Response
     {
         $task = new Task();
 

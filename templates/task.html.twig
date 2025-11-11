@@ -11,11 +11,6 @@
 	<h1>My Guide</h1>
 		<form action="{{ path('task_index') }}" method="GET" class="section-one">
 			<input type="search" name="searchbar" placeholder="Search..."/>
-			{# <select name="status" class="progress">
-				<option value="all">All</option>
-				<option value="in-progress">In progress</option>
-				<option value="completed">Finished</option>
-			</select> #}
 		</form>
 
 		{% if tasks is empty %}

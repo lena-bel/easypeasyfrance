@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
 use App\Entity\Post;
+use App\Entity\Comment;
 use App\Form\CommentForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 class CommentController extends AbstractController
 {
     #[Route(name: 'addComment', path: '/post/{id}/comment')]

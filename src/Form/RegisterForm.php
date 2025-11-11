@@ -31,7 +31,7 @@ class RegisterForm extends AbstractType
 
             ->add('profile', EntityType::class, [
                 'class' => VisaTypeProfile::class,
-                'choice_label' => 'name', // adjust to your field
+                'choice_label' => 'name', 
                 'placeholder' => 'Select profile',
                 'required' => true,
             ])
