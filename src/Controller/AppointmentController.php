@@ -24,6 +24,28 @@ class AppointmentController extends AbstractController
         $user = $this->getUser();
         $appointmentRepo = $em->getRepository(Appointment::class);
         $slotRepo = $em->getRepository(AppointmentSlot::class);
+        $existingPastDaysAppointment = $appointmentRepo->findPastAppointmentsByUser($user);
+        // dd($existingPastDaysAppointment);
+        // this if here is to help delete the past days' appointment as they can't keep showing as existing appointments on the users side so delete them and let the user book a new appointment
+        if ($existingPastDaysAppointment) {
+
+            foreach ($existingPastDaysAppointment as $appointment) {
+                // get the slot
+                $slot = $appointment->getAppointmentSlot();
+
+                if ($slot) {
+                    // free the slot so it is not deleted might delete to free up the storage later tho
+                    $slot->setIsBooked(false);
+                }
+                // now delete the appointment from the database
+                $appointment->setAppointmentSlot(null);
+                $appointment->setStatus('cancelled');
+                $appointment->setUser(null);
+                $em->remove($appointment);
+               
+            }
+             $em->flush();
+        }
 
         $existingAppointment = $appointmentRepo->findAvailableAppointmentByUser($user);
         $availableSlots = $em->getRepository(AppointmentSlot::class)->findAvailableSlots();

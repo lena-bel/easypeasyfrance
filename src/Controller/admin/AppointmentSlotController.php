@@ -19,6 +19,7 @@ class AppointmentSlotController extends AbstractController
     public function slotIndex(AppointmentSlotRepository $slotRepo): Response
     {
         $slots = $slotRepo->findAllOrdered();
+        // dd($slots);
         return $this->render('admin/slots-index.html.twig', [
             'slots' => $slots,
         ]);
@@ -85,13 +86,62 @@ class AppointmentSlotController extends AbstractController
         ]);
     }
 
-    #[Route(path: 'admin/slot/manage/{id}', name: 'manage_booking')]
+    #[Route(path: '/admin/slot/manage/{id}', name: 'manage_booking')]
     public function manageBooking(
         int $id,
         Request $request,
         EntityManagerInterface $em,
+        AppointmentSlotRepository $slotRepo,
         \Symfony\Component\Mailer\MailerInterface $mailer
     ): Response {
-        return $this->render('admin/manage-appointment.html.twig');
+         $slot = $em->getRepository(AppointmentSlot::class)->find($id);
+
+    if (!$slot) {
+        throw $this->createNotFoundException('Appointment slot not found.');
+    }
+
+    
+    $appointment = $slot->getAppointment()->first();
+
+    if (!$appointment) {
+        throw $this->createNotFoundException('No appointment found for this slot.');
+    }
+
+    if ($request->isMethod('POST')) {
+
+        $messageText = $request->request->get('admin_message');
+
+        if (!$messageText) {
+            $this->addFlash('error', 'Please write a message before submitting.');
+            return $this->redirectToRoute('manage_booking', ['id' => $id]);
+        }
+
+        
+        $email = (new \Symfony\Component\Mime\Email())
+            ->from('contact@easypeasyfrance.fr')
+            ->to($appointment->getUser()->getEmail())
+            ->subject('Appointment Update')
+            ->text($messageText);
+
+        $mailer->send($email);
+
+        
+        $slot->setIsBooked(false);
+
+        
+        $appointment->setAppointmentSlot(null);
+        $appointment->setUser(null);
+
+        $em->remove($appointment);
+        $em->flush();
+
+        $this->addFlash('success', 'Appointment marked as attended and user notified.');
+        return $this->redirectToRoute('admin_dashboard');
+    }
+
+    
+    return $this->render('admin/manage-booking.html.twig', [
+        'appointment' => $appointment,
+    ]);
     }
 }

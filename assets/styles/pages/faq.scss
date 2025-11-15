@@ -48,3 +48,9 @@
     background-color: variables.$button-primary-hover;
   }
 }
+
+@media screen and (max-width: 576px){
+  #faq{
+    margin: 0 !important;
+  }
+}

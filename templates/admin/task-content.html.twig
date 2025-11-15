@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
 	<main id="task-content">
-		<h1>Tasks & Content</h1>
+		<h1>Tasks</h1>
 		<form class="search" method="get" action="{{path('task-content')}}">
 			<input name="search" type="text" placeholder="Search tasks..." class="search-bar"/>
 			<a href="{{ path('admin_task_new') }}" class="button-clear">+ New Task</a>

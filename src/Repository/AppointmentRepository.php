@@ -30,6 +30,21 @@ class AppointmentRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findPastAppointmentsByUser($user): array
+{
+    $today = new \DateTimeImmutable('today');
+
+    return $this->createQueryBuilder('apt')
+        ->innerJoin('apt.appointmentSlot', 'slot')
+        ->addSelect('slot')
+        ->andWhere('apt.user = :user')
+        ->andWhere('slot.date < :today')
+        ->setParameter('user', $user)
+        ->setParameter('today', $today->format('Y-m-d'))
+        ->getQuery()
+        ->getResult();
+}
+
     public function findAvailableAppointments(): array
     {
         $start = new \DateTime('today');

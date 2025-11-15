@@ -18,17 +18,32 @@ class AppointmentSlotRepository extends ServiceEntityRepository
 
     public function findAllOrdered(): array
     {
+        $today = new \DateTimeImmutable('today');
         return $this->createQueryBuilder('s')
+            ->andWhere('s.date > :today OR (s.date = :today AND s.isBooked = true)')
+            ->setParameter('today', $today->format('Y-m-d'))
+        // ->setParameter('booked', 'booked')
             ->orderBy('s.date', 'ASC')
             ->addOrderBy('s.time', 'ASC')
             ->getQuery()
+
+             
+        // ->setParameter('today', $today->format('Y-m-d'))
+        // ->setParameter('booked', 'booked')
+        // ->orderBy('s.date', 'ASC')
+        // ->addOrderBy('s.time', 'ASC')
             ->getResult();
+
+
     }
 
     public function findAvailableSlots(): array
     {
+        $today = new \DateTimeImmutable('today');
         return $this->createQueryBuilder('s')
+            ->andWhere('s.date > :today')
             ->andWhere('s.isBooked = :booked')
+            ->setParameter('today', $today->format('Y-m-d'))
             ->setParameter('booked', false)
             ->orderBy('s.date', 'ASC')
             ->addOrderBy('s.time', 'ASC')

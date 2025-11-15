@@ -30,7 +30,7 @@
 							<td>
 								<a href="{{path('appointment_info', {'id': slot.id})}}">Appointment Info</a>
 								<span>|</span>
-								{# <a href="{{path('manage_booking')}}" class='active'>Manage Booking</a> #}
+								<a href="{{path('manage_booking', {'id': slot.id})}}" class='active'>Manage Booking</a>
 								<span>|</span>
 								<a href="{{ path('slot_delete', {'id': slot.id}) }}" class='delete' onclick="return confirm('Are you sure?');">Delete</a>
 								

@@ -1,0 +1,28 @@
+@use "../variables";
+#manage-booking {
+  margin-left: 16rem;
+  margin-right: 2rem;
+
+  .booking-info{
+    margin: 1rem 0;
+    p{
+        padding-bottom: 0.8rem;
+    }
+    strong{
+        padding-right: 0.8rem;
+    }
+
+  }
+  hr{
+    color: variables.$border-line;
+    margin-bottom: 1rem;
+  }
+  form {
+    label{
+    color: variables.$border-line;
+  }
+  textarea{
+    margin-top: 1rem;
+  }
+}
+}

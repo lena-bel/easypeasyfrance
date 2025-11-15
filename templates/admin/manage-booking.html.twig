@@ -4,9 +4,38 @@
 {% endblock %}
 
 {% block body %}
-<main id="manage-booking">
+	<main id="manage-booking">
+
+		<h1>Manage Appointment</h1>
+
+		<div class="booking-info">
+			<p>
+				<strong>User:</strong>
+				{{ appointment.user.email }}</p>
+			<p>
+				<strong>Date:</strong>
+				{{ appointment.appointmentSlot.date|date('d M Y') }}</p>
+			<p>
+				<strong>Time:</strong>
+				{{ appointment.appointmentSlot.time|date('H:i') }}</p>
+		</div>
+
+		<hr>
+
+		<form action="" method="post">
+
+			<label for="admin_message">
+				<strong>Message to the user:</strong>
+			</label>
+			<textarea id="admin_message" name="admin_message" required rows="6" placeholder="Write the message you want to send to the user..."></textarea>
+
+			<button type="submit" class="pri-btn" style="margin-top: 1rem;">
+				Mark as Attended & Send Email
+			</button>
+
+		</form>
 
 
-</main>
+	</main>
 
 {% endblock %}
