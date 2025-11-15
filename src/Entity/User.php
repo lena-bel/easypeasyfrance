@@ -69,7 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Post>
      */
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user',cascade: ['remove'],)]
     private Collection $posts;
 
     /**
@@ -81,13 +81,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user', cascade: ['remove'],)]
     private Collection $comments;
 
     /**
      * @var Collection<int, Appointment>
      */
-    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'user', cascade: ['remove'],)]
     private Collection $appointments;
 
     public function __construct()

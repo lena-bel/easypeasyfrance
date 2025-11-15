@@ -52,4 +52,27 @@ class SettingsController extends AbstractController
             'user' => $user
         ]);
     }
+
+    #[Route(path: '/settings/delete-account', name: 'delete_account',  methods: ['POST'])]
+    public function deleteAccount(
+        Request $request,
+        EntityManagerInterface $em
+    ): Response {
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException('No user logged in.');
+        }
+
+        if (!$this->isCsrfTokenValid('delete_account', $request->request->get('_token'))) {
+            throw $this->createAccessDeniedException('Invalid CSRF token.');
+        }
+        $session = $request->getSession();
+        $session->invalidate();
+
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirectToRoute('app_logout');
+    }
 }

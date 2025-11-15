@@ -1421,7 +1421,7 @@ input[type=file] {
 
 @media screen and (max-width: 576px) {
   #faq {
-    background-color: orange !important;
+    margin: 0 !important;
   }
 }
 #admin-task-detail {
@@ -2443,6 +2443,14 @@ input[type=file] {
 }
 #settings .change-password #password-requirements p.valid {
   color: green;
+}
+#settings .delete-account form > button {
+  border: none;
+  color: white;
+  background-color: red;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 576px) {

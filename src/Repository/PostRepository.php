@@ -22,7 +22,7 @@ class PostRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->addSelect('u')
             ->join('p.user', 'u')
-            // ->orderBy('p.publicationDate', 'DESC') 
+            ->orderBy('p.publicationDate', 'DESC') 
             ->getQuery()
             ->getResult();
     }

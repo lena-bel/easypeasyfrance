@@ -57,7 +57,18 @@
 				<div class="alert success">{{ message }}</div>
 			{% endfor %}
 		</div>
-
+		<div class="delete-account">
+			<h2>Delete Account</h2>
+			<p>Deleting your account is permanent. Everything will be erased immediately and cannot be recovered.
+				If you want to deactivate your account instead of deleting it, contact us we will handle it for you.</p>
+			{# <a href="{{path('delete_account')}}" class="delete-btn">Delete Account</a> #}
+			<form action="{{ path('delete_account') }}" method="post" onsubmit="return confirm('Are you sure?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
+    <button type="submit" class="delete-btn">
+        Delete Account
+    </button>
+</form>
+		</div>
 	</main>
 {% endblock %}
 {% block footer %}

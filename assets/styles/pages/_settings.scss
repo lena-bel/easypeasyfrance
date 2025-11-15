@@ -97,6 +97,16 @@
       }
     }
   }
+  .delete-account {
+    form >button {
+      border: none;
+      color: white;
+      background-color: red;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+  }
 }
 
 @media screen and (max-width: 576px) {
