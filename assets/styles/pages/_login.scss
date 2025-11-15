@@ -83,8 +83,10 @@
    .login-container{
     margin: 0 !important;
     margin-top: 1rem !important;
-    padding: 0 !important;
+    padding: 10px !important;
+    overflow-x: hidden;
     justify-content: flex-start;
+
     .login-card{
         width: 100%;
     }
