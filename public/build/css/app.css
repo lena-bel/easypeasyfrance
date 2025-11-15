@@ -1771,6 +1771,17 @@ input[type=file] {
   color: #f09068;
 }
 
+@media screen and (max-width: 576px) {
+  .login-container {
+    margin: 0 !important;
+    margin-top: 5rem !important;
+    padding: 0 !important;
+    justify-content: flex-start;
+  }
+  .login-container .login-card {
+    width: 100%;
+  }
+}
 #register {
   display: flex;
   justify-content: center;
@@ -1926,6 +1937,13 @@ input[type=file] {
   margin-bottom: 1.2rem;
 }
 
+@media screen and (max-width: 576px) {
+  #register {
+    margin: 0 !important;
+    margin-top: 5rem !important;
+    padding: 0 !important;
+  }
+}
 #comments {
   margin: 0 auto;
   width: 50%;
