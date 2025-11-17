@@ -23,11 +23,7 @@
 						<div class="card">
 							<h3>{{task.title}}</h3>
 							<div class="task-data">
-								<p class="data">Profil : Étudiant .</p>
-								<p class="data">Status :
-									{{task.status}}
-									.</p>
-								<p class="data">Échéance : 15 juin 2025</p>
+								<p class="data">Last Updated : {{task.updatedAt|date('Y-m-d')}}</p>
 							</div>
 							<p class="task-desc">
 								{{task.description}}

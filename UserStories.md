@@ -12,7 +12,7 @@ Les **user stories** décrivent les besoins fonctionnels d’**Easy Peasy France
 | P1 | visiteur | consulter la page FAQ | obtenir des réponses rapides sans créer de compte |
 | P1 | visiteur | accéder à la page Contact | poser une question ou signaler un problème |
 | P2 | visiteur | lire des témoignages d’utilisateurs | me rassurer sur la fiabilité du service |
-| P2 | visiteur | m’inscrire ou me connecter | accéder à un espace personnalisé |
+| P1 | visiteur | m’inscrire ou me connecter | accéder à un espace personnalisé |
 
 ### Utilisateur inscrit (ROLE_USER)
 

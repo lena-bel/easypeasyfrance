@@ -2,6 +2,7 @@
 
 namespace App\Controller\visitors;
 
+use DateTime;
 use App\Entity\Faq;
 use App\Form\FaqType;
 use DateTimeImmutable;
@@ -9,8 +10,8 @@ use App\Repository\FaqRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FaqController extends AbstractController
@@ -80,6 +81,7 @@ class FaqController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $faq->setCreatedAt(new \DateTimeImmutable());
             $em->flush();
             $this->addFlash('Success', 'Faq updated successfully');
             return $this->redirectToRoute('admin_faq');

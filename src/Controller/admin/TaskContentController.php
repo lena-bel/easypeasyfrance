@@ -111,6 +111,7 @@ class TaskContentController extends AbstractController
         $form = $this->createForm(TaskForm::class, $task);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUpdatedAt(new DateTime());
             $em->flush();
 
             $this->addFlash('success', 'Task updated successfully!');
