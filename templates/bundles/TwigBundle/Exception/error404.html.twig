@@ -3,6 +3,8 @@
 {% set subheading = "The requested page does not exist or has been moved." %}
 {% set badge = '404' %}
 {% extends '_layout.html.twig' %} #}
+
+{# <h1>OK</h1> #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Page Not Found | EasyPeasyFrance{% endblock %}
@@ -30,7 +32,7 @@
     </p>
 
     <div style="margin-top: 40px;">
-        <a href="{{ path('app_homepage') }}" style="
+        <a href="{{ path('home') }}" style="
             background-color: #C66B3D;
             color: white;
             padding: 12px 24px;
