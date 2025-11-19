@@ -28,11 +28,14 @@
 							<td>{{ slot.time|date('H:i') }}</td>
 							<td>{{ slot.isBooked ? 'Booked' : 'Available' }}</td>
 							<td>
-								<a href="{{path('appointment_info', {'id': slot.id})}}">Appointment Info <i class="material-icons">visibility</i></a>
+								<a href="{{path('appointment_info', {'id': slot.id})}}">Appointment Info <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>visibility</i></a>
 								<span>|</span>
-								<a href="{{path('manage_booking', {'id': slot.id})}}" class='active'>Manage Booking <i class="material-icons">library_books</i></a>
+								<a href="{{path('manage_booking', {'id': slot.id})}}" class='active'>Manage Booking <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>library_books</i></a>
 								<span>|</span>
-								<a href="{{ path('slot_delete', {'id': slot.id}) }}" class='delete' onclick="return confirm('Are you sure?');">Delete <i class="material-icons">delete</i></a>
+								<a href="{{ path('slot_delete', {'id': slot.id}) }}" class='delete' onclick="return confirm('Are you sure?');">Delete <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>delete</i></a>
 								
 
 							</td>

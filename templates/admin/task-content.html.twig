@@ -39,12 +39,15 @@
 							<td>status</td>
 
 							<td class="action">
-								<a href="{{path('task_details', {'id': task.id})}}">Steps <i class="material-icons">visibility</i></a>
-								<a href="{{ path('task-edit', { 'id': task.id }) }}">Edit <i class="material-icons">edit</i></a>
+								<a href="{{path('task_details', {'id': task.id})}}">Steps <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>visibility</i></a>
+								<a href="{{ path('task-edit', { 'id': task.id }) }}">Edit <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>edit</i></a>
 								<form id="delete-task-{{ task.id }}" action="{{path('delete-task',{'id':task.id})}}" method="POST" style="display:none">
 									<input type="hidden" name="_token" value="{{csrf_token('delete'~ task.id)}}">
 								</form>
-								<a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-task-{{ task.id }}').submit(); }" style="color: red;">Delete <i class="material-icons">delete</i></a>
+								<a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-task-{{ task.id }}').submit(); }" style="color: red;">Delete <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>delete</i></a>
 							</td>
 						</tr>
 					{% endfor %}

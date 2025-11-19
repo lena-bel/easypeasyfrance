@@ -22,7 +22,8 @@
 					<p>You can only book another appointment once this one is completed or cancelled.</p>
 
 					<form action="{{ path('appointment_cancel', {'id': existingAppointment.id}) }}" method="post" style="margin-top:1rem;">
-						<button type="submit" class="cancel-btn">Cancel My Appointment <i class="material-icons">event_busy</i></button>
+						<button type="submit" class="cancel-btn">Cancel My Appointment <i class="material-icons" style="font-size: inherit; vertical-align: middle; position: relative; top: -1px; margin-left: 3px;"
+>event_busy</i></button>
 					</form>
 
 				</div>
