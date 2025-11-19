@@ -49,11 +49,11 @@
 								</td>
 								<td>
 									<a href="{{ path('user_edit', {'id': user.id}) }}">
-										Edit</a>
+										Edit <i class="material-icons">edit</i></a>
 									{% if user.isActive %}
-										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="deactivate">Deactivate</a>
+										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="deactivate">Deactivate <i class="material-icons">lock</i></a>
 									{% else %}
-										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="active">Activate</a>
+										<a href="{{ path('user_toggle_status', { id: user.id }) }}" class="active">Activate <i class="material-icons">lock_open</i></a>
 									{% endif %}
 									
 

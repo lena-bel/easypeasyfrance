@@ -2,37 +2,37 @@
 
 /*buttons*/
 .pri-btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-primary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
+  padding: 0.5rem 1rem;
+  background-color: variables.$button-primary-background;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 40px;
 
-    text-decoration: none;
-    color: variables.$button-primary-text;
-    margin-right: 1rem;
-    margin-top: 0.4rem;
-  }
-  .pri-btn:hover {
-    background-color: variables.$button-primary-hover;
-  }
+  text-decoration: none;
+  color: variables.$button-primary-text;
+  margin-right: 1rem;
+  margin-top: 0.4rem;
+}
+.pri-btn:hover {
+  background-color: variables.$button-primary-hover;
+}
 
-  .sec-btn {
-    padding: 0.5rem 1rem;
-    background-color: variables.$button-secondary-background;
-    font-weight: 600;
-    border-radius: 6px;
-    height: 40px;
+.sec-btn {
+  padding: 0.5rem 1rem;
+  background-color: variables.$button-secondary-background;
+  font-weight: 600;
+  border-radius: 6px;
+  height: 40px;
 
-    text-decoration: none;
-    color: variables.$button-secondary-text;
-  }
-  .sec-btn:hover {
-    background-color: variables.$button-primary-background;
-    color: white;
-  }
+  text-decoration: none;
+  color: variables.$button-secondary-text;
+}
+.sec-btn:hover {
+  background-color: variables.$button-primary-background;
+  color: white;
+}
 
-  .back-btn {
+.back-btn {
   color: inherit;
   color: variables.$button-primary-background;
   text-decoration: none;
@@ -40,7 +40,7 @@
 .back-btn:hover {
   color: variables.$button-primary-hover;
 }
-.btn-save{
+.btn-save {
   padding: 0.5rem 1rem;
   background-color: variables.$button-primary-background;
   font-weight: 600;
@@ -50,7 +50,7 @@
   color: white;
   margin-top: 1.2rem;
 }
-.btn-login{
+.btn-login {
   width: 100%;
   color: white;
   background-color: variables.$button-primary-background;
@@ -59,74 +59,69 @@
   border-radius: 0.9rem;
   font-size: 1.2rem;
 }
-.btn-login:hover{
+.btn-login:hover {
   background-color: variables.$button-primary-hover;
 }
 
 .signup-text {
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--dark);
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--dark);
 }
 
 .signup-text a {
-    color: var(--terracotta);
-    text-decoration: none;
+  color: var(--terracotta);
+  text-decoration: none;
 }
 
 .signup-text a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-  /*end of buttons*/
+/*end of buttons*/
 
-
-  /*form*/
-  form{
-    margin: 0 2rem 0 0;
-   
-  }
+/*form*/
+form {
+  margin: 0 2rem 0 0;
+}
 form .label {
-    display: block;
-    margin-top: 1rem;
-    margin-bottom: 0.4rem;
-    font-weight: bold;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: variables.$header-color;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid variables.$border-line;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: variables.$paragraph-color;
+}
+form textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+input[type="file"] {
+  border: 1.5px solid variables.$border-line;
+  background-color: #fff;
+  padding: 0.45rem 0.4rem;
+  border-radius: 6px;
+  width: 100%;
+}
+.form-checkbox {
+  margin-top: 1rem;
+  .anonymous-label {
     color: variables.$header-color;
-    
+    font-weight: bold;
   }
-
-  form input[type="text"],
-    form textarea {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    border: 1.5px solid variables.$border-line;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: #fff;
-    color: variables.$paragraph-color;
-  }
-  form textarea {
-    height: 180px;
-    resize: vertical;
-  }
-
-  input[type="file"] {
-    border: 1.5px solid variables.$border-line;
-    background-color: #fff;
-    padding: 0.45rem 0.4rem;
-    border-radius: 6px;
-    width: 100%;
-  }
-  .form-checkbox {
-    margin-top: 1rem;
-    .anonymous-label {
-      color: variables.$header-color;
-      font-weight: bold;
-    }
-  }
-  /*end of form*/
-
-
+}
+/*end of form*/
 
 .card {
   background-color: variables.$card-background;
@@ -212,4 +207,13 @@ form .label {
   td:last-child a:hover {
     text-decoration: underline;
   }
+}
+
+// icons
+.material-icons {
+  font-size: inherit;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-left: 3px;
 }

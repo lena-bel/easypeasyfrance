@@ -28,11 +28,11 @@
 								<td>{{ post.title }}</td>
 								<td>{{ post.creationDate ? post.creationDate|date('d/m/Y ') : 'N/A' }}</td>
 								<td class='action'>
-									<a href="{{ path('post_detail', {id: post.id}) }}">View</a>
+									<a href="{{ path('post_detail', {id: post.id}) }}">View <i class="material-icons">visibility</i></a>
 									<span>|</span>
 									<form method="post" action="{{ path('post_delete', {id: post.id}) }}" style="display:inline" onsubmit="return confirm('Are you sure?');">
 										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
-										<button type="submit" class='delete-btn'>Delete</button>
+										<button type="submit" class='delete-btn'>Delete <i class="material-icons">delete</i></button>
 									</form>
 								</td>
 							</tr>

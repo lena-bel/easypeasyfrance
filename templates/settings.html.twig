@@ -65,7 +65,7 @@
 			<form action="{{ path('delete_account') }}" method="post" onsubmit="return confirm('Are you sure?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
     <button type="submit" class="delete-btn">
-        Delete Account
+        Delete Account <i class="material-icons">delete</i>
     </button>
 </form>
 		</div>

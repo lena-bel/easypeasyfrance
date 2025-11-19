@@ -609,6 +609,14 @@ input[type=file] {
   text-decoration: underline;
 }
 
+.material-icons {
+  font-size: inherit;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-left: 3px;
+}
+
 #task-details h1 {
   padding: 1rem 0;
 }
