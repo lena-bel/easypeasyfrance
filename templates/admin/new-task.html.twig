@@ -39,11 +39,11 @@
 			</div>
 			<div class="task">
 				<div class="title-button">
-                <h3>Helpful Links</h3>
-				
-				<button type="button" class="btn" id="add-link">+ Add Link</button>
-                </div>
-                <div class="collection-links" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}">
+					<h3>Helpful Links</h3>
+
+					<button type="button" class="btn" id="add-link">+ Add Link</button>
+				</div>
+				<div class="collection-links" data-prototype="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}">
 					{{ form_widget(form.links) }}
 				</div>
 			</div>
@@ -55,22 +55,29 @@
 	</main>
 
 	<script>
-	document.addEventListener("turbo:load", function() {
-		
-function addForm(buttonSelector, containerSelector) {
-document.querySelector(buttonSelector).addEventListener('click', function (e) {
-e.preventDefault();
-const container = document.querySelector(containerSelector);
-const prototype = container.dataset.prototype;
-const index = container.children.length;
-const newForm = prototype.replace(/__name__/g, index);
-container.insertAdjacentHTML('beforeend', newForm);
-});
-}
+	//this unction adds a new form element to the symfony element (steps, documents, links)
+		function addForm(buttonSelector, containerSelector) {
+			// here i am adding a click listener to my buttons 
+			document.querySelector(buttonSelector).addEventListener('click', function (e) {
+				e.preventDefault();
+				//The container holds all collection items (steps, links, documents)
+				const container = document.querySelector(containerSelector);
+				// Symfony stores the HTML prototype of a collection as a data attribute
+				const prototype = container.dataset.prototype;
+				//Each new form needs a unique index for field names
+				const index = container.children.length;
+				// Replace "__name__" in the prototype with the new index and then symfony uses this to correctly map the form fields in the 'post data'
+				const newForm = prototype.replace(/__name__/g, index);
+				// Injecting the newly generated form block at the bottom of the container
+				container.insertAdjacentHTML('beforeend', newForm);
+			});
+		}
 
-addForm('#add-step', '.collection-steps');
-addForm('#add-link', '.collection-links');
-addForm('#add-document', '.collection-documents');
-})
+		// Add new Step form
+		addForm('#add-step', '.collection-steps');
+		// Add new External Link form
+		addForm('#add-link', '.collection-links');
+		// Add new External Link form
+		addForm('#add-document', '.collection-documents');
 	</script>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\SettingsForm;
 use App\Form\ChangePasswordForm;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,7 +57,8 @@ class SettingsController extends AbstractController
     #[Route(path: '/settings/delete-account', name: 'delete_account',  methods: ['POST'])]
     public function deleteAccount(
         Request $request,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        Security $security
     ): Response {
         $user = $this->getUser();
 
@@ -67,12 +69,12 @@ class SettingsController extends AbstractController
         if (!$this->isCsrfTokenValid('delete_account', $request->request->get('_token'))) {
             throw $this->createAccessDeniedException('Invalid CSRF token.');
         }
-        $session = $request->getSession();
-        $session->invalidate();
+        
+        $response = $security->logout(false); 
 
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('app_logout');
+        return $this->redirectToRoute('home');
     }
 }
