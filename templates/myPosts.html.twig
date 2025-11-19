@@ -82,8 +82,9 @@
 
 	</main>
 <script>
-document.addEventListener("turbo:load", function() {
+// Select all elements with class "tab-link"
  document.querySelectorAll('.tab-link').forEach(btn => {
+	// Add click listener to each tab button
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
@@ -92,7 +93,6 @@ document.addEventListener("turbo:load", function() {
             document.getElementById(btn.dataset.tab).classList.add('active');
         });
     });
-})
 </script>
     
 

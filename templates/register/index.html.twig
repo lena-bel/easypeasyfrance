@@ -40,7 +40,6 @@
 
 	</main>
 	<script>
-document.addEventListener("turbo:load", function() {
   const password = document.getElementById('register_form_password_first');
   const confirmPassword = document.getElementById('register_form_password_second');
 
@@ -91,7 +90,6 @@ document.addEventListener("turbo:load", function() {
 
   password.addEventListener('input', validatePassword);
   confirmPassword.addEventListener('input', validatePassword);
-});
 </script>
 
 {% endblock %}

@@ -61,6 +61,7 @@ class SettingsController extends AbstractController
         Security $security
     ): Response {
         $user = $this->getUser();
+        // dd($user);
 
         if (!$user) {
             throw $this->createAccessDeniedException('No user logged in.');

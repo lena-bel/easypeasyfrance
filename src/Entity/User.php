@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Testimonials>
      */
-    #[ORM\OneToMany(targetEntity: Testimonials::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Testimonials::class, mappedBy: 'user',cascade: ['remove'])]
     private Collection $testimonials;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
@@ -69,13 +69,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Post>
      */
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user',cascade: ['remove'],)]
+    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user',cascade: ['remove'])]
     private Collection $posts;
 
     /**
      * @var Collection<int, Post>
      */
-    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'favoritedBy')]
+    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'favoritedBy',cascade: ['remove'])]
     private Collection $favoritePosts;
 
     /**

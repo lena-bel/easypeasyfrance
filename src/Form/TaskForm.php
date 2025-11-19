@@ -37,7 +37,6 @@ class TaskForm extends AbstractType
                 'required' => false
             ])
 
-            // ->add('status')
             ->add('visaType', EntityType::class, [
                 'class' => VisaTypeProfile::class,
                 'choice_label' => 'name',
